@@ -1,0 +1,74 @@
+[
+  {
+    "file": "sessions-1to1.svg",
+    "source": "Vectorize",
+    "revision_id": "140534ae34034e25966699c29a4c5228",
+    "palette": [
+      "#323827"
+    ],
+    "width": 1258,
+    "height": 1258,
+    "bytes": 25141,
+    "settings": {
+      "colors": 1,
+      "smoothing": 20,
+      "transparent": true,
+      "trim": false
+    },
+    "source_png": "sessions-1to1.png"
+  },
+  {
+    "file": "yoga.svg",
+    "source": "Vectorize",
+    "revision_id": "52fa8bd1302c4f0797adb4fcaa2a6280",
+    "palette": [
+      "#323a26"
+    ],
+    "width": 1258,
+    "height": 1258,
+    "bytes": 11456,
+    "settings": {
+      "colors": 1,
+      "smoothing": 20,
+      "transparent": true,
+      "trim": false
+    },
+    "source_png": "yoga.png"
+  },
+  {
+    "file": "meditation.svg",
+    "source": "Vectorize",
+    "revision_id": "5edf1497dba24f93b5b9a27f4055263c",
+    "palette": [
+      "#333928"
+    ],
+    "width": 1258,
+    "height": 1258,
+    "bytes": 15374,
+    "settings": {
+      "colors": 1,
+      "smoothing": 20,
+      "transparent": true,
+      "trim": false
+    },
+    "source_png": "meditation.png"
+  },
+  {
+    "file": "workshops.svg",
+    "source": "Vectorize",
+    "revision_id": "856f84296b1948a1a199da4604963338",
+    "palette": [
+      "#343a28"
+    ],
+    "width": 1258,
+    "height": 1258,
+    "bytes": 25260,
+    "settings": {
+      "colors": 1,
+      "smoothing": 20,
+      "transparent": true,
+      "trim": false
+    },
+    "source_png": "workshops.png"
+  }
+]

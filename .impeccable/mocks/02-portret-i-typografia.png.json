@@ -1,0 +1,15 @@
+{
+  "name": "Варіант 2 — Портрет і типографіка",
+  "prompt": "Use case: ui-mockup. Create one finished, high-fidelity DESKTOP WEBSITE SCREENSHOT, landscape canvas 1536 by 1024. Flat front view of a browser viewport, no laptop, no device frame, no presentation board or explanatory captions. This is a Polish personal psychologist/wellbeing practitioner site, working brand \"agnieszka clarity\". Respect the supplied style references: milk-paper #FEFFFA, dark olive #514A08, olive-black #171504, soft straw #EDE8CC; pale mint and lavender are secondary and need not appear in this viewport. Precise Swiss neo-grotesk typography with very large bold title, generous editorial whitespace, warm natural photography, flat surfaces and gentle 12-20px corners. No decorative illustrations, no generic icon cards, no fabricated testimonials, numbers, qualifications or team. Navigation text exactly: \"agnieszka clarity\", \"O mnie\", \"Oferta\", \"Warsztaty\", \"Wydarzenia\", \"Sklep\", \"PL / UK\", button \"Umów sesję\". Main headline exactly: \"Zatrzymaj się.\" on one line and \"Poczuj siebie.\" on next line. Supporting copy exactly: \"Przestrzeń na spotkanie z emocjami, ciałem i sobą.\" Main CTA exactly \"Umów sesję 1:1\" with a small round olive arrow. Secondary small text may read \"Brainspotting · Joga · Medytacja\". Do not include real-looking prices or dates. Show the beginning of a calm next section to demonstrate hierarchy. All text must be clearly typeset and plausible at desktop scale. Composition 2, editorial portrait split: keep the same compact milk capsule navigation centered across the top of the milk page. Main section is a refined asymmetric 55/45 spread. On the left, generous milk whitespace with the two-line dark bold headline approximately 100px, beneath it a short supporting paragraph and one olive pill CTA. On the right, a tall large softly rounded photographic portrait using the provided seated woman photo; keep the exact woman in the brown outfit on the tan couch, crop thoughtfully to emphasize her face and hands, do not substitute another person. Photo region should be about 560px wide and 650px tall; show enough of the real sofa to feel personal. Tiny line of method names below the CTA. Lower section starts with a thin olive divider then \"Poznajmy się.\" in approximately 52px and a small paragraph \"Jestem Agnieszka. Tworzę przestrzeń do spotkania ze sobą.\" Leave generous 80-120px between sections. This varies layout only; same Swiss type, same palette and scale as both references. No overlaid extra portrait card.",
+  "tool": "built-in image_gen",
+  "referenceImages": [
+    "/tmp/agnieszka-design-main.png",
+    "/tmp/agnieszka-design-analysis/style-1.png",
+    "/tmp/agnieszka-prototype-assets/Home 4-2.jpg"
+  ],
+  "approved": false,
+  "createdAt": "2026-11-09",
+  "scope": "desktop home first viewport",
+  "seedKey": "5af301e2",
+  "imagePath": ".impeccable/mocks/02-portret-i-typografia.png"
+}

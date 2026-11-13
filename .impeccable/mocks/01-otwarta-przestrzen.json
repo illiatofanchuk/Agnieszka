@@ -1,0 +1,16 @@
+{
+  "name": "Варіант 1 — Відкритий простір",
+  "prompt": "Use case: ui-mockup. Create one finished, high-fidelity DESKTOP WEBSITE SCREENSHOT, landscape canvas 1536 by 1024. Flat front view of a browser viewport, no laptop, no device frame, no presentation board or explanatory captions. This is a Polish personal psychologist/wellbeing practitioner site, working brand \"agnieszka clarity\". Respect the supplied style references: milk-paper #FEFFFA, dark olive #514A08, olive-black #171504, soft straw #EDE8CC; pale mint and lavender are secondary and need not appear in this viewport. Precise Swiss neo-grotesk typography with very large bold title, generous editorial whitespace, warm natural photography, flat surfaces and gentle 12-20px corners. No decorative illustrations, no generic icon cards, no fabricated testimonials, numbers, qualifications or team. Navigation text exactly: \"agnieszka clarity\", \"O mnie\", \"Oferta\", \"Warsztaty\", \"Wydarzenia\", \"Sklep\", \"PL / UK\", button \"Umów sesję\". Main headline exactly: \"Zatrzymaj się.\" on one line and \"Poczuj siebie.\" on next line. Supporting copy exactly: \"Przestrzeń na spotkanie z emocjami, ciałem i sobą.\" Main CTA exactly \"Umów sesję 1:1\" with a small round olive arrow. Secondary small text may read \"Brainspotting · Joga · Medytacja\". Do not include real-looking prices or dates. Show the beginning of a calm next section to demonstrate hierarchy. All text must be clearly typeset and plausible at desktop scale. Composition 1, closest to the Main style reference: a huge immersive full-width inset photograph occupying about 760px of the viewport, light blue sky and water, same woman with open arms and white/light blue blouse from the main style reference. Preserve her depicted identity and realistic appearance. Put an elegant compact milk navigation capsule centered at the top of the photograph. Center the two-line headline very large (~104px at 1440px width) in the clear sky below navigation, above the woman's face, without text touching face. Lower-left a short dark supporting paragraph and milk pill action button. Lower-right one quiet milk panel approximately 290px wide with \"Czas czuć.\" and \"W swoim tempie.\" The person is the focal point and the headline has breathing room. Milk outer margins approximately 24px, not a thick colored poster border. Below photo show a generous milk section starting with \"Nie musisz mieć wszystkiego poukładanego.\" and subtler second line \"żeby zacząć słuchać siebie.\" The style reference screenshot supplies palette/layout only; no English brand text.",
+  "tool": "built-in image_gen",
+  "referenceImages": [
+    "/tmp/agnieszka-design-main.png",
+    "/tmp/agnieszka-design-analysis/style-1.png"
+  ],
+  "approved": true,
+  "createdAt": "2026-11-09",
+  "scope": "desktop home first viewport",
+  "seedKey": "5af301e2",
+  "imagePath": ".impeccable/mocks/01-otwarta-przestrzen.png",
+  "approvedAt": "2026-11-09",
+  "approval": "User selected 1 — Відкритий простір"
+}

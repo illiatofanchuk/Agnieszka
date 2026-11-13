@@ -1,0 +1,847 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-12T17:23:44.625912+00:00",
+  "title": "Design System: Agnieszka",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Молочний папір",
+        "tonalRamp": [
+          "oklch(15% 0.00664 115.700)",
+          "oklch(27% 0.00664 115.700)",
+          "oklch(38% 0.00664 115.700)",
+          "oklch(50% 0.00664 115.700)",
+          "oklch(61% 0.00664 115.700)",
+          "oklch(73% 0.00664 115.700)",
+          "oklch(84% 0.00664 115.700)",
+          "oklch(95% 0.00664 115.700)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Тепла світла поверхня",
+        "tonalRamp": [
+          "oklch(15% 0.01194 101.481)",
+          "oklch(27% 0.01194 101.481)",
+          "oklch(38% 0.01194 101.481)",
+          "oklch(50% 0.01194 101.481)",
+          "oklch(61% 0.01194 101.481)",
+          "oklch(73% 0.01194 101.481)",
+          "oklch(84% 0.01194 101.481)",
+          "oklch(95% 0.01194 101.481)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Оливково-чорний",
+        "tonalRamp": [
+          "oklch(15% 0.03170 103.202)",
+          "oklch(27% 0.03170 103.202)",
+          "oklch(38% 0.03170 103.202)",
+          "oklch(50% 0.03170 103.202)",
+          "oklch(61% 0.03170 103.202)",
+          "oklch(73% 0.03170 103.202)",
+          "oklch(84% 0.03170 103.202)",
+          "oklch(95% 0.03170 103.202)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Оливково-сірий",
+        "tonalRamp": [
+          "oklch(15% 0.02807 115.141)",
+          "oklch(27% 0.02807 115.141)",
+          "oklch(38% 0.02807 115.141)",
+          "oklch(50% 0.02807 115.141)",
+          "oklch(61% 0.02807 115.141)",
+          "oklch(73% 0.02807 115.141)",
+          "oklch(84% 0.02807 115.141)",
+          "oklch(95% 0.02807 115.141)"
+        ]
+      },
+      "olive": {
+        "role": "primary",
+        "displayName": "Глибокий оливковий",
+        "tonalRamp": [
+          "oklch(15% 0.08052 102.818)",
+          "oklch(27% 0.08052 102.818)",
+          "oklch(38% 0.08052 102.818)",
+          "oklch(50% 0.08052 102.818)",
+          "oklch(61% 0.08052 102.818)",
+          "oklch(73% 0.08052 102.818)",
+          "oklch(84% 0.08052 102.818)",
+          "oklch(95% 0.08052 102.818)"
+        ]
+      },
+      "olive-hover": {
+        "role": "primary",
+        "displayName": "Темний оливковий",
+        "tonalRamp": [
+          "oklch(15% 0.06687 102.248)",
+          "oklch(27% 0.06687 102.248)",
+          "oklch(38% 0.06687 102.248)",
+          "oklch(50% 0.06687 102.248)",
+          "oklch(61% 0.06687 102.248)",
+          "oklch(73% 0.06687 102.248)",
+          "oklch(84% 0.06687 102.248)",
+          "oklch(95% 0.06687 102.248)"
+        ]
+      },
+      "straw": {
+        "role": "secondary",
+        "displayName": "Солом’яний",
+        "tonalRamp": [
+          "oklch(15% 0.03733 98.747)",
+          "oklch(27% 0.03733 98.747)",
+          "oklch(38% 0.03733 98.747)",
+          "oklch(50% 0.03733 98.747)",
+          "oklch(61% 0.03733 98.747)",
+          "oklch(73% 0.03733 98.747)",
+          "oklch(84% 0.03733 98.747)",
+          "oklch(95% 0.03733 98.747)"
+        ]
+      },
+      "mint": {
+        "role": "secondary",
+        "displayName": "М’ятний",
+        "tonalRamp": [
+          "oklch(15% 0.03146 194.157)",
+          "oklch(27% 0.03146 194.157)",
+          "oklch(38% 0.03146 194.157)",
+          "oklch(50% 0.03146 194.157)",
+          "oklch(61% 0.03146 194.157)",
+          "oklch(73% 0.03146 194.157)",
+          "oklch(84% 0.03146 194.157)",
+          "oklch(95% 0.03146 194.157)"
+        ]
+      },
+      "lavender": {
+        "role": "secondary",
+        "displayName": "Лавандовий",
+        "tonalRamp": [
+          "oklch(15% 0.02602 266.602)",
+          "oklch(27% 0.02602 266.602)",
+          "oklch(38% 0.02602 266.602)",
+          "oklch(50% 0.02602 266.602)",
+          "oklch(61% 0.02602 266.602)",
+          "oklch(73% 0.02602 266.602)",
+          "oklch(84% 0.02602 266.602)",
+          "oklch(95% 0.02602 266.602)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Тонкий розділювач",
+        "tonalRamp": [
+          "oklch(15% 0.01619 110.586)",
+          "oklch(27% 0.01619 110.586)",
+          "oklch(38% 0.01619 110.586)",
+          "oklch(50% 0.01619 110.586)",
+          "oklch(61% 0.01619 110.586)",
+          "oklch(73% 0.01619 110.586)",
+          "oklch(84% 0.01619 110.586)",
+          "oklch(95% 0.01619 110.586)"
+        ]
+      },
+      "input-border": {
+        "role": "neutral",
+        "displayName": "Межа поля",
+        "tonalRamp": [
+          "oklch(15% 0.03082 113.907)",
+          "oklch(27% 0.03082 113.907)",
+          "oklch(38% 0.03082 113.907)",
+          "oklch(50% 0.03082 113.907)",
+          "oklch(61% 0.03082 113.907)",
+          "oklch(73% 0.03082 113.907)",
+          "oklch(84% 0.03082 113.907)",
+          "oklch(95% 0.03082 113.907)"
+        ]
+      },
+      "error": {
+        "role": "neutral",
+        "displayName": "Помилка",
+        "tonalRamp": [
+          "oklch(15% 0.14727 28.935)",
+          "oklch(27% 0.14727 28.935)",
+          "oklch(38% 0.14727 28.935)",
+          "oklch(50% 0.14727 28.935)",
+          "oklch(61% 0.14727 28.935)",
+          "oklch(73% 0.14727 28.935)",
+          "oklch(84% 0.14727 28.935)",
+          "oklch(95% 0.14727 28.935)"
+        ]
+      },
+      "footer-muted": {
+        "role": "neutral",
+        "displayName": "Світлий текст футера",
+        "tonalRamp": [
+          "oklch(15% 0.02563 111.797)",
+          "oklch(27% 0.02563 111.797)",
+          "oklch(38% 0.02563 111.797)",
+          "oklch(50% 0.02563 111.797)",
+          "oklch(61% 0.02563 111.797)",
+          "oklch(73% 0.02563 111.797)",
+          "oklch(84% 0.02563 111.797)",
+          "oklch(95% 0.02563 111.797)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "display",
+        "purpose": "Дворядковий H1 hero."
+      },
+      "headline": {
+        "displayName": "headline",
+        "purpose": "Заголовки змістових секцій."
+      },
+      "hero-note": {
+        "displayName": "hero-note",
+        "purpose": "Погоджена світла hero-панель."
+      },
+      "philosophy": {
+        "displayName": "philosophy",
+        "purpose": "Відкрита філософська теза."
+      },
+      "page-title": {
+        "displayName": "page-title",
+        "purpose": "H1 внутрішніх сторінок."
+      },
+      "title": {
+        "displayName": "title",
+        "purpose": "Назви карток."
+      },
+      "lead": {
+        "displayName": "lead",
+        "purpose": "Вступний абзац."
+      },
+      "body": {
+        "displayName": "body",
+        "purpose": "Секційна копія."
+      },
+      "body-small": {
+        "displayName": "body-small",
+        "purpose": "Тіло розгорнутих деталей."
+      },
+      "label": {
+        "displayName": "label",
+        "purpose": "Кнопки й короткі дії."
+      },
+      "field-label": {
+        "displayName": "field-label",
+        "purpose": "Підпис над полем."
+      },
+      "caption": {
+        "displayName": "caption",
+        "purpose": "Допоміжні написи."
+      }
+    },
+    "shadows": [
+      {
+        "name": "modal",
+        "value": "0 24px 80px rgba(23,21,4,.2)",
+        "purpose": "М’яке відокремлення модального діалогу."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button-color",
+        "value": ".17s ease",
+        "purpose": "Колір кнопок."
+      },
+      {
+        "name": "filter-color",
+        "value": ".15s",
+        "purpose": "Колір фільтрів."
+      },
+      {
+        "name": "detail-plus",
+        "value": ".2s ease",
+        "purpose": "Поворот рисочки плюса."
+      },
+      {
+        "name": "pressed-offset",
+        "value": "translateY(1px)",
+        "purpose": "Натискання основної кнопки."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-header",
+        "value": "1201px"
+      },
+      {
+        "name": "large-hero",
+        "value": "1700px"
+      },
+      {
+        "name": "header-compact",
+        "value": "1200px"
+      },
+      {
+        "name": "content-compact",
+        "value": "1100px"
+      },
+      {
+        "name": "mobile-menu",
+        "value": "1020px"
+      },
+      {
+        "name": "single-editorial",
+        "value": "800px"
+      },
+      {
+        "name": "mobile-hero",
+        "value": "700px"
+      },
+      {
+        "name": "mobile-content",
+        "value": "600px"
+      }
+    ],
+    "focus": {
+      "outline": "3px solid var(--olive,#514a08)",
+      "outlineOffset": "5px",
+      "footerColor": "var(--straw,#ede8cc)"
+    },
+    "overlays": {
+      "navigation": "rgba(254,255,250,.95)",
+      "hero-note": "rgba(254,255,250,.96)",
+      "dialog-backdrop": "rgba(23,21,4,.45)"
+    },
+    "reducedMotion": {
+      "query": "(prefers-reduced-motion:reduce)",
+      "scrollBehavior": "auto",
+      "animationDuration": ".01ms",
+      "transitionDuration": ".01ms"
+    },
+    "fontSources": [
+      {
+        "family": "Manrope",
+        "path": "/assets/Manrope.ttf",
+        "weightRange": "200 800",
+        "license": "prototype/assets/OFL-Manrope.txt"
+      },
+      {
+        "family": "Mulish",
+        "path": "/assets/Mulish.ttf",
+        "weightRange": "200 900",
+        "license": "prototype/assets/OFL-Mulish.txt"
+      }
+    ],
+    "provenance": {
+      "sourceStylesheet": "prototype/styles.css",
+      "sourceComponents": "prototype/app.js",
+      "scope": "implemented local prototype; preview only; no production approval",
+      "tonalRamps": "Synthesized OKLCH lightness strips for the panel; not implemented color scales.",
+      "reviewScope": "Ship at the two scored fixes; no universal audit pass.",
+      "rasterProvenance": "7/7 embedded provenance scan passed."
+    },
+    "variants": {
+      "home-v2": {
+        "name": "Головна V2 — Bliskość",
+        "status": "implemented-local-preview",
+        "scope": {
+          "selector": "body.version-two",
+          "pages": [
+            "/"
+          ],
+          "excludedPages": [
+            "/warsztaty/",
+            "/sklep/"
+          ],
+          "sharedControl": ".version-switch",
+          "base": "DESIGN.md frontmatter and existing V1 entries remain normative outside this variant"
+        },
+        "sources": {
+          "stylesheet": "prototype/v2.css",
+          "components": "prototype/v2.js",
+          "state": "prototype/app.js",
+          "contract": "design/home-v2.md",
+          "reference": ".impeccable/reference/v2-bliskosc.png"
+        },
+        "tokens": {
+          "colors": {
+            "paper": "#faf7f2",
+            "surface": "#f0eee4",
+            "ink": "#303829",
+            "muted": "#626957",
+            "olive": "#303829",
+            "olive-hover": "#20271b",
+            "line": "#c6c8ba",
+            "straw": "#e8e9da",
+            "v2-lime": "#d1ed8a",
+            "v2-lime-hover": "#bedb74",
+            "light": "#fffdf6",
+            "light-hover": "#e7eddd",
+            "yoga": "#303c2c",
+            "yoga-muted": "#d2d9c9",
+            "yoga-line": "#78836e",
+            "school": "#ececdf",
+            "filter": "#eeeee4",
+            "footer-muted": "#dbe1cf",
+            "footer-word": "#66715a",
+            "footer-line": "#67715c"
+          },
+          "cssCustomPropertyMap": {
+            "paper": "--paper",
+            "surface": "--surface",
+            "ink": "--ink",
+            "muted": "--muted",
+            "olive": "--olive",
+            "olive-hover": "--olive-hover",
+            "line": "--line",
+            "straw": "--straw",
+            "v2-lime": "--v2-lime"
+          },
+          "typography": {
+            "display-pl": {
+              "fontFamily": "Manrope, sans-serif",
+              "fontSize": "clamp(120px,25vw,420px)",
+              "fontWeight": 400,
+              "lineHeight": 1,
+              "letterSpacing": "-.04em"
+            },
+            "display-uk": {
+              "fontFamily": "Manrope, sans-serif",
+              "fontSize": "clamp(108px,20.3vw,340px)",
+              "fontWeight": 400,
+              "lineHeight": 1,
+              "letterSpacing": "-.04em"
+            },
+            "headline": {
+              "fontFamily": "Manrope, sans-serif",
+              "fontSize": "clamp(40px,4.9vw,76px)",
+              "fontWeight": 400,
+              "lineHeight": 1.02,
+              "letterSpacing": "-.04em"
+            },
+            "section-label": {
+              "fontFamily": "Manrope, sans-serif",
+              "fontSize": "11px",
+              "fontWeight": 500,
+              "lineHeight": 1.5,
+              "letterSpacing": ".12em",
+              "textTransform": "uppercase"
+            },
+            "contact-title": {
+              "fontFamily": "Manrope, sans-serif",
+              "fontSize": "clamp(54px,10.4vw,164px)",
+              "fontWeight": 400,
+              "lineHeight": 1.06,
+              "letterSpacing": "-.04em"
+            },
+            "button": {
+              "fontFamily": "Manrope, sans-serif",
+              "fontSize": "16px",
+              "fontWeight": 500,
+              "lineHeight": 1.3
+            }
+          },
+          "rounded": {
+            "image": "16px",
+            "about-image-mobile": "14px",
+            "event-blog-image": "14px",
+            "pill": "999px"
+          },
+          "spacing": {
+            "section": "clamp(64px,7vw,120px)",
+            "section-mobile": "64px",
+            "section-label-bottom": "36px",
+            "section-label-bottom-compact": "28px",
+            "about-grid-row": "34px"
+          },
+          "components": {
+            "button-primary": {
+              "backgroundColor": "{colors.v2-lime}",
+              "textColor": "{colors.ink}",
+              "typography": "{typography.button}",
+              "rounded": "{rounded.pill}",
+              "padding": "12px 24px",
+              "minHeight": "48px",
+              "gap": "24px"
+            },
+            "button-primary-hover": {
+              "backgroundColor": "{colors.v2-lime-hover}"
+            },
+            "button-light": {
+              "backgroundColor": "{colors.light}",
+              "textColor": "{colors.ink}"
+            },
+            "button-light-hover": {
+              "backgroundColor": "{colors.light-hover}"
+            },
+            "hero-button-mobile": {
+              "backgroundColor": "{colors.ink}",
+              "textColor": "{colors.light}",
+              "fontSize": "14px",
+              "minHeight": "50px",
+              "padding": "12px 22px",
+              "gap": "24px"
+            },
+            "contact-button": {
+              "backgroundColor": "{colors.ink}",
+              "textColor": "{colors.light}"
+            },
+            "contact-button-hover": {
+              "backgroundColor": "{colors.olive-hover}"
+            },
+            "service-summary": {
+              "fontSize": "clamp(23px,2.3vw,35px)",
+              "minHeight": "98px",
+              "padding": "32px 0",
+              "letterSpacing": "-.035em"
+            },
+            "event-card": {
+              "backgroundColor": "transparent",
+              "rounded": "0",
+              "imageRounded": "14px"
+            },
+            "filter-active": {
+              "backgroundColor": "{colors.ink}",
+              "textColor": "{colors.paper}"
+            }
+          }
+        },
+        "layout": {
+          "containerWidth": "calc(100% - 9.4vw)",
+          "containerMaxWidth": "1540px",
+          "containerMobileWidth": "calc(100% - 40px)",
+          "heroAspectRatio": "960/619",
+          "heroMaxHeight": "1120px",
+          "heroMobileSceneHeight": "550px",
+          "aboutColumns": "27% 25% 1fr",
+          "aboutColumnGap": "3.6%",
+          "aboutMobileColumns": "1fr 1fr",
+          "aboutDetailImageTransform": "none",
+          "aboutDetailImageObjectPosition": "50% 40%"
+        },
+        "responsiveOverrides": {
+          "max600px": {
+            "display-pl": {
+              "fontSize": "24.5vw",
+              "lineHeight": 1.05
+            },
+            "display-uk": {
+              "fontSize": "19vw"
+            },
+            "headline": {
+              "fontSize": "42px"
+            },
+            "contact-title-pl": {
+              "fontSize": "10.1vw"
+            },
+            "contact-title-uk": {
+              "fontSize": "12vw"
+            },
+            "heroLayout": "photo scene followed by introduction and action on paper"
+          }
+        },
+        "breakpoints": [
+          {
+            "name": "large-hero",
+            "query": "(min-width:1700px)"
+          },
+          {
+            "name": "compact-content",
+            "query": "(max-width:1100px)"
+          },
+          {
+            "name": "keep-desktop-nav",
+            "query": "(min-width:861px) and (max-width:1020px)"
+          },
+          {
+            "name": "mobile-menu",
+            "query": "(max-width:860px)"
+          },
+          {
+            "name": "mobile-content",
+            "query": "(max-width:600px)"
+          }
+        ],
+        "overlays": {
+          "navigation": {
+            "background": "rgba(48,56,41,.55)",
+            "border": "1px solid rgba(255,253,246,.65)",
+            "backdropFilter": "blur(16px)"
+          },
+          "heroIntroTextShadow": "0 1px 10px rgba(26,33,16,.35)",
+          "heroActionTextShadow": "0 1px 10px rgba(26,33,16,.55)"
+        },
+        "motion": [
+          {
+            "name": "arrow-hover",
+            "value": "transform .25s cubic-bezier(.16,1,.3,1)",
+            "transform": "translateX(4px)"
+          },
+          {
+            "name": "comparison-color",
+            "value": "background .18s,color .18s"
+          },
+          {
+            "name": "about-detail-arrow",
+            "value": "transform .2s",
+            "openTransform": "rotate(90deg)"
+          }
+        ],
+        "reducedMotion": {
+          "query": "(prefers-reduced-motion:reduce)",
+          "arrowTransition": "none",
+          "arrowHoverTransform": "none",
+          "comparisonTransition": "none"
+        },
+        "focus": {
+          "outline": "3px solid var(--olive)",
+          "outlineOffset": "5px",
+          "navigationAndYogaColor": "var(--v2-lime)"
+        },
+        "sharedComparisonControl": {
+          "selector": ".version-switch",
+          "background": "#fffdf6",
+          "textColor": "#303829",
+          "border": "1px solid #b9bda9",
+          "rounded": "999px",
+          "shadow": "0 6px 24px rgba(30,37,24,.09)",
+          "right": "20px",
+          "bottom": "max(20px,env(safe-area-inset-bottom))",
+          "mobileRight": "12px",
+          "mobileBottom": "max(12px,env(safe-area-inset-bottom))",
+          "activeBackground": "#303829",
+          "activeTextColor": "#fffdf6",
+          "hoverBackground": "#edf0e4"
+        },
+        "navigation": {
+          "versionQuery": "v",
+          "versions": [
+            "1",
+            "2"
+          ],
+          "versionStorageKey": "agnieszka-version",
+          "defaultVersion": "1",
+          "languageQuery": "lang",
+          "languages": [
+            "pl",
+            "uk"
+          ],
+          "languageStorageKey": "agnieszka-language",
+          "defaultLanguage": "pl",
+          "priority": [
+            "explicit URL parameter",
+            "stored preference",
+            "default"
+          ],
+          "innerPageVersionAction": "navigate to corresponding home page with current language"
+        },
+        "rasterProvenance": {
+          "method": "built-in image generation from supplied reference and subject photos",
+          "status": "visualization for local review; not new documentary photography",
+          "exactPromptEmbedded": true,
+          "assets": [
+            {
+              "path": "prototype/assets/v2/hero-meadow.png",
+              "promptPath": "prototype/assets/v2/hero-meadow.png.prompt.txt",
+              "uses": [
+                "hero background"
+              ]
+            },
+            {
+              "path": "prototype/assets/v2/hero-subject.png",
+              "promptPath": "prototype/assets/v2/hero-subject.png.prompt.txt",
+              "uses": [
+                "transparent foreground over HTML hero title"
+              ]
+            },
+            {
+              "path": "prototype/assets/v2/portrait.png",
+              "promptPath": "prototype/assets/v2/portrait.png.prompt.txt",
+              "uses": [
+                "About portrait"
+              ]
+            },
+            {
+              "path": "prototype/assets/v2/about-hands.webp",
+              "promptPath": "prototype/assets/v2/about-hands.webp.prompt.txt",
+              "originalPath": "prototype/assets/v2/hands-detail-hq.png",
+              "uses": [
+                "dedicated high-detail About hands photograph; replaces enlarged hero crop"
+              ],
+              "width": 1157,
+              "height": 1359
+            }
+          ]
+        },
+        "verification": {
+          "record": ".impeccable/review/v2/VERIFICATION.md",
+          "interactionResults": ".impeccable/review/v2/interaction-checks.json",
+          "checksPassed": 11,
+          "scope": "bounded local V2 layout and shared behavior checks; no production deployment, live email, purchase, external integration, production calendar, blanket accessibility audit, or numeric V2 fidelity score",
+          "v1BuildState": ".impeccable/build/state.json remains V1-only",
+          "reviewRecord": ".impeccable/review/v2/REVIEW.md",
+          "disposition": "ship",
+          "dispositionScope": "reviewed local V2 composition and recorded interactions; documentation handoff completed; no material UI fixes",
+          "advisory": "At 325px PL, the floating version switch overlaps the far-right end of the hero CTA; recorded as non-blocking for local review. The current 584px panel separates the controls."
+        },
+        "narrative": {
+          "direction": "Personal presence through a full-width photograph and one large word, followed by open editorial sections.",
+          "guardrails": [
+            "Keep V1 available beside V2.",
+            "Apply these overrides only on the home page with body.version-two.",
+            "Keep all service labels visible before expanding details.",
+            "Keep the universal demo form, PL/UK, and the existing inner pages.",
+            "Treat generated images as review visualization."
+          ]
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Основна кнопка",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Головна дія відкриття звернення.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Zapytaj o sesję 1:1</button>",
+      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:50px;border:0;border-radius:999px;padding:12px 24px;font:600 16px/1.3 Manrope,sans-serif;cursor:pointer;transition:background .17s ease,color .17s ease;background:var(--olive,#514a08);color:var(--paper,#fefffa);}.ds-button-primary:hover{background:var(--olive-hover,#3f3906);}.ds-button-primary:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}.ds-button-primary:active{transform:translateY(1px);}.ds-button-primary:disabled{opacity:.7;cursor:wait;}"
+    },
+    {
+      "name": "Світла кнопка зі стрілкою",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "Світла дія поверх фотографії.",
+      "html": "<button class=\"ds-button-light\" type=\"button\">Umów sesję 1:1<span class=\"ds-button-arrow\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15M13 5l7 7-7 7\"/></svg></span></button>",
+      "css": ".ds-button-light{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:50px;border:0;border-radius:999px;padding:12px 24px;font:600 16px/1.3 Manrope,sans-serif;cursor:pointer;transition:background .17s ease,color .17s ease;background:var(--paper,#fefffa);color:var(--ink,#171504);}.ds-button-light:hover{background:var(--straw,#ede8cc);}.ds-button-light:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}.ds-button-light:active{transform:translateY(1px);}.ds-button-arrow{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:34px;height:34px;margin-right:-10px;border-radius:50%;background:var(--olive,#514a08);color:var(--paper,#fefffa);}.ds-button-arrow svg{width:19px;height:19px;}"
+    },
+    {
+      "name": "Контурна кнопка",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Другорядна дія з оливковим контуром.",
+      "html": "<button class=\"ds-button-outline\" type=\"button\">Zobacz wydarzenia</button>",
+      "css": ".ds-button-outline{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:50px;border:0;border-radius:999px;padding:12px 24px;font:600 16px/1.3 Manrope,sans-serif;cursor:pointer;transition:background .17s ease,color .17s ease;background:transparent;border:1px solid var(--olive,#514a08);color:var(--olive,#514a08);}.ds-button-outline:hover{background:var(--olive,#514a08);color:var(--paper,#fefffa);}.ds-button-outline:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}.ds-button-outline:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Поле з помилкою",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Підпис, видима межа й текстова помилка універсальної форми.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-email\">Adres e-mail <span aria-hidden=\"true\">*</span></label><input id=\"ds-email\" type=\"email\" value=\"adres@\" aria-invalid=\"true\" aria-describedby=\"ds-email-error\"><p id=\"ds-email-error\">Wpisz poprawny adres e-mail.</p></div>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:8px;max-width:420px;font-family:Manrope,sans-serif;color:var(--ink,#171504);}.ds-field label{font-size:14px;font-weight:600;}.ds-field input{border:1px solid var(--input-border,#858873);border-radius:10px;padding:13px 14px;width:100%;min-width:0;min-height:52px;background:var(--paper,#fefffa);color:var(--ink,#171504);font:400 16px/1.5 Manrope,sans-serif;caret-color:var(--olive,#514a08);}.ds-field input:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}.ds-field input[aria-invalid=true]{border-color:var(--error,#9f3127);}.ds-field p{margin:0;color:var(--error,#9f3127);font-size:13px;line-height:1.4;}"
+    },
+    {
+      "name": "Фільтр категорії",
+      "kind": "chip",
+      "refersTo": "filter",
+      "description": "Вибраний і невибраний стани каталогу.",
+      "html": "<div class=\"ds-filters\" aria-label=\"Kategorie katalogu\"><button class=\"ds-filter\" type=\"button\" aria-pressed=\"true\">Wszystko</button><button class=\"ds-filter\" type=\"button\" aria-pressed=\"false\">Warsztaty</button><button class=\"ds-filter\" type=\"button\" aria-pressed=\"false\">Joga</button></div>",
+      "css": ".ds-filters{display:flex;flex-wrap:wrap;gap:10px;}.ds-filter{min-height:44px;padding:10px 20px;border:1px solid transparent;background:var(--surface,#f6f5ec);color:var(--ink,#171504);border-radius:999px;font:400 14px Manrope,sans-serif;cursor:pointer;transition:background .15s,color .15s;}.ds-filter:hover{border-color:var(--olive,#514a08);}.ds-filter[aria-pressed=true]{background:var(--olive,#514a08);color:var(--paper,#fefffa);}.ds-filter:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}@media(max-width:600px){.ds-filter{padding:10px 16px;font-size:13px;}}"
+    },
+    {
+      "name": "Компактна подія",
+      "kind": "card",
+      "refersTo": "event-card",
+      "description": "Реальна компактна версія події без фотографії.",
+      "html": "<article class=\"ds-event-card\"><div class=\"ds-event-content\"><div class=\"ds-event-meta\"><span>Przykładowa data</span><time datetime=\"2026-12-05\">5 grudnia 2026</time></div><h3>Oddech i uważność</h3><p>Spotkanie online</p><div class=\"ds-event-bottom\"><span>Przykład otwartego zapisu</span><button class=\"ds-event-action\" type=\"button\" aria-label=\"Zapytaj o: Oddech i uważność\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15M13 5l7 7-7 7\"/></svg></button></div></div></article>",
+      "css": ".ds-event-card{max-width:390px;min-width:0;border-radius:14px;overflow:hidden;background:var(--surface,#f6f5ec);color:var(--ink,#171504);font-family:Manrope,sans-serif;}.ds-event-content{padding:28px;}.ds-event-meta{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--muted,#5e614f);line-height:1.4;}.ds-event-meta time{color:var(--ink,#171504);font-size:15px;font-variant-numeric:tabular-nums;}.ds-event-card h3{margin:28px 0 0;font:600 28px/1.15 Mulish,Manrope,sans-serif;letter-spacing:-.035em;text-wrap:balance;}.ds-event-card p{margin:10px 0 0;color:var(--muted,#5e614f);font-size:15px;line-height:1.6;}.ds-event-bottom{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:30px;}.ds-event-bottom>span{font-size:12px;color:var(--olive,#514a08);max-width:150px;}.ds-event-action{display:flex;justify-content:center;align-items:center;flex-shrink:0;border:1px solid var(--olive,#514a08);background:none;color:var(--olive,#514a08);width:44px;height:44px;border-radius:50%;cursor:pointer;transition:background .17s,color .17s;}.ds-event-action svg{width:20px;height:20px;}.ds-event-action:hover{background:var(--olive,#514a08);color:var(--paper,#fefffa);}.ds-event-action:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}"
+    },
+    {
+      "name": "Навігація-капсула",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Спільна форма шапки, спрощена для незалежного прев’ю.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Menu główne\"><a class=\"ds-brand\" href=\"#top\">agnieszka clarity</a><div class=\"ds-nav-links\"><a href=\"#o-mnie\">O mnie</a><a href=\"#oferta\">Oferta</a><a href=\"#warsztaty\">Warsztaty</a></div><button class=\"ds-nav-language\" type=\"button\">PL / UK</button><button class=\"ds-nav-cta\" type=\"button\">Umów sesję</button><button class=\"ds-menu\" type=\"button\" aria-label=\"Otwórz menu\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M4 8h16M4 16h16\"/></svg></button></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:28px;width:fit-content;max-width:100%;min-height:62px;padding:9px 12px 9px 30px;border-radius:999px;background:rgba(254,255,250,.95);color:var(--ink,#171504);font-family:Manrope,sans-serif;}.ds-nav a{color:inherit;text-decoration:none;}.ds-brand{font-size:26px;font-weight:500;letter-spacing:-.055em;white-space:nowrap;}.ds-nav-links{display:flex;gap:30px;margin-left:auto;font-size:15px;}.ds-nav-links a:hover{color:var(--olive,#514a08);text-decoration:underline;text-underline-offset:5px;}.ds-nav-language{border:0;border-left:1px solid #9da18c;padding:4px 0 4px 20px;background:none;white-space:nowrap;font:400 14px Manrope,sans-serif;min-height:34px;color:inherit;cursor:pointer;}.ds-nav-language:hover{color:var(--olive,#514a08);}.ds-nav-cta{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:50px;border:0;border-radius:999px;padding:12px 24px;font:600 16px/1.3 Manrope,sans-serif;cursor:pointer;transition:background .17s ease,color .17s ease;font-size:15px;min-height:42px;padding:10px 24px;white-space:nowrap;background:var(--olive,#514a08);color:var(--paper,#fefffa);}.ds-nav-cta:hover{background:var(--olive-hover,#3f3906);}.ds-nav-cta:active{transform:translateY(1px);}.ds-menu{display:none;background:none;border:0;padding:8px;color:inherit;cursor:pointer;}.ds-menu svg{width:24px;height:24px;}.ds-nav a:focus-visible,.ds-nav button:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}@media(max-width:1020px){.ds-nav-links{display:none;}.ds-menu{display:block;}.ds-nav-language{margin-left:auto;}}@media(max-width:700px){.ds-nav{padding:10px 12px 10px 18px;min-height:54px;gap:12px;}.ds-brand{font-size:20px;}.ds-nav-cta{display:none;}.ds-nav-language{font-size:12px;padding-left:12px;}.ds-menu{padding:4px;}}"
+    },
+    {
+      "name": "Рядок розгортання",
+      "kind": "custom",
+      "refersTo": "detail-row",
+      "description": "Нативний рядок подробиць із CSS-знаком плюс/мінус.",
+      "html": "<div class=\"ds-accordion\"><details class=\"ds-details\"><summary>Jak wygląda pierwszy krok?<span class=\"ds-plus\" aria-hidden=\"true\"></span></summary><div class=\"ds-detail-body\"><p>Wybierz usługę w formularzu lub poproś o pomoc w wyborze. Termin i szczegóły potwierdzimy w osobnym kontakcie.</p></div></details></div>",
+      "css": ".ds-accordion{max-width:560px;border-top:1px solid var(--line,#dadbcf);font-family:Manrope,sans-serif;color:var(--ink,#171504);}.ds-details{border-bottom:1px solid var(--line,#dadbcf);}.ds-details summary{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px;padding:18px 0;cursor:pointer;font-size:17px;line-height:1.4;list-style:none;}.ds-details summary::-webkit-details-marker{display:none;}.ds-details summary:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}.ds-plus{display:block;position:relative;flex-shrink:0;width:20px;height:20px;}.ds-plus:before,.ds-plus:after{content:\"\";position:absolute;top:9px;left:2px;width:16px;height:1px;background:currentColor;}.ds-plus:after{transform:rotate(90deg);transition:transform .2s ease;}.ds-details[open] .ds-plus:after{transform:rotate(0);}.ds-detail-body{padding:0 0 24px;font-size:16px;color:var(--muted,#5e614f);line-height:1.6;max-width:64ch;}.ds-detail-body p{margin:0;}@media(prefers-reduced-motion:reduce){.ds-plus:after{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Кругла дія",
+      "kind": "button",
+      "refersTo": "round-action",
+      "description": "Компактна дія картки з лінійною SVG-стрілкою.",
+      "html": "<button class=\"ds-round-action\" type=\"button\" aria-label=\"Zapytaj o spotkanie\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h15M13 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-round-action{display:flex;justify-content:center;align-items:center;flex-shrink:0;border:1px solid var(--olive,#514a08);background:none;color:var(--olive,#514a08);width:44px;height:44px;border-radius:50%;cursor:pointer;transition:background .17s,color .17s;}.ds-round-action svg{width:20px;height:20px;}.ds-round-action:hover{background:var(--olive,#514a08);color:var(--paper,#fefffa);}.ds-round-action:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}"
+    },
+    {
+      "name": "Діалог звернення",
+      "kind": "custom",
+      "refersTo": "dialog",
+      "description": "Візуальна оболонка діалогу; прев’ю не надсилає дані.",
+      "html": "<section class=\"ds-dialog\" aria-labelledby=\"ds-dialog-title\"><div class=\"ds-dialog-head\"><button class=\"ds-dialog-language\" type=\"button\">Українською</button><button class=\"ds-dialog-close\" type=\"button\" aria-label=\"Zamknij formularz\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"m6 6 12 12M18 6 6 18\"/></svg></button></div><div class=\"ds-dialog-body\"><h2 id=\"ds-dialog-title\">Zacznijmy<br>od rozmowy.</h2><p class=\"ds-dialog-intro\">Wybierz usługę. Szczegóły spotkania ustalimy wspólnie.</p><p class=\"ds-dialog-demo\">Tryb demonstracyjny — dane nie są wysyłane.</p></div></section>",
+      "css": ".ds-dialog{color:var(--ink,#171504);background:var(--paper,#fefffa);width:min(640px,calc(100% - 40px));border-radius:18px;box-shadow:0 24px 80px rgba(23,21,4,.2);font-family:Manrope,sans-serif;overflow:hidden;}.ds-dialog-head{display:flex;align-items:center;justify-content:flex-end;gap:20px;background:var(--paper,#fefffa);padding:18px 24px 6px;}.ds-dialog-language{border:0;background:none;font:400 13px Manrope,sans-serif;color:var(--olive,#514a08);text-decoration:underline;text-underline-offset:4px;margin-right:auto;cursor:pointer;}.ds-dialog-close{display:flex;align-items:center;justify-content:center;min-width:44px;height:44px;background:var(--surface,#f6f5ec);border:0;border-radius:50%;color:inherit;cursor:pointer;}.ds-dialog-close:hover{background:var(--straw,#ede8cc);}.ds-dialog-close svg{width:22px;height:22px;}.ds-dialog button:focus-visible{outline:3px solid var(--olive,#514a08);outline-offset:5px;}.ds-dialog-body{padding:12px 40px 40px;}.ds-dialog h2{margin:0;font:600 44px/1.08 Mulish,Manrope,sans-serif;letter-spacing:-.035em;text-wrap:balance;}.ds-dialog-intro{font-size:17px;line-height:1.6;color:var(--muted,#5e614f);margin:20px 0 0;max-width:45ch;}.ds-dialog-demo{font-size:12px;line-height:1.6;color:var(--olive,#514a08);background:var(--straw,#ede8cc);border-radius:8px;padding:10px 14px;margin:20px 0 28px;}@media(max-width:600px){.ds-dialog{width:100%;border-radius:0;}.ds-dialog-head{padding:16px 20px 6px;}.ds-dialog-body{padding:12px 24px 32px;}.ds-dialog h2{font-size:36px;}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Простір для себе",
+    "overview": "Світлий, відкритий сайт із виразною типографікою та великими природними фотографіями. Молочне тло створює безперервну основу; глибокий оливковий визначає дії та темне завершення сторінки. Солом’яні, м’ятні й лавандові площини додають м’який колір у вибраних секціях. Враження витонченості виникає з пропорцій, точного вирівнювання та вільного простору.\n\nКомпозиція поєднує великі заголовки, спокійні текстові паузи, асиметричні пари «фото + текст» і компактні списки деталей. Швейцарський підхід проявляється в чіткій сітці, нейтральних гротесках, обмеженій кількості накреслень і сильній різниці масштабу. Людяність забезпечують фотографія, колір і темп сторінки.",
+    "keyCharacteristics": [
+      "Великий заголовок, який можна впізнати за силуетом ще до прочитання.",
+      "Природна фотографія як основний візуальний матеріал.",
+      "Тепла світла основа, темний оливковий і стримані пастелі.",
+      "Значно більше простору між секціями, ніж між пов’язаними елементами.",
+      "Центрування для коротких тез; ліве вирівнювання для змістовного читання.",
+      "М’які кути, пласкі поверхні, мінімум декору.",
+      "Одна зрозуміла головна дія в кожному змістовому блоці."
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "На одній поверхні використовувати одну пастельну заливку. Оливкова дія може повторюватися на різних поверхнях.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Tone Rule",
+        "body": "Другорядний текст передавати кольором muted, а не декоративним зниженням прозорості; світлий дрібний текст на пастелях не використовувати.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Families Rule",
+        "body": "Великі змістові заголовки набирати Mulish; абзаци, навігацію, поля й кнопки — Manrope. Не підміняти їх системним display-шрифтом.",
+        "section": "typography"
+      },
+      {
+        "name": "The Breathing Room Rule",
+        "body": "Проміжок між новими композиціями має перевищувати проміжок усередині пов’язаної групи; довший переклад збільшує висоту, а не зменшує текст.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Картки й журнальні секції лишаються пласкими. М’яка тінь належить модальному діалогу, а не кожній поверхні.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Whole Capsule Rule",
+        "body": "Інтерактивна вся кнопка-капсула, а не лише стрілка; фокус завжди має видимий контур.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** зберігати велику різницю між H1, H2 та основним текстом.",
+      "**Do** вирівнювати фотографії, текст, кнопки й розділювачі за спільними осями.",
+      "**Do** давати новій секції більше простору, ніж елементам усередині однієї групи.",
+      "**Do** лишати щонайменше одну світлу паузу між насиченими кольором або фотографією композиціями.",
+      "**Do** використовувати нормативні токени frontmatter як одну узгоджену палітру.",
+      "**Do** перевіряти окремо польські й українські переноси та кадрування фотографій на телефоні.",
+      "**Do** тримати фотографію Agnieszka головним персональним образом сайту.",
+      "**Do** показувати назви всіх послуг до розгортання «+».",
+      "**Do** звіряти зміни з обома референсами й погодженим варіантом 1 у порівнюваному масштабі."
+    ],
+    "donts": [
+      "**Don't** замінювати журнальні секції однаковою сіткою карток на всю довжину сторінки.",
+      "**Don't** робити всі заголовки однакового розміру або всі секції центрованими.",
+      "**Don't** додавати насичений фіолетовий, рожевий, бордовий чи лимонний до обраної палітри без зміни дизайн-напряму.",
+      "**Don't** копіювати малоконтрастний сірий текст референсу там, де він заважає читанню.",
+      "**Don't** розташовувати текст на обличчі або на строкатій ділянці фотографії.",
+      "**Don't** зменшувати відступи й текст лише заради вміщення довгого перекладу.",
+      "**Don't** додавати тіні, градієнти, скляні ефекти або анімацію як стандарт для кожної поверхні.",
+      "**Don't** переносити з Wellness вигаданих спеціалістів, продукт зі штучним інтелектом, відгуки чи обіцянки результату. Це референс зовнішнього вигляду.",
+      "**Don't** показувати кнопку відтворення без реального відео або активну покупку в демонстраційному магазині."
+    ]
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "regions": [
+    {
+      "id": "hero-photo",
+      "kind": "image",
+      "box": {
+        "x": 0.013020833333333334,
+        "y": 0.01953125,
+        "w": 0.9739583333333334,
+        "h": 0.791015625
+      },
+      "snap": false,
+      "bleed": true,
+      "plate": "prototype/assets/hero-open-sky.png",
+      "note": "Full-bleed landscape photograph of the woman in a pale blue blouse, arms open, sky and lake. No letters, controls, cards, lines or navigation; all UI is separate semantic content."
+    },
+    {
+      "id": "philosophy-ground",
+      "kind": "chrome",
+      "box": {
+        "x": 0,
+        "y": 0.811,
+        "w": 1,
+        "h": 0.189
+      },
+      "snap": false,
+      "container": true,
+      "note": "Milk background of the philosophy section below the hero, with separate text elements on top."
+    },
+    {
+      "id": "nav-shell",
+      "kind": "chrome",
+      "box": {
+        "x": 0.154296875,
+        "y": 0.0341796875,
+        "w": 0.6920572916666666,
+        "h": 0.060546875
+      },
+      "snap": false,
+      "note": "Milk pill navigation background"
+    },
+    {
+      "id": "brand",
+      "kind": "text",
+      "box": {
+        "x": 0.17447916666666666,
+        "y": 0.0517578125,
+        "w": 0.12369791666666667,
+        "h": 0.029296875
+      },
+      "note": "Typeset semantic UI text: agnieszka clarity"
+    },
+    {
+      "id": "nav-about",
+      "kind": "text",
+      "box": {
+        "x": 0.3587239583333333,
+        "y": 0.0546875,
+        "w": 0.040364583333333336,
+        "h": 0.021484375
+      },
+      "note": "Typeset semantic UI text: O mnie"
+    },
+    {
+      "id": "nav-offer",
+      "kind": "text",
+      "box": {
+        "x": 0.419921875,
+        "y": 0.0546875,
+        "w": 0.032552083333333336,
+        "h": 0.021484375
+      },
+      "note": "Typeset semantic UI text: Oferta"
+    },
+    {
+      "id": "nav-workshops",
+      "kind": "text",
+      "box": {
+        "x": 0.4765625,
+        "y": 0.0546875,
+        "w": 0.046875,
+        "h": 0.021484375
+      },
+      "note": "Typeset semantic UI text: Warsztaty"
+    },
+    {
+      "id": "nav-events",
+      "kind": "text",
+      "box": {
+        "x": 0.5494791666666666,
+        "y": 0.0546875,
+        "w": 0.055989583333333336,
+        "h": 0.021484375
+      },
+      "note": "Typeset semantic UI text: Wydarzenia"
+    },
+    {
+      "id": "nav-shop",
+      "kind": "text",
+      "box": {
+        "x": 0.62890625,
+        "y": 0.0546875,
+        "w": 0.02734375,
+        "h": 0.021484375
+      },
+      "note": "Typeset semantic UI text: Sklep"
+    },
+    {
+      "id": "nav-language",
+      "kind": "text",
+      "box": {
+        "x": 0.69140625,
+        "y": 0.0546875,
+        "w": 0.034505208333333336,
+        "h": 0.021484375
+      },
+      "note": "Typeset semantic UI text: PL / UK"
+    },
+    {
+      "id": "nav-cta",
+      "kind": "control",
+      "box": {
+        "x": 0.74609375,
+        "y": 0.0439453125,
+        "w": 0.091796875,
+        "h": 0.041015625
+      },
+      "snap": false,
+      "note": "Olive pill button Umów sesję"
+    },
+    {
+      "id": "headline-first",
+      "kind": "text",
+      "box": {
+        "x": 0.2994791666666667,
+        "y": 0.130859375,
+        "w": 0.4075520833333333,
+        "h": 0.091796875
+      },
+      "note": "Typeset semantic UI text: Zatrzymaj się."
+    },
+    {
+      "id": "headline-second",
+      "kind": "text",
+      "box": {
+        "x": 0.3092447916666667,
+        "y": 0.224609375,
+        "w": 0.3971354166666667,
+        "h": 0.09375
+      },
+      "note": "Typeset semantic UI text: Poczuj siebie."
+    },
+    {
+      "id": "methods",
+      "kind": "text",
+      "box": {
+        "x": 0.053385416666666664,
+        "y": 0.5458984375,
+        "w": 0.20833333333333334,
+        "h": 0.025390625
+      },
+      "note": "Typeset semantic UI text: Brainspotting · Joga · Medytacja"
+    },
+    {
+      "id": "intro",
+      "kind": "text",
+      "box": {
+        "x": 0.053385416666666664,
+        "y": 0.5927734375,
+        "w": 0.22916666666666666,
+        "h": 0.06640625
+      },
+      "note": "Typeset semantic UI text: Przestrzeń na spotkanie z emocjami, ciałem i sobą."
+    },
+    {
+      "id": "hero-cta",
+      "kind": "control",
+      "box": {
+        "x": 0.052083333333333336,
+        "y": 0.68359375,
+        "w": 0.16731770833333334,
+        "h": 0.05859375
+      },
+      "snap": false,
+      "note": "Milk pill Umów sesję 1:1 and small olive circle arrow"
+    },
+    {
+      "id": "note-shell",
+      "kind": "chrome",
+      "box": {
+        "x": 0.728515625,
+        "y": 0.541015625,
+        "w": 0.23828125,
+        "h": 0.2080078125
+      },
+      "snap": false,
+      "note": "Milk rectangular panel with gentle rounded corners"
+    },
+    {
+      "id": "note-label",
+      "kind": "text",
+      "box": {
+        "x": 0.751953125,
+        "y": 0.572265625,
+        "w": 0.18229166666666666,
+        "h": 0.0166015625
+      },
+      "note": "Typeset semantic UI text: TERAPIA · JOGA · MEDYTACJA"
+    },
+    {
+      "id": "note-title",
+      "kind": "text",
+      "box": {
+        "x": 0.7513020833333334,
+        "y": 0.6044921875,
+        "w": 0.19401041666666666,
+        "h": 0.0576171875
+      },
+      "note": "Typeset semantic UI text: Czas czuć."
+    },
+    {
+      "id": "note-copy",
+      "kind": "text",
+      "box": {
+        "x": 0.7513020833333334,
+        "y": 0.66796875,
+        "w": 0.18033854166666666,
+        "h": 0.029296875
+      },
+      "note": "Typeset semantic UI text: W swoim tempie."
+    },
+    {
+      "id": "note-rule",
+      "kind": "chrome",
+      "box": {
+        "x": 0.751953125,
+        "y": 0.716796875,
+        "w": 0.0546875,
+        "h": 0.0048828125
+      },
+      "snap": false,
+      "note": "Short olive line"
+    },
+    {
+      "id": "philosophy-first",
+      "kind": "text",
+      "box": {
+        "x": 0.16080729166666666,
+        "y": 0.8701171875,
+        "w": 0.68359375,
+        "h": 0.052734375
+      },
+      "note": "Typeset semantic UI text: Nie musisz mieć wszystkiego poukładanego,"
+    },
+    {
+      "id": "philosophy-second",
+      "kind": "text",
+      "box": {
+        "x": 0.2942708333333333,
+        "y": 0.9267578125,
+        "w": 0.4088541666666667,
+        "h": 0.0537109375
+      },
+      "note": "Typeset semantic UI text: żeby zacząć słuchać siebie."
+    }
+  ]
+}

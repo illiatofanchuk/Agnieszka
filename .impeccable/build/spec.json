@@ -1,0 +1,1521 @@
+{
+  "tool": "comp-spec",
+  "version": 1,
+  "createdAt": "2026-11-09T12:02:59.914Z",
+  "comp": ".impeccable/mocks/01-otwarta-przestrzen.png",
+  "warnings": [
+    "region hero-photo: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
+    "region philosophy-ground: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+  ],
+  "uncoveredInkCells": [],
+  "compSize": {
+    "width": 1536,
+    "height": 1024
+  },
+  "aspect": 1.5,
+  "orientation": "landscape",
+  "palette": [
+    {
+      "hex": "#f1f4f4",
+      "coverage": 0.4445
+    },
+    {
+      "hex": "#c1d5ea",
+      "coverage": 0.4072
+    },
+    {
+      "hex": "#92a6c3",
+      "coverage": 0.0915
+    },
+    {
+      "hex": "#17140a",
+      "coverage": 0.0416
+    },
+    {
+      "hex": "#9e9f97",
+      "coverage": 0.0153
+    }
+  ],
+  "bands": [
+    {
+      "y": 0.0353,
+      "strength": 0.4866
+    },
+    {
+      "y": 0.0588,
+      "strength": 0.2864
+    },
+    {
+      "y": 0.0941,
+      "strength": 0.4321
+    },
+    {
+      "y": 0.1529,
+      "strength": 0.3064
+    },
+    {
+      "y": 0.2118,
+      "strength": 0.4227
+    },
+    {
+      "y": 0.2471,
+      "strength": 0.2869
+    },
+    {
+      "y": 0.3059,
+      "strength": 0.3532
+    },
+    {
+      "y": 0.6588,
+      "strength": 0.3395
+    },
+    {
+      "y": 0.7412,
+      "strength": 0.458
+    },
+    {
+      "y": 0.7765,
+      "strength": 0.4657
+    },
+    {
+      "y": 0.8118,
+      "strength": 1
+    },
+    {
+      "y": 0.8824,
+      "strength": 0.7259
+    },
+    {
+      "y": 0.9176,
+      "strength": 0.8954
+    },
+    {
+      "y": 0.9412,
+      "strength": 0.225
+    }
+  ],
+  "regions": [
+    {
+      "id": "hero-photo",
+      "kind": "image",
+      "note": "Full-bleed landscape photograph of the woman in a pale blue blouse, arms open, sky and lake. No letters, controls, cards, lines or navigation; all UI is separate semantic content.",
+      "grid": null,
+      "bleed": true,
+      "snap": false,
+      "box": {
+        "x": 0.013,
+        "y": 0.0195,
+        "w": 0.974,
+        "h": 0.791
+      },
+      "px": {
+        "x": 20,
+        "y": 20,
+        "w": 1496,
+        "h": 810
+      },
+      "aspect": 1.8469,
+      "palette": [
+        {
+          "hex": "#c1d5ea",
+          "coverage": 0.5308
+        },
+        {
+          "hex": "#eaeff0",
+          "coverage": 0.2781
+        },
+        {
+          "hex": "#92a6c3",
+          "coverage": 0.1186
+        },
+        {
+          "hex": "#18150c",
+          "coverage": 0.0469
+        },
+        {
+          "hex": "#7f8080",
+          "coverage": 0.0256
+        }
+      ],
+      "detail": {
+        "energy": 32.6593
+      },
+      "medium": "raster",
+      "plate": "prototype/assets/hero-open-sky.png",
+      "text": null
+    },
+    {
+      "id": "philosophy-ground",
+      "kind": "chrome",
+      "note": "Milk background of the philosophy section below the hero, with separate text elements on top.",
+      "grid": null,
+      "container": true,
+      "snap": false,
+      "box": {
+        "x": 0,
+        "y": 0.811,
+        "w": 1,
+        "h": 0.189
+      },
+      "px": {
+        "x": 0,
+        "y": 830,
+        "w": 1536,
+        "h": 194
+      },
+      "aspect": 7.9175,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.9058
+        },
+        {
+          "hex": "#151209",
+          "coverage": 0.0446
+        },
+        {
+          "hex": "#9b988c",
+          "coverage": 0.0295
+        },
+        {
+          "hex": "#91aabe",
+          "coverage": 0.0106
+        },
+        {
+          "hex": "#c8c8c0",
+          "coverage": 0.0095
+        }
+      ],
+      "detail": {
+        "energy": 32.1845
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "nav-shell",
+      "kind": "chrome",
+      "note": "Milk pill navigation background",
+      "grid": null,
+      "snap": false,
+      "box": {
+        "x": 0.1543,
+        "y": 0.0342,
+        "w": 0.6921,
+        "h": 0.0605
+      },
+      "px": {
+        "x": 237,
+        "y": 35,
+        "w": 1063,
+        "h": 62
+      },
+      "aspect": 17.1452,
+      "palette": [
+        {
+          "hex": "#f6f7f5",
+          "coverage": 0.8823
+        },
+        {
+          "hex": "#5a580a",
+          "coverage": 0.0735
+        },
+        {
+          "hex": "#100e0c",
+          "coverage": 0.0183
+        },
+        {
+          "hex": "#cbd3d9",
+          "coverage": 0.0157
+        },
+        {
+          "hex": "#383631",
+          "coverage": 0.0101
+        }
+      ],
+      "detail": {
+        "energy": 29.3835
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "brand",
+      "kind": "text",
+      "note": "Typeset semantic UI text: agnieszka clarity",
+      "grid": null,
+      "box": {
+        "x": 0.1745,
+        "y": 0.0518,
+        "w": 0.1237,
+        "h": 0.0293
+      },
+      "px": {
+        "x": 268,
+        "y": 53,
+        "w": 190,
+        "h": 30
+      },
+      "aspect": 6.3333,
+      "palette": [
+        {
+          "hex": "#f6f7f4",
+          "coverage": 0.8198
+        },
+        {
+          "hex": "#110f0d",
+          "coverage": 0.0909
+        },
+        {
+          "hex": "#989791",
+          "coverage": 0.0335
+        },
+        {
+          "hex": "#c9c7c1",
+          "coverage": 0.0303
+        },
+        {
+          "hex": "#3b3831",
+          "coverage": 0.0255
+        }
+      ],
+      "detail": {
+        "energy": 68.6629
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 15,
+          "capHeightPx": 19.1,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5765,
+          "advTall": 0.262,
+          "advX": 0.5765,
+          "gap": 0.1048,
+          "xRatio": 0.7222,
+          "stemW": 0.1328,
+          "contrast": 1.125,
+          "serif": 0.9022,
+          "densTall": 0.6098,
+          "densX": 0.5027,
+          "weight": 0.6098
+        },
+        "widthClass": "condensed",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "nav-about",
+      "kind": "text",
+      "note": "Typeset semantic UI text: O mnie",
+      "grid": null,
+      "box": {
+        "x": 0.3587,
+        "y": 0.0547,
+        "w": 0.0404,
+        "h": 0.0215
+      },
+      "px": {
+        "x": 551,
+        "y": 56,
+        "w": 62,
+        "h": 22
+      },
+      "aspect": 2.8182,
+      "palette": [
+        {
+          "hex": "#f8f8f6",
+          "coverage": 0.8133
+        },
+        {
+          "hex": "#211e1c",
+          "coverage": 0.0663
+        },
+        {
+          "hex": "#4a4a48",
+          "coverage": 0.0602
+        },
+        {
+          "hex": "#95908d",
+          "coverage": 0.0361
+        },
+        {
+          "hex": "#c8c8c8",
+          "coverage": 0.0241
+        }
+      ],
+      "detail": {
+        "energy": 20.4933
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 5,
+          "capHeightPx": 11.7,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6856,
+          "advTall": 0.5571,
+          "advX": 0.6856,
+          "gap": 0.1,
+          "xRatio": 0.7312,
+          "stemW": 0.1731,
+          "contrast": 1.1302,
+          "serif": null,
+          "densTall": 0.5707,
+          "densX": 0.5485,
+          "weight": 0.5707
+        },
+        "widthClass": "normal",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "nav-offer",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Oferta",
+      "grid": null,
+      "box": {
+        "x": 0.4199,
+        "y": 0.0547,
+        "w": 0.0326,
+        "h": 0.0215
+      },
+      "px": {
+        "x": 645,
+        "y": 56,
+        "w": 50,
+        "h": 22
+      },
+      "aspect": 2.2727,
+      "palette": [
+        {
+          "hex": "#f8f8f5",
+          "coverage": 0.7481
+        },
+        {
+          "hex": "#11130f",
+          "coverage": 0.1407
+        },
+        {
+          "hex": "#cacac6",
+          "coverage": 0.0593
+        },
+        {
+          "hex": "#9c9c9c",
+          "coverage": 0.0296
+        },
+        {
+          "hex": "#38332d",
+          "coverage": 0.0222
+        }
+      ],
+      "detail": {
+        "energy": 22.1663
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 3,
+          "capHeightPx": 11.7,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.882,
+          "advTall": 1.4794,
+          "advX": 0.6259,
+          "gap": 0.0427,
+          "xRatio": 0.7577,
+          "stemW": 0.164,
+          "contrast": 1.1343,
+          "serif": null,
+          "densTall": 0.422,
+          "densX": 0.609,
+          "weight": 0.422
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "nav-workshops",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Warsztaty",
+      "grid": null,
+      "box": {
+        "x": 0.4766,
+        "y": 0.0547,
+        "w": 0.0469,
+        "h": 0.0215
+      },
+      "px": {
+        "x": 732,
+        "y": 56,
+        "w": 72,
+        "h": 22
+      },
+      "aspect": 3.2727,
+      "palette": [
+        {
+          "hex": "#f7f7f3",
+          "coverage": 0.765
+        },
+        {
+          "hex": "#120f0f",
+          "coverage": 0.082
+        },
+        {
+          "hex": "#2b2920",
+          "coverage": 0.0656
+        },
+        {
+          "hex": "#605c5c",
+          "coverage": 0.0437
+        },
+        {
+          "hex": "#aaa8a8",
+          "coverage": 0.0437
+        }
+      ],
+      "detail": {
+        "energy": 32.8075
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 4,
+          "capHeightPx": 11.4,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 1.1437,
+          "advTall": 1.1437,
+          "advX": null,
+          "gap": 0.0587,
+          "xRatio": 0.7532,
+          "stemW": 0.1772,
+          "contrast": 1.1992,
+          "serif": null,
+          "densTall": 0.4959,
+          "densX": null,
+          "weight": 0.4959
+        },
+        "widthClass": "wide",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "nav-events",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Wydarzenia",
+      "grid": null,
+      "box": {
+        "x": 0.5495,
+        "y": 0.0547,
+        "w": 0.056,
+        "h": 0.0215
+      },
+      "px": {
+        "x": 844,
+        "y": 56,
+        "w": 86,
+        "h": 22
+      },
+      "aspect": 3.9091,
+      "palette": [
+        {
+          "hex": "#f8f8f5",
+          "coverage": 0.7743
+        },
+        {
+          "hex": "#0f0c09",
+          "coverage": 0.0708
+        },
+        {
+          "hex": "#c3c1be",
+          "coverage": 0.0664
+        },
+        {
+          "hex": "#2d2f25",
+          "coverage": 0.0531
+        },
+        {
+          "hex": "#56544e",
+          "coverage": 0.0354
+        }
+      ],
+      "detail": {
+        "energy": 37.6113
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 9,
+          "capHeightPx": 12,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6369,
+          "advTall": 0.6923,
+          "advX": 0.6092,
+          "gap": 0.0831,
+          "xRatio": 0.7111,
+          "stemW": 0.1662,
+          "contrast": 1.17,
+          "serif": null,
+          "densTall": 0.4851,
+          "densX": 0.5757,
+          "weight": 0.4851
+        },
+        "widthClass": "normal",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "nav-shop",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Sklep",
+      "grid": null,
+      "box": {
+        "x": 0.6289,
+        "y": 0.0547,
+        "w": 0.0273,
+        "h": 0.0215
+      },
+      "px": {
+        "x": 966,
+        "y": 56,
+        "w": 42,
+        "h": 22
+      },
+      "aspect": 1.9091,
+      "palette": [
+        {
+          "hex": "#f7f7f4",
+          "coverage": 0.8182
+        },
+        {
+          "hex": "#0c0c0c",
+          "coverage": 0.1091
+        },
+        {
+          "hex": "#605d5b",
+          "coverage": 0.0545
+        },
+        {
+          "hex": "#382828",
+          "coverage": 0.0091
+        },
+        {
+          "hex": "#888888",
+          "coverage": 0.0091
+        }
+      ],
+      "detail": {
+        "energy": 20.8154
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 5,
+          "capHeightPx": 12,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6099,
+          "advTall": 0.5545,
+          "advX": 0.6654,
+          "gap": 0.0832,
+          "xRatio": 0.706,
+          "stemW": 0.1712,
+          "contrast": 1.1716,
+          "serif": null,
+          "densTall": 0.4922,
+          "densX": 0.5698,
+          "weight": 0.4922
+        },
+        "widthClass": "normal",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "nav-language",
+      "kind": "text",
+      "note": "Typeset semantic UI text: PL / UK",
+      "grid": null,
+      "box": {
+        "x": 0.6914,
+        "y": 0.0547,
+        "w": 0.0345,
+        "h": 0.0215
+      },
+      "px": {
+        "x": 1062,
+        "y": 56,
+        "w": 53,
+        "h": 22
+      },
+      "aspect": 2.4091,
+      "palette": [
+        {
+          "hex": "#f6f7f3",
+          "coverage": 0.8472
+        },
+        {
+          "hex": "#353834",
+          "coverage": 0.0764
+        },
+        {
+          "hex": "#9d9d98",
+          "coverage": 0.0694
+        },
+        {
+          "hex": "#686868",
+          "coverage": 0.0069
+        }
+      ],
+      "detail": {
+        "energy": 16.5363
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 5,
+          "capHeightPx": 11,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.68,
+          "advTall": 0.68,
+          "advX": null,
+          "gap": 0.2871,
+          "xRatio": 0.8335,
+          "stemW": 0.1631,
+          "contrast": 0.9828,
+          "serif": null,
+          "densTall": 0.4582,
+          "densX": null,
+          "weight": 0.4582
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "nav-cta",
+      "kind": "control",
+      "note": "Olive pill button Umów sesję",
+      "grid": null,
+      "snap": false,
+      "box": {
+        "x": 0.7461,
+        "y": 0.0439,
+        "w": 0.0918,
+        "h": 0.041
+      },
+      "px": {
+        "x": 1146,
+        "y": 45,
+        "w": 141,
+        "h": 42
+      },
+      "aspect": 3.3571,
+      "palette": [
+        {
+          "hex": "#595708",
+          "coverage": 0.8282
+        },
+        {
+          "hex": "#f6f6f0",
+          "coverage": 0.0975
+        },
+        {
+          "hex": "#bdb997",
+          "coverage": 0.0433
+        },
+        {
+          "hex": "#8c894d",
+          "coverage": 0.0201
+        },
+        {
+          "hex": "#e6eac8",
+          "coverage": 0.0108
+        }
+      ],
+      "detail": {
+        "energy": 22.1968
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "headline-first",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Zatrzymaj się.",
+      "grid": null,
+      "box": {
+        "x": 0.2995,
+        "y": 0.1309,
+        "w": 0.4076,
+        "h": 0.0918
+      },
+      "px": {
+        "x": 460,
+        "y": 134,
+        "w": 626,
+        "h": 94
+      },
+      "aspect": 6.6596,
+      "palette": [
+        {
+          "hex": "#bbd4e9",
+          "coverage": 0.6716
+        },
+        {
+          "hex": "#181509",
+          "coverage": 0.2934
+        },
+        {
+          "hex": "#90a3b3",
+          "coverage": 0.0134
+        },
+        {
+          "hex": "#3a3f39",
+          "coverage": 0.0114
+        },
+        {
+          "hex": "#637177",
+          "coverage": 0.0101
+        }
+      ],
+      "detail": {
+        "energy": 63.843
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 11,
+          "capHeightPx": 71.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6429,
+          "advTall": 0.4752,
+          "advX": 0.6569,
+          "gap": 0.0769,
+          "xRatio": 0.7146,
+          "stemW": 0.1934,
+          "contrast": 1.2031,
+          "serif": 0.9875,
+          "densTall": 0.5551,
+          "densX": 0.6049,
+          "weight": 0.5551
+        },
+        "widthClass": "normal",
+        "weightClass": "medium",
+        "chosen": {
+          "family": "Carlito",
+          "weight": 700,
+          "fontSizePx": 102,
+          "source": "catalog",
+          "estimatedSize": true,
+          "stamp": "7c3d54db0054"
+        }
+      }
+    },
+    {
+      "id": "headline-second",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Poczuj siebie.",
+      "grid": null,
+      "box": {
+        "x": 0.3092,
+        "y": 0.2246,
+        "w": 0.3971,
+        "h": 0.0938
+      },
+      "px": {
+        "x": 475,
+        "y": 230,
+        "w": 610,
+        "h": 96
+      },
+      "aspect": 6.3542,
+      "palette": [
+        {
+          "hex": "#d0dfef",
+          "coverage": 0.6683
+        },
+        {
+          "hex": "#181409",
+          "coverage": 0.2967
+        },
+        {
+          "hex": "#949fa7",
+          "coverage": 0.0191
+        },
+        {
+          "hex": "#484a49",
+          "coverage": 0.0112
+        },
+        {
+          "hex": "#677275",
+          "coverage": 0.0046
+        }
+      ],
+      "detail": {
+        "energy": 67.0503
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 12,
+          "capHeightPx": 72,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.694,
+          "advTall": 0.458,
+          "advX": 0.694,
+          "gap": 0.0833,
+          "xRatio": 0.7103,
+          "stemW": 0.1922,
+          "contrast": 1.1814,
+          "serif": 0.9966,
+          "densTall": 0.7176,
+          "densX": 0.6136,
+          "weight": 0.7176
+        },
+        "widthClass": "normal",
+        "weightClass": "black",
+        "chosen": {
+          "family": "Mulish",
+          "weight": 700,
+          "fontSizePx": 103,
+          "source": "catalog",
+          "estimatedSize": true,
+          "stamp": "aa90ab9dbff1"
+        }
+      }
+    },
+    {
+      "id": "methods",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Brainspotting · Joga · Medytacja",
+      "grid": null,
+      "box": {
+        "x": 0.0534,
+        "y": 0.5459,
+        "w": 0.2083,
+        "h": 0.0254
+      },
+      "px": {
+        "x": 82,
+        "y": 559,
+        "w": 320,
+        "h": 26
+      },
+      "aspect": 12.3077,
+      "palette": [
+        {
+          "hex": "#c4dbe9",
+          "coverage": 0.7701
+        },
+        {
+          "hex": "#0c0d0f",
+          "coverage": 0.0805
+        },
+        {
+          "hex": "#90a1ad",
+          "coverage": 0.0763
+        },
+        {
+          "hex": "#31383e",
+          "coverage": 0.0491
+        },
+        {
+          "hex": "#5a676e",
+          "coverage": 0.024
+        }
+      ],
+      "detail": {
+        "energy": 86.6761
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 27,
+          "capHeightPx": 15.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6126,
+          "advTall": 0.5158,
+          "advX": 0.6126,
+          "gap": 0.129,
+          "xRatio": 0.7352,
+          "stemW": 0.1449,
+          "contrast": 1.0893,
+          "serif": 0.6598,
+          "densTall": 0.452,
+          "densX": 0.5257,
+          "weight": 0.452
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "intro",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Przestrzeń na spotkanie z emocjami, ciałem i sobą.",
+      "grid": null,
+      "box": {
+        "x": 0.0534,
+        "y": 0.5928,
+        "w": 0.2292,
+        "h": 0.0664
+      },
+      "px": {
+        "x": 82,
+        "y": 607,
+        "w": 352,
+        "h": 68
+      },
+      "aspect": 5.1765,
+      "palette": [
+        {
+          "hex": "#cbdbe9",
+          "coverage": 0.7832
+        },
+        {
+          "hex": "#0d0c0a",
+          "coverage": 0.111
+        },
+        {
+          "hex": "#a9b7bc",
+          "coverage": 0.0406
+        },
+        {
+          "hex": "#505352",
+          "coverage": 0.0361
+        },
+        {
+          "hex": "#7c8588",
+          "coverage": 0.0291
+        }
+      ],
+      "detail": {
+        "energy": 86.1534
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 40,
+          "capHeightPx": 22.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5898,
+          "advTall": 0.3785,
+          "advX": 0.6028,
+          "gap": 0.0893,
+          "xRatio": 0.7215,
+          "stemW": 0.1324,
+          "contrast": 1.1311,
+          "serif": 0.9287,
+          "densTall": 0.4431,
+          "densX": 0.4841,
+          "weight": 0.4431
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "hero-cta",
+      "kind": "control",
+      "note": "Milk pill Umów sesję 1:1 and small olive circle arrow",
+      "grid": null,
+      "snap": false,
+      "box": {
+        "x": 0.0521,
+        "y": 0.6836,
+        "w": 0.1673,
+        "h": 0.0586
+      },
+      "px": {
+        "x": 80,
+        "y": 700,
+        "w": 257,
+        "h": 60
+      },
+      "aspect": 4.2833,
+      "palette": [
+        {
+          "hex": "#f7f7f5",
+          "coverage": 0.838
+        },
+        {
+          "hex": "#5c5609",
+          "coverage": 0.0692
+        },
+        {
+          "hex": "#d3d6e2",
+          "coverage": 0.0388
+        },
+        {
+          "hex": "#72716b",
+          "coverage": 0.0285
+        },
+        {
+          "hex": "#0c0b0a",
+          "coverage": 0.0255
+        }
+      ],
+      "detail": {
+        "energy": 33.3287
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "note-shell",
+      "kind": "chrome",
+      "note": "Milk rectangular panel with gentle rounded corners",
+      "grid": null,
+      "snap": false,
+      "box": {
+        "x": 0.7285,
+        "y": 0.541,
+        "w": 0.2383,
+        "h": 0.208
+      },
+      "px": {
+        "x": 1119,
+        "y": 554,
+        "w": 366,
+        "h": 213
+      },
+      "aspect": 1.7183,
+      "palette": [
+        {
+          "hex": "#f7f7f6",
+          "coverage": 0.9024
+        },
+        {
+          "hex": "#151108",
+          "coverage": 0.0526
+        },
+        {
+          "hex": "#99968b",
+          "coverage": 0.0209
+        },
+        {
+          "hex": "#cac9c0",
+          "coverage": 0.0167
+        },
+        {
+          "hex": "#696858",
+          "coverage": 0.0074
+        }
+      ],
+      "detail": {
+        "energy": 25.9053
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "note-label",
+      "kind": "text",
+      "note": "Typeset semantic UI text: TERAPIA · JOGA · MEDYTACJA",
+      "grid": null,
+      "box": {
+        "x": 0.752,
+        "y": 0.5723,
+        "w": 0.1823,
+        "h": 0.0166
+      },
+      "px": {
+        "x": 1155,
+        "y": 586,
+        "w": 280,
+        "h": 17
+      },
+      "aspect": 16.4706,
+      "palette": [
+        {
+          "hex": "#f6f6f3",
+          "coverage": 0.8121
+        },
+        {
+          "hex": "#696453",
+          "coverage": 0.0851
+        },
+        {
+          "hex": "#9f9c8f",
+          "coverage": 0.0585
+        },
+        {
+          "hex": "#cecac4",
+          "coverage": 0.0443
+        }
+      ],
+      "detail": {
+        "energy": 72.7644
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 24,
+          "capHeightPx": 10.7,
+          "inkIsDark": true,
+          "allCaps": true,
+          "advance": 0.7157,
+          "advTall": 0.7157,
+          "advX": null,
+          "gap": 0.2801,
+          "xRatio": null,
+          "stemW": 0.2077,
+          "contrast": 1.1397,
+          "serif": null,
+          "densTall": 0.5758,
+          "densX": null,
+          "weight": 0.5758
+        },
+        "widthClass": "normal",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "note-title",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Czas czuć.",
+      "grid": null,
+      "box": {
+        "x": 0.7513,
+        "y": 0.6045,
+        "w": 0.194,
+        "h": 0.0576
+      },
+      "px": {
+        "x": 1154,
+        "y": 619,
+        "w": 298,
+        "h": 59
+      },
+      "aspect": 5.0508,
+      "palette": [
+        {
+          "hex": "#f8f7f5",
+          "coverage": 0.7286
+        },
+        {
+          "hex": "#151109",
+          "coverage": 0.2231
+        },
+        {
+          "hex": "#bebeb3",
+          "coverage": 0.0241
+        },
+        {
+          "hex": "#515141",
+          "coverage": 0.0156
+        },
+        {
+          "hex": "#8c8c7e",
+          "coverage": 0.0085
+        }
+      ],
+      "detail": {
+        "energy": 58.3047
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 8,
+          "capHeightPx": 44.4,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6529,
+          "advTall": 0.8104,
+          "advX": 0.6416,
+          "gap": 0.09,
+          "xRatio": 0.7299,
+          "stemW": 0.1789,
+          "contrast": 1.1835,
+          "serif": null,
+          "densTall": 0.396,
+          "densX": 0.56,
+          "weight": 0.396
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "note-copy",
+      "kind": "text",
+      "note": "Typeset semantic UI text: W swoim tempie.",
+      "grid": null,
+      "box": {
+        "x": 0.7513,
+        "y": 0.668,
+        "w": 0.1803,
+        "h": 0.0293
+      },
+      "px": {
+        "x": 1154,
+        "y": 684,
+        "w": 277,
+        "h": 30
+      },
+      "aspect": 9.2333,
+      "palette": [
+        {
+          "hex": "#f7f7f4",
+          "coverage": 0.8086
+        },
+        {
+          "hex": "#959085",
+          "coverage": 0.1194
+        },
+        {
+          "hex": "#bcbaaf",
+          "coverage": 0.072
+        }
+      ],
+      "detail": {
+        "energy": 36.4758
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 12,
+          "capHeightPx": 22,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.658,
+          "advTall": 0.2836,
+          "advX": 0.7034,
+          "gap": 0.1361,
+          "xRatio": 0.7266,
+          "stemW": 0.1301,
+          "contrast": 1.0397,
+          "serif": null,
+          "densTall": 0.5931,
+          "densX": 0.4542,
+          "weight": 0.5931
+        },
+        "widthClass": "normal",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "note-rule",
+      "kind": "chrome",
+      "note": "Short olive line",
+      "grid": null,
+      "snap": false,
+      "box": {
+        "x": 0.752,
+        "y": 0.7168,
+        "w": 0.0547,
+        "h": 0.0049
+      },
+      "px": {
+        "x": 1155,
+        "y": 734,
+        "w": 84,
+        "h": 5
+      },
+      "aspect": 16.8,
+      "palette": [
+        {
+          "hex": "#555008",
+          "coverage": 0.9643
+        },
+        {
+          "hex": "#f8f8f0",
+          "coverage": 0.0357
+        }
+      ],
+      "detail": {
+        "energy": 25.7174
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "philosophy-first",
+      "kind": "text",
+      "note": "Typeset semantic UI text: Nie musisz mieć wszystkiego poukładanego,",
+      "grid": null,
+      "box": {
+        "x": 0.1608,
+        "y": 0.8701,
+        "w": 0.6836,
+        "h": 0.0527
+      },
+      "px": {
+        "x": 247,
+        "y": 891,
+        "w": 1050,
+        "h": 54
+      },
+      "aspect": 19.4444,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.6903
+        },
+        {
+          "hex": "#16120a",
+          "coverage": 0.2397
+        },
+        {
+          "hex": "#d6d6cd",
+          "coverage": 0.0325
+        },
+        {
+          "hex": "#706f64",
+          "coverage": 0.0231
+        },
+        {
+          "hex": "#a8a79d",
+          "coverage": 0.0144
+        }
+      ],
+      "detail": {
+        "energy": 162.8163
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 34,
+          "capHeightPx": 39.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6329,
+          "advTall": 0.4557,
+          "advX": 0.6835,
+          "gap": 0.0759,
+          "xRatio": 0.7147,
+          "stemW": 0.1698,
+          "contrast": 1.1726,
+          "serif": null,
+          "densTall": 0.5142,
+          "densX": 0.5723,
+          "weight": 0.5142
+        },
+        "widthClass": "normal",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "philosophy-second",
+      "kind": "text",
+      "note": "Typeset semantic UI text: żeby zacząć słuchać siebie.",
+      "grid": null,
+      "box": {
+        "x": 0.2943,
+        "y": 0.9268,
+        "w": 0.4089,
+        "h": 0.0537
+      },
+      "px": {
+        "x": 452,
+        "y": 949,
+        "w": 628,
+        "h": 55
+      },
+      "aspect": 11.4182,
+      "palette": [
+        {
+          "hex": "#f8f8f7",
+          "coverage": 0.7315
+        },
+        {
+          "hex": "#9e9b8e",
+          "coverage": 0.2354
+        },
+        {
+          "hex": "#cccbc4",
+          "coverage": 0.0331
+        }
+      ],
+      "detail": {
+        "energy": 53.6313
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 22,
+          "capHeightPx": 38.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6226,
+          "advTall": 0.6096,
+          "advX": 0.6356,
+          "gap": 0.0778,
+          "xRatio": 0.7264,
+          "stemW": 0.171,
+          "contrast": 1.2097,
+          "serif": null,
+          "densTall": 0.4942,
+          "densX": 0.5635,
+          "weight": 0.4942
+        },
+        "widthClass": "normal",
+        "weightClass": "medium"
+      }
+    }
+  ]
+}

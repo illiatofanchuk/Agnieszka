@@ -1,0 +1,16 @@
+{
+  "source": "Vectorize",
+  "source_image": "botanical-flower-transparent.png",
+  "revision_id": "63665957eb6a40b893588c012cae5a35",
+  "palette": [
+    "#3d5824"
+  ],
+  "settings": {
+    "colors": 1,
+    "smoothing": 5,
+    "transparent": true,
+    "trim": false
+  },
+  "width": 1258,
+  "height": 1258
+}
