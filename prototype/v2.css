@@ -412,12 +412,32 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
   .version-two .v2-hero-scene{position:absolute;inset:0;height:auto;z-index:auto}
   /* The photo is scaled by height (cover), so her shoulders sit at ~50% of the hero on every phone: the intro ends just above them.
      A narrow column keeps most words left of her head; the last letters tuck behind the hair. */
-  .version-two .v2-hero-intro{position:absolute;inset:auto;left:16px;top:auto;bottom:51%;width:124px;max-width:none;padding:14px 16px 16px 14px;z-index:1;text-shadow:none}
+  .version-two .v2-hero-intro{position:absolute;inset:auto;left:16px;top:auto;bottom:51%;width:calc(clamp(112px,31vw,132px) + 30px);max-width:none;padding:14px 16px 16px 14px;z-index:1;text-shadow:none}
   /* 14.11.2026: both texts share one frosted panel; the intro's panel still sits behind her, so its right edge tucks under the hair. */
   .version-two .v2-hero-intro,.version-two .v2-hero-action{border-radius:16px;background:rgba(26,32,22,.52);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);box-shadow:none}
-  /* 14.11.2026: the intro uses the action's text style (17px / 1.35), so both boxes read as one voice; a narrower box keeps every word left of her head. */
-  .version-two .v2-hero-intro>p:last-child{font-size:17px;line-height:1.35;letter-spacing:-.02em}
+  .version-two .v2-hero-intro>p:last-child{font-size:clamp(25px,7vw,30px);line-height:1.02}
   /* 14.11.2026: the action is a compact box mirrored to the right edge (a little wider than the intro so the sentence breaks into four even lines): no border on either panel. */
   .version-two .v2-hero-action{position:absolute;inset:auto;right:16px;top:60%;width:calc(clamp(144px,40vw,160px) + 30px);max-width:none;padding:14px 16px 16px 14px;z-index:3;text-align:left}
   .version-two .v2-hero-action>p{font-size:17px;line-height:1.35;letter-spacing:-.02em;max-width:none;color:#fffdf6;text-shadow:none}
 }
+/* 14.11.2026: phone hero variant switch (A / B), bottom-left, mirrors the version switch; phones only. */
+.hero-switch{display:none}
+@media(max-width:600px){
+  .hero-switch{position:fixed;left:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:25;display:flex;align-items:center;gap:4px;padding:5px;border:1px solid #b9bda9;border-radius:999px;background:#fffdf6;color:#303829;box-shadow:0 6px 24px rgba(30,37,24,.09)}
+  .hero-switch>span{padding:0 8px;font-size:11px;font-weight:500}
+  .hero-switch a{display:grid;place-items:center;min-width:40px;min-height:37px;border-radius:999px;font-size:13px;font-weight:600;transition:background .18s,color .18s}
+  .hero-switch a:hover{background:#edf0e4}.hero-switch a[aria-current]{background:#303829;color:#fffdf6}
+}
+/* 14.11.2026: phone hero B — the cut-out slides right, the left column carries a plain header + subheader (no boxes).
+   The header grows upward from the split line at 46% of the hero; the subheader starts 14px below it, so any line count keeps the gap. */
+@media(max-width:600px){
+  .hero-b .version-two .v2-hero-subject{transform:translateX(26%)}
+  .hero-b .version-two .v2-hero-intro,.hero-b .version-two .v2-hero-action{background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0;padding:0;z-index:3;text-shadow:0 1px 14px rgba(20,26,16,.55)}
+  .hero-b .version-two .v2-hero-intro{left:20px;bottom:54%;width:64%}
+  .hero-b .version-two .v2-hero-intro>p:last-child{font-size:clamp(26px,7.6vw,32px);line-height:1.04;letter-spacing:-.035em}
+  /* B uses the authored line breaks (Przestrzeń, / w której możesz / być sobą) instead of free wrapping. */
+  .hero-b .version-two .v2-hero-intro>p:last-child br,.hero-b .version-two .v2-hero-action>p br{display:inline}
+  .hero-b .version-two .v2-hero-action{left:20px;right:auto;top:calc(46% + 14px);width:60%}
+  .hero-b .version-two .v2-hero-action>p{font-size:16px;line-height:1.4;letter-spacing:-.01em}
+}
+@media(prefers-reduced-motion:reduce){.hero-switch a{transition:none}}

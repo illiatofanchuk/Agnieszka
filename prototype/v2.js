@@ -200,6 +200,27 @@ function contactV2() {
 // 13.11.2026: light parallax for the V2 hero background. The meadow moves at 20% of the scroll speed,
 // the grass and the cut-out scroll normally, while the word and texts drift slightly upward. One rAF per scroll burst; nothing runs when the hero is off-screen,
 // on other pages, or when the visitor prefers reduced motion.
+// 14.11.2026: two phone hero variants for the client to compare. A (default) keeps both texts on the photo
+// in frosted boxes; B moves the cut-out to the right and sets a plain header + subheader on the left.
+// Only phones (≤600px) change; the choice lives in ?hero=a|b and localStorage, and switching is CSS-only (a class on <html>).
+let heroVariant = 'a';
+try { heroVariant = new URLSearchParams(location.search).get('hero') || localStorage.getItem('agnieszka-hero-variant') || 'a'; } catch {}
+if (!['a', 'b'].includes(heroVariant)) heroVariant = 'a';
+document.documentElement.classList.toggle('hero-b', heroVariant === 'b');
+function heroSwitcher() {
+  return `<nav class="hero-switch" aria-label="${tr('Wariant nagłówka na telefonie', 'Варіант героя на телефоні')}"><span>Hero</span>${['a', 'b'].map(v => `<a href="?v=2&lang=${lang}&hero=${v}" data-hero-variant="${v}"${heroVariant === v ? ' aria-current="true"' : ''} aria-label="${tr('Wariant ', 'Варіант ')}${v.toUpperCase()}">${v.toUpperCase()}</a>`).join('')}</nav>`;
+}
+document.addEventListener('click', e => {
+  const link = e.target.closest('[data-hero-variant]');
+  if (!link) return;
+  e.preventDefault();
+  heroVariant = link.dataset.heroVariant;
+  document.documentElement.classList.toggle('hero-b', heroVariant === 'b');
+  document.querySelectorAll('[data-hero-variant]').forEach(a => a.toggleAttribute('aria-current', a.dataset.heroVariant === heroVariant));
+  try { localStorage.setItem('agnieszka-hero-variant', heroVariant); const url = new URL(location.href); url.searchParams.set('hero', heroVariant); history.replaceState(null, '', url); } catch {}
+  dispatchEvent(new Event('resize'));
+});
+
 (function heroParallax() {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const wide = matchMedia('(min-width: 601px)');
@@ -223,7 +244,9 @@ function contactV2() {
     for (const [sel, k, prop, kPhone = k] of layers) {
       const el = hero.querySelector(sel);
       if (!el) continue;
-      const off = reduce.matches ? 0 : y * (wide.matches ? k : kPhone);
+      // Hero B stacks the two texts as one header block, so on phones they drift together.
+      const phoneK = sel === '.v2-hero-action' && document.documentElement.classList.contains('hero-b') ? -0.08 : kPhone;
+      const off = reduce.matches ? 0 : y * (wide.matches ? k : phoneK);
       el.style[prop] = !off ? '' : prop === 'transform' ? `translate3d(0, ${off.toFixed(1)}px, 0)` : `0 ${off.toFixed(1)}px`;
     }
   };
