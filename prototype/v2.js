@@ -204,13 +204,14 @@ function contactV2() {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const wide = matchMedia('(min-width: 601px)');
   // Negative factors drift upward faster than the page. The texts use the `translate` property so it
-  // composes with their entrance `transform` instead of fighting it. On phones the two texts sit in flow
-  // under the photo, so only the word moves there.
+  // composes with their entrance `transform` instead of fighting it. The fourth value is the phone factor
+  // (14.11.2026: the two texts now sit on the phone photo too): the intro behind her drifts gently,
+  // the box in front of her drifts twice as fast, so the two read as separate depth layers.
   const layers = [
     ['.v2-hero-rear', 0.2, 'transform'],
     ['.v2-hero h1', -0.12, 'translate'],
-    ['.v2-hero-intro', -0.06, 'translate', true],
-    ['.v2-hero-action', -0.06, 'translate', true]
+    ['.v2-hero-intro', -0.06, 'translate', -0.08],
+    ['.v2-hero-action', -0.06, 'translate', -0.16]
   ];
   let queued = false;
   const update = () => {
@@ -219,10 +220,10 @@ function contactV2() {
     if (!hero) return;
     const y = Math.max(0, -hero.getBoundingClientRect().top);
     if (y > hero.offsetHeight) return;
-    for (const [sel, k, prop, wideOnly] of layers) {
+    for (const [sel, k, prop, kPhone = k] of layers) {
       const el = hero.querySelector(sel);
       if (!el) continue;
-      const off = reduce.matches || (wideOnly && !wide.matches) ? 0 : y * k;
+      const off = reduce.matches ? 0 : y * (wide.matches ? k : kPhone);
       el.style[prop] = !off ? '' : prop === 'transform' ? `translate3d(0, ${off.toFixed(1)}px, 0)` : `0 ${off.toFixed(1)}px`;
     }
   };
