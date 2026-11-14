@@ -72,8 +72,8 @@ function homeHeroV2() {
       <img class="v2-hero-subject" src="/assets/v2/hero-subject-2.png" width="1536" height="1024" alt="" aria-hidden="true">
     </div>
     <div class="v2-hero-intro">
-      <p>${tr('Przestrzeń, <br>w której możesz <br>być sobą.', 'Простір, <br>де можна <br>бути собою.')}</p></div>
-    <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej pracy <br>z emocjami i ciałem.', 'Зустріньмося <br>в індивідуальній роботі <br>з емоціями й тілом.')}</p></div>  </section>`;
+      <p>${tr('Przestrzeń, <br>w której możesz <br>być sobą', 'Простір, <br>де можна <br>бути собою')}</p></div>
+    <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej pracy <br>z emocjami i ciałem', 'Зустріньмося <br>в індивідуальній роботі <br>з емоціями й тілом')}</p></div>  </section>`;
 }
 
 const aboutIntro = () => tr('Prowadzę sesje indywidualne 1:1, praktyki jogi i medytacji oraz warsztaty. Towarzyszę Ci w spotkaniu z emocjami, ciałem i tym, co ważne właśnie teraz.', 'Проводжу індивідуальні сесії 1:1, практики йоги й медитації та воркшопи. Супроводжую тебе в зустрічі з емоціями, тілом і тим, що важливо саме зараз.');
@@ -103,8 +103,7 @@ const aboutPractices = () => `<nav class="v2-practices" aria-label="${tr('Formy 
 // 13.11.2026: "O mnie" as a bento grid (variant B, chosen by the client over the earlier three-column layout,
 // a type-led and a drenched-olive variant): content split into tiles of different size and colour weight.
 function v2About() {
-  return `<section id="o-mnie" class="v2-section v2-container v2-about">
-    ${v2SectionLabel('01', 'O mnie', 'Про мене')}
+  return `<section id="o-mnie" class="v2-section v2-container v2-about" aria-label="${tr('O mnie', 'Про мене')}">
     <div class="v2-bento">
       <div class="v2-bento-tile v2-bento-title"><h2>${tr('Bliżej siebie.<br>Bliżej życia.', 'Ближче до себе.<br>Ближче до життя.')}</h2><p>${tr('Sesje 1:1, joga, medytacja i warsztaty. W jednym miejscu, w Twoim tempie.', 'Сесії 1:1, йога, медитація й воркшопи. В одному місці, у твоєму темпі.')}</p></div>
       <figure class="v2-bento-tile v2-bento-portrait">${aboutPortrait()}<figcaption>Agnieszka</figcaption></figure>

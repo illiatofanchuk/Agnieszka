@@ -403,3 +403,20 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 .v2-bento-flower img{position:absolute;left:0;top:50%;width:100%;height:auto;aspect-ratio:1;margin-top:-50%;object-fit:contain;max-width:none;animation:v2-flower-spin 120s linear infinite}
 @keyframes v2-flower-spin{to{rotate:360deg}}
 @media(prefers-reduced-motion:reduce){.v2-bento-flower img{animation:none!important}}
+/* 14.11.2026: phone hero — both texts move onto the photo, which now fills the whole screen.
+   The scene drops its own stacking context (z-index:auto) so the intro can slide between the meadow and the subject cut-out:
+   photo/layers 0 → gradient + word 1 → intro 1 (later in the tree) → subject 2 → action 3.
+   The intro sits behind her, left of the head, above the shoulders; the action sits in front at lower-shoulder height on a frosted panel. */
+@media(max-width:600px){
+  .version-two .v2-hero{display:block;color:#fffdf6}
+  .version-two .v2-hero-scene{position:absolute;inset:0;height:auto;z-index:auto}
+  /* The photo is scaled by height (cover), so her shoulders sit at ~50% of the hero on every phone: the intro ends just above them.
+     A narrow column keeps most words left of her head; the last letters tuck behind the hair. */
+  .version-two .v2-hero-intro{position:absolute;inset:auto;left:16px;top:auto;bottom:51%;width:calc(clamp(112px,31vw,132px) + 30px);max-width:none;padding:14px 16px 16px 14px;z-index:1;text-shadow:none}
+  /* 14.11.2026: both texts share one frosted panel; the intro's panel still sits behind her, so its right edge tucks under the hair. */
+  .version-two .v2-hero-intro,.version-two .v2-hero-action{border-radius:16px;background:rgba(26,32,22,.52);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);box-shadow:none}
+  .version-two .v2-hero-intro>p:last-child{font-size:clamp(25px,7vw,30px);line-height:1.02}
+  /* 14.11.2026: the action is a compact box mirrored to the right edge (a little wider than the intro so the sentence breaks into four even lines): no border on either panel. */
+  .version-two .v2-hero-action{position:absolute;inset:auto;right:16px;top:60%;width:calc(clamp(144px,40vw,160px) + 30px);max-width:none;padding:14px 16px 16px 14px;z-index:3;text-align:left}
+  .version-two .v2-hero-action>p{font-size:17px;line-height:1.35;letter-spacing:-.02em;max-width:none;color:#fffdf6;text-shadow:none}
+}
