@@ -107,7 +107,7 @@ function v2About() {
     <div class="v2-bento">
       <div class="v2-bento-tile v2-bento-title"><h2>${tr('Bliżej siebie.<br>Bliżej życia.', 'Ближче до себе.<br>Ближче до життя.')}</h2><p>${tr('Sesje 1:1, joga, medytacja i warsztaty. W jednym miejscu, w Twoim tempie.', 'Сесії 1:1, йога, медитація й воркшопи. В одному місці, у твоєму темпі.')}</p></div>
       <figure class="v2-bento-tile v2-bento-portrait">${aboutPortrait()}</figure>
-      <div class="v2-bento-tile v2-bento-intro"><p class="v2-bento-lead">${tr('Jestem Agnieszka.', 'Я — Agnieszka.')}</p>${aboutIntro().map((t, i) => `<p${i ? '' : ' class="v2-bento-statement"'}>${t}</p>`).join('')}</div>
+      <div class="v2-bento-tile v2-bento-intro"><div class="v2-bento-intro-head"><p class="v2-bento-lead">${tr('Jestem Agnieszka.', 'Я — Agnieszka.')}</p><img class="v2-bento-intro-mark" src="/assets/v2/icons/intro-mark.svg" alt="" width="57" height="64" loading="lazy"></div>${aboutIntro().map((t, i) => `<p${i ? '' : ' class="v2-bento-statement"'}>${t}</p>`).join('')}</div>
       ${aboutGallery()}
       <div class="v2-bento-tile v2-bento-words"><span class="v2-bento-flower" aria-hidden="true"><img src="/assets/v2/ornaments/botanical-flower.svg" alt="" width="1059" height="1054" loading="lazy"></span><p>${tr('Ciało<i>.</i><br>Emocje<i>.</i><br>Uważność<i>.</i>', 'Тіло<i>.</i><br>Емоції<i>.</i><br>Уважність<i>.</i>')}</p></div>
       <div class="v2-bento-tile v2-bento-practices"><h3>${tr('Jak możemy pracować', 'Як ми можемо працювати')}</h3>${aboutPractices()}</div>

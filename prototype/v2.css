@@ -317,7 +317,13 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 .v2-bento-portrait{grid-column:8/13;grid-row:1/3}
 .v2-bento-portrait img{object-position:50% 20%}
 .v2-bento-intro{grid-column:1/5;grid-row:2;background:var(--v2-lime)}
-.v2-bento-lead{font-size:clamp(24px,2.1vw,34px);line-height:1.1;letter-spacing:-.04em;margin-bottom:18px}
+.v2-bento-lead{font-size:clamp(24px,2.1vw,34px);line-height:1.1;letter-spacing:-.04em;margin:0}
+/* 17.11.2026: the head row holds the name followed right away by a hand-drawn mark (moved next to the name, not to the far edge); the 18px gap now sits under the row. */
+.v2-bento-intro-head{display:flex;justify-content:flex-start;align-items:center;gap:12px;margin-bottom:18px}
+.v2-bento-intro-mark{flex:none;display:block;width:auto;height:clamp(30px,2.6vw,38px);opacity:.5;transform-origin:44% 92%;animation:v2-wave 5.5s ease-in-out 1.2s infinite}
+/* A calm hello: the hand pivots on its wrist, five soft swings of a few degrees (about 2.2s), then rests until the next cycle. */
+@keyframes v2-wave{0%{rotate:0deg}5%{rotate:13deg}11%{rotate:-7deg}17%{rotate:11deg}23%{rotate:-5deg}29%{rotate:6deg}36%,100%{rotate:0deg}}
+@media(prefers-reduced-motion:reduce){.v2-bento-intro-mark{animation:none!important}}
 /* 17.11.2026: reading hierarchy in the lime tile — lead (name) > statement (first sentence, larger and medium weight) >
    two supporting paragraphs (regular, tinted from the olive ink, not grey). 8px between supporting paragraphs, 20px under the statement. */
 .v2-bento-intro .v2-bento-statement{font-size:clamp(18px,1.5vw,22px);line-height:1.3;font-weight:500;letter-spacing:-.02em;text-wrap:pretty;margin-bottom:20px}
@@ -331,7 +337,9 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 .v2-bento-words i{font-style:normal;color:var(--v2-lime)}
 .v2-bento-practices{grid-column:6/13;grid-row:3;background:var(--surface);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
 .v2-bento-practices h3{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}
-.v2-bento-practices .v2-practices{border-top:0;gap:4px;margin-inline:-16px}.v2-bento-practices .v2-practice{border-bottom:0;border-radius:12px;padding-inline:16px;background:linear-gradient(var(--straw),var(--straw)) no-repeat 0 100%/100% 0}.v2-bento-practices .v2-practice:hover{padding-inline:24px 16px;background-size:100% 100%}
+.v2-bento-practices .v2-practices{border-top:0;gap:4px;margin-inline:-16px}.v2-bento-practices .v2-practice{border-bottom:0;border-radius:12px;padding-inline:16px;background:linear-gradient(var(--straw),var(--straw)) no-repeat 0 100%/100% 0}.v2-bento-practices .v2-practice:hover{padding-inline:16px;background-size:100% 100%}
+/* 17.11.2026: on hover the row only fills with colour: the text, the icon and the arrow stay where they are (no shift to the right). */
+.v2-bento-practices .v2-practice:hover>svg{transform:none}
 
 @media(max-width:860px){
   .v2-bento{grid-template-columns:1fr 1fr}
