@@ -437,11 +437,11 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 /* 17.11.2026: "Zobacz usługi" button under the phone hero B text; hidden everywhere else (desktop and hero A keep the text alone). */
 .hb-cta{display:none}
 @media(max-width:600px){
-  .hero-b .version-two .v2-hero-action .hb-cta{display:inline-flex;margin-top:14px;min-height:40px;padding:8px 22px;gap:10px;font-size:max(12.5px,calc(13.5px * var(--hb-scale,1)));white-space:nowrap;text-shadow:none;background:#fffdf6;color:var(--ink)}
+  .hero-b .version-two .v2-hero-action .hb-cta{display:inline-flex;margin-top:30px;min-height:54px;padding:12px 28px;gap:12px;font-size:max(14.5px,calc(16.5px * var(--hb-scale,1)));white-space:nowrap;text-shadow:none;background:#fffdf6;color:var(--ink)}
   .hero-b .version-two .v2-hero-action .hb-cta:hover{background:#e7eddd}
-  .hero-b .version-two .v2-hero-action .hb-cta{padding-left:14px}
+  .hero-b .version-two .v2-hero-action .hb-cta{padding-left:18px}
   /* The mark sits left of the text and turns slowly and endlessly (one turn per 24s, linear). */
-  .hb-cta-icon{width:20px;height:20px;flex:none;pointer-events:none;animation:v2-cta-spin 24s linear infinite}
+  .hb-cta-icon{width:26px;height:26px;flex:none;pointer-events:none;animation:v2-cta-spin 24s linear infinite}
   @keyframes v2-cta-spin{to{rotate:360deg}}
   @media(prefers-reduced-motion:reduce){.hb-cta-icon{animation:none!important}}
 }
