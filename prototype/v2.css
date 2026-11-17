@@ -320,7 +320,7 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 .v2-bento-lead{font-size:clamp(24px,2.1vw,34px);line-height:1.1;letter-spacing:-.04em;margin:0}
 /* 17.11.2026: the head row holds the name followed right away by a hand-drawn mark (moved next to the name, not to the far edge); the 18px gap now sits under the row. */
 .v2-bento-intro-head{display:flex;justify-content:flex-start;align-items:center;gap:12px;margin-bottom:18px}
-.v2-bento-intro-mark{flex:none;display:block;width:auto;height:clamp(30px,2.6vw,38px);opacity:.5;transform-origin:44% 92%;animation:v2-wave 5.5s ease-in-out 1.2s infinite}
+.v2-bento-intro-mark{flex:none;display:block;width:auto;height:clamp(30px,2.6vw,38px);opacity:.5;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 68%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 68%,transparent 100%);transform-origin:44% 92%;animation:v2-wave 5.5s ease-in-out 1.2s infinite}
 /* A calm hello: the hand pivots on its wrist, five soft swings of a few degrees (about 2.2s), then rests until the next cycle. */
 @keyframes v2-wave{0%{rotate:0deg}5%{rotate:13deg}11%{rotate:-7deg}17%{rotate:11deg}23%{rotate:-5deg}29%{rotate:6deg}36%,100%{rotate:0deg}}
 @media(prefers-reduced-motion:reduce){.v2-bento-intro-mark{animation:none!important}}
