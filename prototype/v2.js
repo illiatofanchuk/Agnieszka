@@ -72,8 +72,8 @@ function homeHeroV2() {
       <img class="v2-hero-subject" src="/assets/v2/hero-subject-2.png" width="1536" height="1024" alt="" aria-hidden="true">
     </div>
     <div class="v2-hero-intro">
-      <p>${tr('Przestrzeń, <br>w której możesz <br>być sobą', 'Простір, <br>де можна <br>бути собою')}</p></div>
-    <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej pracy <br>z emocjami i ciałem', 'Зустріньмося <br>в індивідуальній роботі <br>з емоціями й тілом')}</p></div>  </section>`;
+      <p>${tr('Przestrzeń, <br>w której <br class="hb-br">możesz <br>być sobą', 'Простір, <br>де можна <br class="hb-br"><br>бути собою')}</p></div>
+    <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej <br class="hb-br">pracy <br>z emocjami i ciałem', 'Зустріньмося <br>в індивідуальній <br class="hb-br">роботі <br>з емоціями й тілом')}</p></div>  </section>`;
 }
 
 const aboutIntro = () => tr('Prowadzę sesje indywidualne 1:1, praktyki jogi i medytacji oraz warsztaty. Towarzyszę Ci w spotkaniu z emocjami, ciałem i tym, co ważne właśnie teraz.', 'Проводжу індивідуальні сесії 1:1, практики йоги й медитації та воркшопи. Супроводжую тебе в зустрічі з емоціями, тілом і тим, що важливо саме зараз.');
@@ -200,14 +200,17 @@ function contactV2() {
 // 13.11.2026: light parallax for the V2 hero background. The meadow moves at 20% of the scroll speed,
 // the grass and the cut-out scroll normally, while the word and texts drift slightly upward. One rAF per scroll burst; nothing runs when the hero is off-screen,
 // on other pages, or when the visitor prefers reduced motion.
-// 14.11.2026: two phone hero variants for the client to compare. A (default) keeps both texts on the photo
-// in frosted boxes; B moves the cut-out to the right and sets a plain header + subheader on the left.
-// Only phones (≤600px) change; the choice lives in ?hero=a|b and localStorage, and switching is CSS-only (a class on <html>).
-let heroVariant = 'a';
-try { heroVariant = new URLSearchParams(location.search).get('hero') || localStorage.getItem('agnieszka-hero-variant') || 'a'; } catch {}
-if (!['a', 'b'].includes(heroVariant)) heroVariant = 'a';
+// Phone hero variants (14.11.2026). 17.11.2026: B is the live phone hero (cut-out on the right, plain header + subheader
+// on the left); A (both texts on the photo in frosted boxes) stays in the code as a fallback, reachable only with ?hero=a.
+// The A/B switch shows only when the URL already carries ?hero=, so visitors never see it. Only phones (≤600px) change;
+// switching is CSS-only (a class on <html>).
+let heroVariant = 'b';
+let heroSwitchShown = false;
+try { const q = new URLSearchParams(location.search); heroSwitchShown = q.has('hero'); heroVariant = q.get('hero') || 'b'; } catch {}
+if (!['a', 'b'].includes(heroVariant)) heroVariant = 'b';
 document.documentElement.classList.toggle('hero-b', heroVariant === 'b');
 function heroSwitcher() {
+  if (!heroSwitchShown) return '';
   return `<nav class="hero-switch" aria-label="${tr('Wariant nagłówka na telefonie', 'Варіант героя на телефоні')}"><span>Hero</span>${['a', 'b'].map(v => `<a href="?v=2&lang=${lang}&hero=${v}" data-hero-variant="${v}"${heroVariant === v ? ' aria-current="true"' : ''} aria-label="${tr('Wariant ', 'Варіант ')}${v.toUpperCase()}">${v.toUpperCase()}</a>`).join('')}</nav>`;
 }
 document.addEventListener('click', e => {
@@ -217,7 +220,7 @@ document.addEventListener('click', e => {
   heroVariant = link.dataset.heroVariant;
   document.documentElement.classList.toggle('hero-b', heroVariant === 'b');
   document.querySelectorAll('[data-hero-variant]').forEach(a => a.toggleAttribute('aria-current', a.dataset.heroVariant === heroVariant));
-  try { localStorage.setItem('agnieszka-hero-variant', heroVariant); const url = new URL(location.href); url.searchParams.set('hero', heroVariant); history.replaceState(null, '', url); } catch {}
+  try { const url = new URL(location.href); url.searchParams.set('hero', heroVariant); history.replaceState(null, '', url); } catch {}
   dispatchEvent(new Event('resize'));
 });
 
