@@ -1,0 +1,14 @@
+{
+  "source": "black-flower-hq.png",
+  "provider": "Vectorize",
+  "revision_id": "5ab055f57eed4b93ad177f4e7502014f",
+  "palette": [
+    "#211d1e"
+  ],
+  "settings": {
+    "colors": 1,
+    "smoothing": 5,
+    "transparent": true,
+    "trim": false
+  }
+}

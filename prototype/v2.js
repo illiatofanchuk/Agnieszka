@@ -73,7 +73,7 @@ function homeHeroV2() {
     </div>
     <div class="v2-hero-intro">
       <p>${tr('Przestrzeń, <br>w której <br class="hb-br">możesz <br>być sobą', 'Простір, <br>де можна <br class="hb-br"><br>бути собою')}</p></div>
-    <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej <br class="hb-br">pracy <br>z emocjami i ciałem', 'Зустріньмося <br>в індивідуальній <br class="hb-br">роботі <br>з емоціями й тілом')}</p></div>  </section>`;
+    <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej <br class="hb-br">pracy <br>z emocjami i ciałem', 'Зустріньмося <br>в індивідуальній <br class="hb-br">роботі <br>з емоціями й тілом')}</p><button type="button" class="button light hb-cta" data-book="session"><img class="hb-cta-icon" src="/assets/v2/icons/button-mark.svg" alt="" width="20" height="20">${tr('Umów sesję', 'Записатися')}</button></div>  </section>`;
 }
 
 const aboutIntro = () => tr('Prowadzę sesje indywidualne 1:1, praktyki jogi i medytacji oraz warsztaty. Towarzyszę Ci w spotkaniu z emocjami, ciałem i tym, co ważne właśnie teraz.', 'Проводжу індивідуальні сесії 1:1, практики йоги й медитації та воркшопи. Супроводжую тебе в зустрічі з емоціями, тілом і тим, що важливо саме зараз.');
@@ -228,8 +228,9 @@ document.addEventListener('click', e => {
 // whatever sits under the top edge: the hero's top-edge colour (data-top on the hero; measured from the rendered photo with
 // its gradient: home #191a0f, Warsztaty #bbaf93, Sklep #303829) while the hero is there, the page paper once it has scrolled away.
 // Two channels, because browsers differ: <meta name="theme-color"> (Safari up to 18, Chrome on Android, in-app browsers)
-// and the root background, which paints the overscroll area and is what Safari 26 reads. Each HTML file carries the same
-// colour statically (meta + inline root background), so a reload starts in the right colour before this script runs.
+// and the page background, which paints the overscroll area and is what Safari 26 reads — from <body>, not from the root,
+// as a real iPhone showed. Each HTML file carries the same colour statically (meta + inline root and body backgrounds),
+// so a reload starts in the right colour before this script runs.
 (function chromeTint() {
   const PAPER = { v2: '#faf7f2', v1: '#fefffa' };
   let meta = document.querySelector('meta[name="theme-color"]');
@@ -244,8 +245,10 @@ document.addEventListener('click', e => {
     if (colour === current) return;
     current = colour;
     meta.content = colour;
-    // Inline so it wins over the stylesheet's root background; cleared when the page paper is already the right colour.
+    // Inline so it wins over the stylesheet; cleared when the page paper is already the right colour. <body> is the one
+    // WebKit reads (an opaque body background hides the root's), the root covers the other engines. #app paints the paper.
     document.documentElement.style.backgroundColor = top;
+    document.body.style.backgroundColor = top;
   };
   const queue = () => { if (!queued) { queued = true; requestAnimationFrame(sync); } };
   const app = document.getElementById('app');
@@ -274,13 +277,16 @@ document.addEventListener('click', e => {
   const needed = (hero, H) => {
     let need = -Infinity;
     for (const sel of ['.v2-hero-intro', '.v2-hero-action']) {
-      const box = hero.querySelector(sel), p = box && box.querySelector('p:last-child');
+      const box = hero.querySelector(sel), p = box && box.querySelector('p:last-of-type');
       if (!p) continue;
       // Positions come from layout offsets plus rect differences, so the entrance and parallax transforms don't skew them.
       const pr = p.getBoundingClientRect(), range = document.createRange();
       range.selectNodeContents(p);
       const x0 = box.offsetLeft + p.offsetLeft, y0 = box.offsetTop + p.offsetTop;
-      for (const r of range.getClientRects()) {
+      const cta = box.querySelector('.hb-cta');
+      const rects = [...range.getClientRects()];
+      if (cta && cta.offsetParent) { const cr = cta.getBoundingClientRect(); rects.push({ top: cr.top, bottom: cr.bottom, right: cr.right, width: cr.width }); }
+      for (const r of rects) {
         if (r.width < 2) continue;
         const a = Math.max(0, Math.floor(((y0 + r.top - pr.top) / H - DRIFT) * 100));
         const b = Math.min(99, Math.floor((y0 + r.bottom - pr.top) / H * 100));

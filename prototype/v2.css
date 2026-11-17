@@ -420,6 +420,31 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
   .version-two .v2-hero-action{position:absolute;inset:auto;right:16px;top:60%;width:calc(clamp(144px,40vw,160px) + 30px);max-width:none;padding:14px 16px 16px 14px;z-index:3;text-align:left}
   .version-two .v2-hero-action>p{font-size:17px;line-height:1.35;letter-spacing:-.02em;max-width:none;color:#fffdf6;text-shadow:none}
 }
+/* 17.11.2026: the page paper sits on #app (all rendered content), not on <body>: Safari tints the status bar and the
+   pull-to-refresh strip with the <body> background, so <body> carries the hero's top-edge colour while the hero is on top
+   (set inline by chromeTint() in v2.js) and #app keeps the page itself looking exactly as before. */
+#app{background:var(--paper)}
+/* 17.11.2026: top fade. Safari cannot show the photo behind the status bar (it only takes a flat colour from the <body>
+   background), so the photo meets it half-way: its first pixels are exactly the status bar colour (the hero's data-top)
+   and ease out over 72px, which removes the visible join between the bar and the photo. The fade sits above the black
+   gradient (::before, same z-index, earlier in the tree), otherwise that gradient would darken it away from the bar colour. */
+.v2-hero-scene::after{content:"";position:absolute;inset:0 0 auto;height:72px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,#191a0f 0,rgba(25,26,15,.62) 32%,rgba(25,26,15,.25) 64%,rgba(25,26,15,0) 100%)}
+/* Warsztaty: the same fade as the top layer of the photo overlay; phones only, because #bbaf93 is the top-edge colour
+   of the phone crop (the wide crop starts pinker and has no status bar to meet). */
+@media(max-width:600px){
+  .v2-page-hero.is-photo::after{background:linear-gradient(to bottom,#bbaf93 0,rgba(187,175,147,.62) 23px,rgba(187,175,147,.25) 46px,rgba(187,175,147,0) 72px),linear-gradient(180deg,rgba(30,37,24,.3) 0%,rgba(30,37,24,0) 30%,rgba(30,37,24,.18) 55%,rgba(30,37,24,.62) 100%)}
+}
+/* 17.11.2026: "Zobacz usługi" button under the phone hero B text; hidden everywhere else (desktop and hero A keep the text alone). */
+.hb-cta{display:none}
+@media(max-width:600px){
+  .hero-b .version-two .v2-hero-action .hb-cta{display:inline-flex;margin-top:14px;min-height:40px;padding:8px 22px;gap:10px;font-size:max(12.5px,calc(13.5px * var(--hb-scale,1)));white-space:nowrap;text-shadow:none;background:#fffdf6;color:var(--ink)}
+  .hero-b .version-two .v2-hero-action .hb-cta:hover{background:#e7eddd}
+  .hero-b .version-two .v2-hero-action .hb-cta{padding-left:14px}
+  /* The mark sits left of the text and turns slowly and endlessly (one turn per 24s, linear). */
+  .hb-cta-icon{width:20px;height:20px;flex:none;pointer-events:none;animation:v2-cta-spin 24s linear infinite}
+  @keyframes v2-cta-spin{to{rotate:360deg}}
+  @media(prefers-reduced-motion:reduce){.hb-cta-icon{animation:none!important}}
+}
 /* Line breaks used only by phone hero B. */
 .hb-br{display:none}
 /* 14.11.2026: phone hero variant switch (A / B), bottom-left, mirrors the version switch; phones only. */
@@ -437,10 +462,13 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
      from the text width and the hero height so the figure always clears the text; 74% is the no-JS fallback.
      Nothing is cropped by the element box, so the photo's cut left edge never slides into view. */
   .hero-b .version-two .v2-hero-subject{left:var(--hb-fig,74%);right:auto;width:auto;max-width:none;aspect-ratio:3/2;transform:translateX(-50%)}
-  .hero-b .version-two .v2-hero-intro,.hero-b .version-two .v2-hero-action{background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0;padding:0;z-index:3;text-shadow:0 1px 14px rgba(20,26,16,.55)}
-  /* 17.11.2026: raised — the header now starts 28px under the word (word top 93px, line box 1.05em) instead of ending at 46%,
-     and the subheader starts 14px under the header's two lines (2 × 1.04 line-height). */
-  .hero-b .version-two .v2-hero{--hb-size:calc(clamp(26px,7.6vw,32px) * var(--hb-scale,1));--hb-top:calc(93px + var(--hero-word) * 1.05 + 28px)}
+  .hero-b .version-two .v2-hero-intro,.hero-b .version-two .v2-hero-action{background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0;padding:0;z-index:3;text-shadow:0 1px 3px rgba(20,26,16,.45),0 1px 16px rgba(20,26,16,.6)}
+  /* 17.11.2026: the header starts under the word (line box 1.05em) and the subheader 14px under the header's two lines
+     (2 × 1.04 line-height). Raised again the same day: the word moves from 93px to 68px (its accents still clear the
+     logo row by ~29px) and the gap under it tightens from 28px to 18px, so the whole text block sits 35px higher and the
+     subheader's second line lands on the dark trees instead of the sunlit bushes (their top edge is at ~48% of the hero). */
+  .hero-b .version-two .v2-hero{--hb-word-top:68px;--hb-size:calc(clamp(26px,7.6vw,32px) * var(--hb-scale,1));--hb-top:calc(var(--hb-word-top) + var(--hero-word) * 1.05 + 18px)}
+  .hero-b .version-two .v2-hero h1{top:var(--hb-word-top)}
   .hero-b .version-two .v2-hero-intro{left:20px;top:var(--hb-top);bottom:auto;width:64%}
   .hero-b .version-two .v2-hero-intro>p:last-child{font-size:var(--hb-size);line-height:1.04;letter-spacing:-.035em}
   /* 17.11.2026: B sets both texts in two lines with their own breaks (br.hb-br): "Przestrzeń, w której / możesz być sobą",
