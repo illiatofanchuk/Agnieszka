@@ -433,12 +433,14 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 /* 14.11.2026: phone hero B — the cut-out slides right, the left column carries a plain header + subheader (no boxes).
    The header grows upward from the split line at 46% of the hero; the subheader starts 14px below it, so any line count keeps the gap. */
 @media(max-width:600px){
-  /* The cut-out moves inside its own frame (object-position) rather than by transform, so the photo's cropped left edge never slides into view. */
-  .hero-b .version-two .v2-hero-subject{object-position:36% 50%}
+  /* The cut-out is laid out at its full width (1.5 × hero height) and centred on --hb-fig, which heroBFit() in v2.js sets
+     from the text width and the hero height so the figure always clears the text; 74% is the no-JS fallback.
+     Nothing is cropped by the element box, so the photo's cut left edge never slides into view. */
+  .hero-b .version-two .v2-hero-subject{left:var(--hb-fig,74%);right:auto;width:auto;max-width:none;aspect-ratio:3/2;transform:translateX(-50%)}
   .hero-b .version-two .v2-hero-intro,.hero-b .version-two .v2-hero-action{background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0;padding:0;z-index:3;text-shadow:0 1px 14px rgba(20,26,16,.55)}
   /* 17.11.2026: raised — the header now starts 28px under the word (word top 93px, line box 1.05em) instead of ending at 46%,
      and the subheader starts 14px under the header's two lines (2 × 1.04 line-height). */
-  .hero-b .version-two .v2-hero{--hb-size:clamp(26px,7.6vw,32px);--hb-top:calc(93px + var(--hero-word) * 1.05 + 28px)}
+  .hero-b .version-two .v2-hero{--hb-size:calc(clamp(26px,7.6vw,32px) * var(--hb-scale,1));--hb-top:calc(93px + var(--hero-word) * 1.05 + 28px)}
   .hero-b .version-two .v2-hero-intro{left:20px;top:var(--hb-top);bottom:auto;width:64%}
   .hero-b .version-two .v2-hero-intro>p:last-child{font-size:var(--hb-size);line-height:1.04;letter-spacing:-.035em}
   /* 17.11.2026: B sets both texts in two lines with their own breaks (br.hb-br): "Przestrzeń, w której / możesz być sobą",
@@ -447,6 +449,6 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
   .hero-b .version-two .v2-hero-intro>p:last-child br.hb-br,.hero-b .version-two .v2-hero-action>p br.hb-br{display:inline}
   .hero-b .version-two .v2-hero-intro>p:last-child,.hero-b .version-two .v2-hero-action>p{white-space:nowrap}
   .hero-b .version-two .v2-hero-action{left:20px;right:auto;top:calc(var(--hb-top) + var(--hb-size) * 2.08 + 14px);width:60%}
-  .hero-b .version-two .v2-hero-action>p{font-size:15px;line-height:1.4;letter-spacing:-.01em}
+  .hero-b .version-two .v2-hero-action>p{font-size:max(14px,calc(15px * var(--hb-scale,1)));line-height:1.4;letter-spacing:-.01em}
 }
 @media(prefers-reduced-motion:reduce){.hero-switch a{transition:none}}

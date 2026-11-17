@@ -35,7 +35,7 @@ function headerV2() {
 function v2PageHero(kind) {
   const workshops = kind === 'workshops';
   const down = '<svg class="down" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v15M5 13l7 7 7-7"/></svg>';
-  return `<section class="v2-page-hero ${workshops ? 'is-photo' : 'is-dark'}" aria-labelledby="page-title">
+  return `<section class="v2-page-hero ${workshops ? 'is-photo' : 'is-dark'}" data-top="${workshops ? '#bbaf93' : '#303829'}" aria-labelledby="page-title">
     ${workshops ? `<img class="v2-page-hero-photo" src="/assets/workshop.jpg" width="1600" height="1067" fetchpriority="high" alt="${tr('Swobodny ruch na plaży o zachodzie słońca', 'Вільний рух на пляжі під час заходу сонця')}">` : ''}
     <h1 id="page-title">${workshops ? tr('Warsztaty', 'Воркшопи') : tr('Sklep', 'Магазин')}</h1>
     <div class="v2-page-hero-row">
@@ -63,7 +63,7 @@ function textGenerate(text) {
 }
 
 function homeHeroV2() {
-  return `<section class="v2-hero" aria-labelledby="hero-title">
+  return `<section class="v2-hero" data-top="#191a0f" aria-labelledby="hero-title">
     <div class="v2-hero-scene">
       <img class="v2-hero-photo" src="/assets/v2/hero-meadow-empty.webp" width="1536" height="1024" fetchpriority="high" alt="${tr('Agnieszka w białym stroju podczas medytacji na słonecznej łące', 'Agnieszka в білому вбранні під час медитації на сонячній луці')}">
       <img class="v2-hero-layer v2-hero-rear" src="/assets/v2/meadow-transparent-layers/meadow-rear-transparent.png" width="1536" height="1024" fetchpriority="high" alt="" aria-hidden="true">
@@ -223,6 +223,103 @@ document.addEventListener('click', e => {
   try { const url = new URL(location.href); url.searchParams.set('hero', heroVariant); history.replaceState(null, '', url); } catch {}
   dispatchEvent(new Event('resize'));
 });
+
+// 17.11.2026: browser chrome tint. On phones the status bar and the strip revealed by pull-to-refresh take the colour of
+// whatever sits under the top edge: the hero's top-edge colour (data-top on the hero; measured from the rendered photo with
+// its gradient: home #191a0f, Warsztaty #bbaf93, Sklep #303829) while the hero is there, the page paper once it has scrolled away.
+// Two channels, because browsers differ: <meta name="theme-color"> (Safari up to 18, Chrome on Android, in-app browsers)
+// and the root background, which paints the overscroll area and is what Safari 26 reads. Each HTML file carries the same
+// colour statically (meta + inline root background), so a reload starts in the right colour before this script runs.
+(function chromeTint() {
+  const PAPER = { v2: '#faf7f2', v1: '#fefffa' };
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) { meta = Object.assign(document.createElement('meta'), { name: 'theme-color' }); document.head.appendChild(meta); }
+  let current = null, queued = false;
+  const sync = () => {
+    queued = false;
+    const v2 = document.body.classList.contains('version-two');
+    const hero = v2 && document.querySelector('[data-top]');
+    const top = hero && hero.getBoundingClientRect().bottom > 1 ? hero.dataset.top : '';
+    const colour = top || (v2 ? PAPER.v2 : PAPER.v1);
+    if (colour === current) return;
+    current = colour;
+    meta.content = colour;
+    // Inline so it wins over the stylesheet's root background; cleared when the page paper is already the right colour.
+    document.documentElement.style.backgroundColor = top;
+  };
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(sync); } };
+  const app = document.getElementById('app');
+  // The first sync waits for the first render: before it the body has no version class and the static colour must stay.
+  if (app) new MutationObserver(sync).observe(app, { childList: true });
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  addEventListener('pageshow', () => { if (app && app.firstChild) sync(); });
+})();
+
+// 17.11.2026: phone hero B — keeps the cut-out clear of the text on every phone. The photo is scaled by the hero's height
+// while the text is sized by its width, so one fixed offset cannot work: on shorter viewports (in-app browsers, Safari with
+// both bars) the head lands beside the header. This places the figure just right of the widest text line it shares a row with,
+// and, when that would push the head off-screen, steps the text size down a little instead.
+(function heroBFit() {
+  const phone = matchMedia('(max-width: 600px)');
+  // Left outline of /assets/v2/hero-subject-2.png: leftmost opaque pixel per 1% of its height, as a fraction of its width
+  // (1 = empty row). Rows 31-47 are the head, 48-73 shoulders and arms, 74-87 knees and blanket. Regenerate if the PNG changes.
+  const HB_LEFT = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.486,.478,.47,.466,.462,.456,.455,.454,.449,.445,.446,.442,.443,.444,.438,.441,.442,.432,.431,.437,.425,.419,.415,.412,.41,.408,.406,.404,.403,.402,.4,.398,.395,.393,.39,.387,.386,.387,.389,.391,.394,.396,.402,.354,.344,.339,.335,.332,.164,.157,.148,.142,.135,.127,.118,.16,.262,1,1,1,1,1,1,1,1,1,1,1,1];
+  const HEAD_RIGHT = 0.08; // the hair's right edge from the image centre, in hero heights
+  const GAP = 16;          // clear space between a text line and the figure
+  const EDGE = 12;         // clear space between the hair and the right screen edge
+  const DRIFT = 0.05;      // the texts rise on scroll (parallax), so each line also clears the rows just above it
+  // Tried in order: full-size text with the whole head on screen first, then smaller text, then letting the hair touch the edge.
+  const STEPS = [[1, 0], [.96, 0], [.92, 0], [.88, 0], [.92, 1], [.88, 1], [.84, 1], [.8, 1]];
+  const needed = (hero, H) => {
+    let need = -Infinity;
+    for (const sel of ['.v2-hero-intro', '.v2-hero-action']) {
+      const box = hero.querySelector(sel), p = box && box.querySelector('p:last-child');
+      if (!p) continue;
+      // Positions come from layout offsets plus rect differences, so the entrance and parallax transforms don't skew them.
+      const pr = p.getBoundingClientRect(), range = document.createRange();
+      range.selectNodeContents(p);
+      const x0 = box.offsetLeft + p.offsetLeft, y0 = box.offsetTop + p.offsetTop;
+      for (const r of range.getClientRects()) {
+        if (r.width < 2) continue;
+        const a = Math.max(0, Math.floor(((y0 + r.top - pr.top) / H - DRIFT) * 100));
+        const b = Math.min(99, Math.floor((y0 + r.bottom - pr.top) / H * 100));
+        let left = 1;
+        for (let i = a; i <= b; i++) left = Math.min(left, HB_LEFT[i]);
+        if (left < 1) need = Math.max(need, x0 + r.right - pr.left + GAP + (0.5 - left) * 1.5 * H);
+      }
+    }
+    return need;
+  };
+  const fit = () => {
+    const hero = document.querySelector('.version-two .v2-hero');
+    if (!hero) return;
+    const W = hero.clientWidth, H = hero.clientHeight;
+    if (!phone.matches || !document.documentElement.classList.contains('hero-b') || W > H * 1.5) {
+      hero.style.removeProperty('--hb-fig');
+      hero.style.removeProperty('--hb-scale');
+      return;
+    }
+    const limits = [W - HEAD_RIGHT * H - EDGE, W - HEAD_RIGHT * H * .55];
+    let x = limits[1];
+    for (const [scale, relaxed] of STEPS) {
+      hero.style.setProperty('--hb-scale', scale);
+      const need = needed(hero, H);
+      if (need <= limits[relaxed]) { x = need; break; }
+    }
+    hero.style.setProperty('--hb-fig', `${Math.max(W * .62, x).toFixed(1)}px`);
+  };
+  let queued = false;
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; fit(); }); } };
+  const app = document.getElementById('app');
+  // render() swaps #app's children (language / version switch): refit before the next paint, and again once the web font
+  // has replaced the fallback (the fallback is wider, so the first pass alone would shrink the text more than needed).
+  const refit = () => { fit(); document.fonts?.ready.then(fit); };
+  if (app) new MutationObserver(refit).observe(app, { childList: true });
+  addEventListener('resize', queue);
+  phone.addEventListener?.('change', queue);
+  document.fonts?.addEventListener?.('loadingdone', fit);
+})();
 
 (function heroParallax() {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
