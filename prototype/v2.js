@@ -76,7 +76,8 @@ function homeHeroV2() {
     <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej <br class="hb-br">pracy <br>z emocjami i ciałem', 'Зустріньмося <br>в індивідуальній <br class="hb-br">роботі <br>з емоціями й тілом')}</p><button type="button" class="button light hb-cta" data-book="session"><img class="hb-cta-icon" src="/assets/v2/icons/button-mark.svg" alt="" width="20" height="20">${tr('Umów sesję', 'Записатися')}</button></div>  </section>`;
 }
 
-const aboutIntro = () => tr('Prowadzę sesje indywidualne 1:1, praktyki jogi i medytacji oraz warsztaty. Towarzyszę Ci w spotkaniu z emocjami, ciałem i tym, co ważne właśnie teraz.', 'Проводжу індивідуальні сесії 1:1, практики йоги й медитації та воркшопи. Супроводжую тебе в зустрічі з емоціями, тілом і тим, що важливо саме зараз.');
+// Three paragraphs, the copy split only at sentence boundaries: the first is the statement, the other two support it.
+const aboutIntro = () => tr(['Pomagam Ci lepiej zrozumieć swoje emocje, usłyszeć potrzeby i zauważyć sygnały płynące z ciała.', 'Podczas naszych spotkań jest miejsce na rozmowę, ciszę i to, co trudno ubrać w słowa.', 'Wspólnie szukamy sposobu pracy, który będzie dla Ciebie odpowiedni — w Twoim tempie, z szacunkiem do Twoich granic.'], ['Допомагаю тобі краще зрозуміти свої емоції, почути потреби й помітити сигнали, що йдуть від тіла.', 'Під час наших зустрічей є місце для розмови, тиші й того, що важко передати словами.', 'Разом шукаємо спосіб роботи, який буде для тебе відповідним — у твоєму темпі, з повагою до твоїх меж.']);
 const aboutPortrait = (cls = '', loading = 'lazy') => `<img${cls ? ` class="${cls}"` : ''} src="/assets/v2/portrait.png" alt="${tr('Portret Agnieszki w ciepłym świetle', 'Портрет Agnieszka у теплому світлі')}" width="1086" height="1448" loading="${loading}">`;
 const aboutHands = (cls = '') => `<img${cls ? ` class="${cls}"` : ''} src="/assets/v2/about-hands.webp" alt="${tr('Dłonie złożone na sercu, biała lniana bluzka i mala z zielonym chwostem', 'Руки, складені на серці, біла лляна блузка й мала із зеленим пензликом')}" width="1157" height="1359" loading="lazy">`;
 // 13.11.2026: the hands tile became a small auto-advancing gallery. Each pill's fill is a CSS animation;
@@ -93,7 +94,6 @@ const aboutGallery = () => {
         <div class="v2-gallery-pills">${slides.map((_, i) => `<button type="button" class="v2-gallery-pill${i ? '' : ' is-active'}" data-gallery-go="${i}" aria-label="${tr('Zdjęcie', 'Фото')} ${i + 1} ${tr('z', 'з')} ${slides.length}"${i ? '' : ' aria-current="true"'}><span><i></i></span></button>`).join('')}</div>
       </figure>`;
 };
-const aboutDetails = (extra = '') => `<details id="about-details" class="v2-about-accordion ${extra}"><summary class="button">${tr('Poznaj mnie', 'Дізнатися про мене')}${arrow}</summary><div class="detail-body"><p>${tr('Punktem wyjścia jest rozmowa i Twoje potrzeby. Formę współpracy ustalamy wspólnie. Ten opis jest tekstem roboczym do zatwierdzenia przez Agnieszkę.', 'Починаємо з розмови та твоїх потреб. Формат співпраці визначаємо разом. Цей опис — робочий текст для погодження Agnieszka.')}</p></div></details>`;
 const aboutPractices = () => `<nav class="v2-practices" aria-label="${tr('Formy pracy', 'Формати роботи')}">${[
   ['#sesje', 'sessions-1to1', tr('Sesje 1:1', 'Сесії 1:1'), tr('Rozmowa i praca z emocjami i ciałem', 'Розмова й робота з емоціями та тілом')],
   ['#joga', 'yoga', tr('Joga i medytacja', 'Йога й медитація'), tr('Kundalini, Flow i praktyka łączona', 'Kundalini, Flow і поєднана практика')],
@@ -106,8 +106,8 @@ function v2About() {
   return `<section id="o-mnie" class="v2-section v2-container v2-about" aria-label="${tr('O mnie', 'Про мене')}">
     <div class="v2-bento">
       <div class="v2-bento-tile v2-bento-title"><h2>${tr('Bliżej siebie.<br>Bliżej życia.', 'Ближче до себе.<br>Ближче до життя.')}</h2><p>${tr('Sesje 1:1, joga, medytacja i warsztaty. W jednym miejscu, w Twoim tempie.', 'Сесії 1:1, йога, медитація й воркшопи. В одному місці, у твоєму темпі.')}</p></div>
-      <figure class="v2-bento-tile v2-bento-portrait">${aboutPortrait()}<figcaption>Agnieszka</figcaption></figure>
-      <div class="v2-bento-tile v2-bento-intro"><p class="v2-bento-lead">${tr('Jestem Agnieszka.', 'Я — Agnieszka.')}</p><p>${aboutIntro()}</p>${aboutDetails('on-lime')}</div>
+      <figure class="v2-bento-tile v2-bento-portrait">${aboutPortrait()}</figure>
+      <div class="v2-bento-tile v2-bento-intro"><p class="v2-bento-lead">${tr('Jestem Agnieszka.', 'Я — Agnieszka.')}</p>${aboutIntro().map((t, i) => `<p${i ? '' : ' class="v2-bento-statement"'}>${t}</p>`).join('')}</div>
       ${aboutGallery()}
       <div class="v2-bento-tile v2-bento-words"><span class="v2-bento-flower" aria-hidden="true"><img src="/assets/v2/ornaments/botanical-flower.svg" alt="" width="1059" height="1054" loading="lazy"></span><p>${tr('Ciało<i>.</i><br>Emocje<i>.</i><br>Uważność<i>.</i>', 'Тіло<i>.</i><br>Емоції<i>.</i><br>Уважність<i>.</i>')}</p></div>
       <div class="v2-bento-tile v2-bento-practices"><h3>${tr('Jak możemy pracować', 'Як ми можемо працювати')}</h3>${aboutPractices()}</div>
