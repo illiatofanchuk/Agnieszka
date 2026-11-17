@@ -116,16 +116,28 @@ function v2About() {
 }
 
 function v2Sessions() {
+  // 17.11.2026: four questions and answers (client copy) replace the two placeholder rows and the separate "Nie wiesz, który
+  // kierunek wybrać?" note; the per-row "Zapytaj o sesję 1:1" links are gone, one general button sits with the headline (the single primary action); the four questions are a quiet reference list.
+  // The Ukrainian text is a translation to be approved.
   const rows = [
-    ['session-first', tr('Jak wygląda pierwszy krok?', 'Як зробити перший крок?'), tr('Nie musisz wiedzieć, od czego zacząć. Wybierz usługę w formularzu lub poproś o pomoc w wyborze. Termin, miejsce i szczegóły spotkania potwierdzimy w osobnym kontakcie.', 'Не обов’язково знати, з чого почати. Вибери послугу у формі або попроси допомоги з вибором. Час, місце та подробиці зустрічі підтвердимо під час окремого контакту.')],
-    ['session-format', tr('Online czy stacjonarnie?', 'Онлайн чи наживо?'), tr('Dostępny format, czas trwania i warunki ustalimy przed spotkaniem. Aktualne szczegóły zostaną uzupełnione w finalnej wersji strony.', 'Доступний формат, тривалість та умови узгодимо перед зустріччю. Актуальні подробиці додамо у фінальну версію сайту.')]
+    ['session-first', tr('Jak wygląda pierwszy krok?', 'Як виглядає перший крок?'),
+      tr('Skorzystaj z formularza i napisz krótko, z czym chcesz przyjść. Możesz opisać konkretną trudność albo po prostu zaznaczyć, że potrzebujesz rozmowy. Odezwę się do Ciebie, aby ustalić termin i odpowiedzieć na pytania przed pierwszą sesją.',
+         'Скористайся формою й коротко напиши, з чим хочеш прийти. Можеш описати конкретну складність або просто зазначити, що потребуєш розмови. Я зв’яжуся з тобою, щоб узгодити час і відповісти на запитання перед першою сесією.')],
+    ['session-expect', tr('Czego możesz się spodziewać?', 'Чого можна очікувати?'),
+      tr('Podczas spotkania przyglądamy się temu, co przeżywasz i jak wpływa to na Twoją codzienność. Rozmowa może dotyczyć emocji, relacji oraz tego, co odczuwasz w ciele. Nie musisz poruszać wszystkich tematów od razu. Jest miejsce na pytania, chwilę namysłu i przerwy, kiedy ich potrzebujesz.',
+         'Під час зустрічі ми придивляємося до того, що ти переживаєш і як це впливає на твоє повсякдення. Розмова може стосуватися емоцій, стосунків і того, що ти відчуваєш у тілі. Не обов’язково одразу торкатися всіх тем. Є місце для запитань, хвилини роздумів і пауз, коли вони тобі потрібні.')],
+    ['session-format', tr('Format i szczegóły spotkania', 'Формат і деталі зустрічі'),
+      tr('Przed potwierdzeniem sesji ustalimy jej format, czas trwania i koszt. Otrzymasz też informacje organizacyjne potrzebne do udziału w spotkaniu. Wszystko będzie jasne z wyprzedzeniem, aby spokojnie zdecydować, czy proponowane warunki Ci odpowiadają.',
+         'Перед підтвердженням сесії ми узгодимо її формат, тривалість і вартість. Ти також отримаєш організаційну інформацію, потрібну для участі у зустрічі. Усе буде зрозуміло заздалегідь, щоб спокійно вирішити, чи підходять тобі запропоновані умови.')],
+    ['session-direction', tr('Nie wiesz, który kierunek wybrać?', 'Не знаєш, який напрям обрати?'),
+      tr('Nie musisz znać nazw metod ani od razu wybierać konkretnej usługi. Możesz zacząć od prostego: „Nie wiem, czego potrzebuję, ale chcę o tym porozmawiać”. Pomogę Ci przyjrzeć się dostępnym formom wsparcia i wybrać, od czego zacząć.',
+         'Не обов’язково знати назви методів чи одразу обирати конкретну послугу. Можеш почати з простого: «Не знаю, чого потребую, але хочу про це поговорити». Допоможу тобі придивитися до доступних форм підтримки й обрати, з чого почати.')]
   ];
+  const faq = `<div class="v2-services accordion-group">${rows.map(([id, title, text], i) => detail(id, title, `<p>${text}</p>`).replace('<details', i ? '<details' : '<details open')).join('')}</div>`;
   return `<section id="sesje" class="v2-section v2-container v2-sessions">
     ${v2SectionLabel('02', 'Sesje 1:1', 'Сесії 1:1')}
-    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Czas tylko<br>dla Ciebie.', 'Час лише<br>для тебе.')}</h2><p>${tr('Rozmowa, uważność i miejsce na Twoje doświadczenie. W swoim tempie.', 'Розмова, уважність і місце для твого досвіду. У власному темпі.')}</p>${img('brainspotting.jpg', tr('Przestrzeń do indywidualnej rozmowy', 'Простір для індивідуальної розмови'))}</div>
-      <div class="v2-services accordion-group">${rows.map(([id, title, text]) => detail(id, title, `<p>${text}</p><button class="text-link" data-book="session">${tr('Zapytaj o sesję 1:1', 'Запитати про сесію 1:1')}${arrow}</button>`)).join('')}
-        <p class="v2-service-note">${tr('Nie wiesz, który kierunek wybrać?', 'Не знаєш, який напрям вибрати?')}</p>${bookButton(tr('Porozmawiajmy', 'Поговорімо'), 'help')}
-      </div></div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Czas tylko<br>dla Ciebie.', 'Час лише<br>для тебе.')}</h2><p>${tr('Rozmowa, uważność i miejsce na Twoje doświadczenie. W swoim tempie.', 'Розмова, уважність і місце для твого досвіду. У власному темпі.')}</p>${bookButton(tr('Umówmy się na rozmowę', 'Умовмося про розмову'), 'session')}${img('brainspotting.jpg', tr('Przestrzeń do indywidualnej rozmowy', 'Простір для індивідуальної розмови'))}</div>
+      ${faq}</div>
   </section>`;
 }
 
