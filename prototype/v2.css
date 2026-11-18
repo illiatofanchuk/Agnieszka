@@ -52,11 +52,16 @@ html[lang=uk] .v2-hero h1{font-size:clamp(108px,20.3vw,340px)}
    (titles one step below the headline scale, 28px max), so the eye goes headline > button > answers. */
 .v2-session-intro>.button{margin-bottom:44px;background:var(--ink);color:#fffdf6}
 .v2-session-intro>.button:hover{background:var(--olive-hover)}
-.v2-session-intro>img{width:100%;aspect-ratio:1.35;object-fit:cover;border-radius:16px}
+.v2-session-intro>.v2-session-gallery{position:relative;margin:0;width:100%;aspect-ratio:1.35;border-radius:16px;overflow:hidden}
 .v2-services{border-top:0}
 .v2-services details{border-bottom:0}
 .v2-services summary{padding:26px 0;min-height:80px;font-size:clamp(21px,1.9vw,28px);letter-spacing:-.03em}
-.v2-services .detail-body{max-width:54ch;font-size:17px}.v2-services .detail-body>p+p{margin-top:16px}
+.v2-services .detail-body{max-width:56ch}
+/* Two reading levels inside an answer: the lead sentence (ink, 18px, 500) and the supporting text (15.5px, olive-tinted #4d5640,
+   ~6.3:1 on the hover fill). 10px between them; the lead keeps its measure short so it never runs wider than ~45ch. */
+.v2-services .v2-answer-lead{max-width:46ch;font-size:clamp(17px,1.35vw,19px);line-height:1.4;font-weight:500;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty}
+.v2-services .v2-answer-more{margin-top:10px;font-size:15.5px;line-height:1.62;color:#4d5640}
+@media(max-width:600px){.v2-services .v2-answer-lead{font-size:18px}.v2-services .v2-answer-more{font-size:16px}}
 .v2-yoga{background:#303c2c;color:#faf7f2;display:flow-root;--line:#78836e;--muted:#d2d9c9}
 .v2-yoga-grid{display:grid;grid-template-columns:1fr 1fr;gap:10%;align-items:center}
 .v2-yoga-grid>figure{margin:0}.v2-yoga-grid>figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px}
@@ -147,7 +152,7 @@ html[lang=uk] .v2-hero h1{font-size:clamp(108px,20.3vw,340px)}
 
   .v2-about-accordion{margin-top:28px}.v2-about-accordion summary.button{font-size:14px;min-height:48px;padding:12px 22px;gap:22px}.v2-about-accordion .detail-body{font-size:16px}
 
-  .v2-session-grid{grid-template-columns:1fr;gap:40px}.v2-session-intro>p{font-size:17px;max-width:33ch;margin:24px 0 24px}.v2-session-intro>img{aspect-ratio:1.35}
+  .v2-session-grid{grid-template-columns:1fr;gap:40px}.v2-session-intro>p{font-size:17px;max-width:33ch;margin:24px 0 24px}.v2-session-intro>.v2-session-gallery{aspect-ratio:1.35}
   .v2-services summary{font-size:22px;min-height:72px;padding:20px 0}.v2-session-intro>.button{font-size:14px;margin-bottom:36px}
   .v2-yoga-grid{grid-template-columns:1fr;gap:36px}.v2-yoga-grid>figure img{aspect-ratio:1.15;object-position:center 55%}.v2-yoga-copy>p{font-size:17px;margin:24px 0 32px}
   .v2-yoga summary{font-size:21px;min-height:76px}.v2-yoga .detail-body{font-size:16px}
@@ -341,7 +346,7 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 .v2-bento-words i{font-style:normal;color:var(--v2-lime)}
 .v2-bento-practices{grid-column:6/13;grid-row:3;background:var(--surface);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
 .v2-bento-practices h3{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}
-.v2-bento-practices .v2-practices{border-top:0;gap:4px;margin-inline:-16px}.v2-bento-practices .v2-practice{border-bottom:0;border-radius:12px;padding-inline:16px;background:linear-gradient(var(--straw),var(--straw)) no-repeat 0 100%/100% 0}.v2-bento-practices .v2-practice:hover{padding-inline:16px;background-size:100% 100%}
+.v2-bento-practices .v2-practices{border-top:0;gap:4px;margin-inline:-16px}.v2-bento-practices .v2-practice{border-bottom:0;border-radius:12px;padding-inline:16px;background:transparent;transition:background-color .25s ease}.v2-bento-practices .v2-practice:hover{padding-inline:16px;background:var(--straw)}
 /* 17.11.2026: on hover the row only fills with colour: the text, the icon and the arrow stay where they are (no shift to the right). */
 .v2-bento-practices .v2-practice:hover>svg{transform:none}
 
@@ -495,11 +500,12 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 @media(prefers-reduced-motion:reduce){.hero-switch a{transition:none}}
 
 /* 17.11.2026: Sesje 1:1 — soft rows (variant A, chosen by the client): no dividers; each row is a rounded surface that fills with
-   straw from the bottom on hover (as in "Jak możemy pracować"); the open row keeps a quiet --surface fill. */
+   straw on hover (a plain fade, the same in "Jak możemy pracować"; the earlier bottom-up sweep was dropped); the open row keeps a quiet --surface fill. */
 .v2-sessions .v2-services{display:grid;gap:4px;margin-inline:-20px}
-.v2-sessions .v2-services details{border-radius:16px;padding-inline:20px;background:linear-gradient(var(--straw),var(--straw)) no-repeat 0 100%/100% 0;transition:background-size .5s cubic-bezier(.16,1,.3,1),background-color .35s}
-.v2-sessions .v2-services details:hover{background-size:100% 100%}
+.v2-sessions .v2-services details{border-radius:16px;padding-inline:20px;transition:background-color .25s ease}
+.v2-sessions .v2-services details:hover{background-color:var(--straw)}
 .v2-sessions .v2-services details[open]{background-color:var(--surface)}
+.v2-sessions .v2-services details[open]:hover{background-color:var(--straw)}
 @media(max-width:600px){.v2-sessions .v2-services{margin-inline:-12px}.v2-sessions .v2-services details{padding-inline:12px}}
 
 /* 17.11.2026: Sesje 1:1 composition (option C, chosen by the client). From 861px the intro column is flattened (display:contents) so the
@@ -509,10 +515,22 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
    Spatial thesis: the reading path is heading > one line > one action > answers; the photo is a quiet anchor whose height follows the answers. */
 @media(min-width:861px){
   .v2-sessions .v2-session-intro{display:contents}
-  .v2-sessions .v2-session-grid{gap:0;align-items:start;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(24px,2vw,32px)}
+  .v2-sessions .v2-session-grid{gap:0;align-items:start;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(40px,4vw,64px)}
   .v2-sessions h2{grid-column:1/8;grid-row:1/3;align-self:start}
   .v2-sessions .v2-session-intro>p{grid-column:8/13;grid-row:1;align-self:end;margin:0 0 20px}
   .v2-sessions .v2-session-intro>.button{grid-column:8/13;grid-row:2;justify-self:start;margin:0}
-  .v2-sessions .v2-session-intro>img{grid-column:1/8;grid-row:3;margin-top:64px;aspect-ratio:auto;height:calc(100% - 64px);min-height:420px;contain:size}
+  /* The photo has its own fixed 4:3 proportion (18.11.2026): it no longer follows the height of the answers, so opening or closing a
+     question never resizes it. The answers fit inside its height, so the section height does not jump either. */
+  .v2-sessions .v2-session-intro>.v2-session-gallery{grid-column:1/8;grid-row:3;margin-top:64px;aspect-ratio:4/3;height:auto;align-self:start}
   .v2-sessions .v2-services{grid-column:8/13;grid-row:3;margin-top:64px}
 }
+
+/* 18.11.2026: while an accordion item animates shut, the plus and the open-row fill already return to the closed state. */
+.version-two details.is-closing>summary .plus:after{transform:rotate(90deg)}
+.v2-sessions .v2-services details.is-closing:not(:hover){background-color:transparent}
+
+/* 18.11.2026: slides of the Sesje 1:1 slider (same behaviour as the About bento: crossfade 1s, slow settle 1.06 -> 1, progress pills). */
+.v2-session-gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.v2-session-gallery .v2-gallery-slide{opacity:0;scale:1.06;transition:opacity 1s cubic-bezier(.22,1,.36,1),scale 2.4s cubic-bezier(.22,1,.36,1);object-position:50% 50%}
+.v2-session-gallery .v2-gallery-slide.is-active{opacity:1;scale:1}
+@media(prefers-reduced-motion:reduce){.v2-session-gallery .v2-gallery-slide{transition:opacity .3s!important;scale:1}}

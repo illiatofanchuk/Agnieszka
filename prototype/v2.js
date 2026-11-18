@@ -82,6 +82,11 @@ const aboutPortrait = (cls = '', loading = 'lazy') => `<img${cls ? ` class="${cl
 const aboutHands = (cls = '') => `<img${cls ? ` class="${cls}"` : ''} src="/assets/v2/about-hands.webp" alt="${tr('Dłonie złożone na sercu, biała lniana bluzka i mala z zielonym chwostem', 'Руки, складені на серці, біла лляна блузка й мала із зеленим пензликом')}" width="1157" height="1359" loading="lazy">`;
 // 13.11.2026: the hands tile became a small auto-advancing gallery. Each pill's fill is a CSS animation;
 // its animationend moves to the next photo, so hover, focus or leaving the viewport simply pause the animation.
+// One markup for every auto-advancing photo slider (the About bento and the Sesje 1:1 section); the controller below is generic.
+const galleryHtml = (slides, cls, label) => `<figure class="${cls} v2-gallery" data-gallery data-index="0" aria-roledescription="${tr('galeria', 'галерея')}" aria-label="${label}">
+        ${slides.map(([src, w, h, key, alt], i) => `<img class="v2-gallery-slide v2-gallery-slide--${key}${i ? '' : ' is-active'}" src="${src}" width="${w}" height="${h}" alt="${alt}" loading="lazy"${i ? ' aria-hidden="true"' : ''}>`).join('')}
+        <div class="v2-gallery-pills">${slides.map((_, i) => `<button type="button" class="v2-gallery-pill${i ? '' : ' is-active'}" data-gallery-go="${i}" aria-label="${tr('Zdjęcie', 'Фото')} ${i + 1} ${tr('z', 'з')} ${slides.length}"${i ? '' : ' aria-current="true"'}><span><i></i></span></button>`).join('')}</div>
+      </figure>`;
 const aboutGallery = () => {
   const slides = [
     ['/assets/v2/about-hands.webp', 1157, 1359, 'hands', tr('Dłonie złożone na sercu, biała lniana bluzka i mala z zielonym chwostem', 'Руки, складені на серці, біла лляна блузка й мала із зеленим пензликом')],
@@ -89,11 +94,9 @@ const aboutGallery = () => {
     ['/assets/v2/gallery/beach-yoga.jpg', 900, 1125, 'yoga', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka в позі йоги на піщаному пляжі')],
     ['/assets/v2/gallery/session.jpg', 768, 960, 'session', tr('Rozmowa podczas sesji 1:1 w jasnym gabinecie', 'Розмова під час сесії 1:1 у світлому кабінеті')]
   ];
-  return `<figure class="v2-bento-tile v2-bento-hands v2-gallery" data-gallery data-index="0" aria-roledescription="${tr('galeria', 'галерея')}" aria-label="${tr('Zdjęcia Agnieszki', 'Фото Agnieszka')}">
-        ${slides.map(([src, w, h, key, alt], i) => `<img class="v2-gallery-slide v2-gallery-slide--${key}${i ? '' : ' is-active'}" src="${src}" width="${w}" height="${h}" alt="${alt}" loading="lazy"${i ? ' aria-hidden="true"' : ''}>`).join('')}
-        <div class="v2-gallery-pills">${slides.map((_, i) => `<button type="button" class="v2-gallery-pill${i ? '' : ' is-active'}" data-gallery-go="${i}" aria-label="${tr('Zdjęcie', 'Фото')} ${i + 1} ${tr('z', 'з')} ${slides.length}"${i ? '' : ' aria-current="true"'}><span><i></i></span></button>`).join('')}</div>
-      </figure>`;
+  return galleryHtml(slides, 'v2-bento-tile v2-bento-hands', tr('Zdjęcia Agnieszki', 'Фото Agnieszka'));
 };
+
 const aboutPractices = () => `<nav class="v2-practices" aria-label="${tr('Formy pracy', 'Формати роботи')}">${[
   ['#sesje', 'sessions-1to1', tr('Sesje 1:1', 'Сесії 1:1'), tr('Rozmowa i praca z emocjami i ciałem', 'Розмова й робота з емоціями та тілом')],
   ['#joga', 'yoga', tr('Joga i medytacja', 'Йога й медитація'), tr('Kundalini, Flow i praktyka łączona', 'Kundalini, Flow і поєднана практика')],
@@ -115,6 +118,22 @@ function v2About() {
   </section>`;
 }
 
+// 18.11.2026: an answer reads in two levels. The first sentence is the point (larger, ink, medium weight); the rest supports it (regular,
+// olive-tinted). The copy is only cut at the end of the first sentence, nothing is rewritten. No lookbehind (older iOS Safari rejects it).
+function answerHtml(text) {
+  const m = text.match(/^(.+?[.!?])\s+(?=[A-ZĄĆĘŁŃÓŚŹŻА-ЯІЇЄҐ„«])([\s\S]+)$/);
+  return m ? `<p class="v2-answer-lead">${m[1]}</p><p class="v2-answer-more">${m[2]}</p>` : `<p class="v2-answer-lead">${text}</p>`;
+}
+
+// 18.11.2026: the Sesje 1:1 photo is a four-slide slider like the About bento: the session scene first, then the beach meditation,
+// the beach pose and the sofa portrait (all web-sized copies in assets/v2/gallery/).
+const sessionGallery = () => galleryHtml([
+  ['/assets/brainspotting.jpg', 1440, 960, 'room', tr('Przestrzeń do indywidualnej rozmowy', 'Простір для індивідуальної розмови')],
+  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka медитує на пляжі серед дерев')],
+  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka в позі йоги на піщаному пляжі')],
+  ['/assets/v2/gallery/sesje-sofa.jpg', 1600, 1200, 'sofa', tr('Agnieszka siedzi spokojnie na skórzanej sofie', 'Agnieszka спокійно сидить на шкіряному дивані')]
+], 'v2-session-gallery', tr('Zdjęcia z sesji i praktyk', 'Фото із сесій і практик'));
+
 function v2Sessions() {
   // 17.11.2026: four questions and answers (client copy) replace the two placeholder rows and the separate "Nie wiesz, który
   // kierunek wybrać?" note; the per-row "Zapytaj o sesję 1:1" links are gone, one general button sits with the headline (the single primary action); the four questions are a quiet reference list.
@@ -133,10 +152,10 @@ function v2Sessions() {
       tr('Nie musisz znać nazw metod ani od razu wybierać konkretnej usługi. Możesz zacząć od prostego: „Nie wiem, czego potrzebuję, ale chcę o tym porozmawiać”. Pomogę Ci przyjrzeć się dostępnym formom wsparcia i wybrać, od czego zacząć.',
          'Не обов’язково знати назви методів чи одразу обирати конкретну послугу. Можеш почати з простого: «Не знаю, чого потребую, але хочу про це поговорити». Допоможу тобі придивитися до доступних форм підтримки й обрати, з чого почати.')]
   ];
-  const faq = `<div class="v2-services accordion-group">${rows.map(([id, title, text], i) => detail(id, title, `<p>${text}</p>`).replace('<details', i ? '<details' : '<details open')).join('')}</div>`;
+  const faq = `<div class="v2-services accordion-group">${rows.map(([id, title, text], i) => detail(id, title, answerHtml(text)).replace('<details', i ? '<details' : '<details open')).join('')}</div>`;
   return `<section id="sesje" class="v2-section v2-container v2-sessions">
     ${v2SectionLabel('02', 'Sesje 1:1', 'Сесії 1:1')}
-    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Czas tylko<br>dla Ciebie.', 'Час лише<br>для тебе.')}</h2><p>${tr('Rozmowa, uważność i miejsce na Twoje doświadczenie. W swoim tempie.', 'Розмова, уважність і місце для твого досвіду. У власному темпі.')}</p>${bookButton(tr('Umówmy się na rozmowę', 'Умовмося про розмову'), 'session')}${img('brainspotting.jpg', tr('Przestrzeń do indywidualnej rozmowy', 'Простір для індивідуальної розмови'))}</div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Czas tylko<br>dla Ciebie.', 'Час лише<br>для тебе.')}</h2><p>${tr('Rozmowa, uważność i miejsce na Twoje doświadczenie. W swoim tempie.', 'Розмова, уважність і місце для твого досвіду. У власному темпі.')}</p>${bookButton(tr('Umówmy się na rozmowę', 'Умовмося про розмову'), 'session')}${sessionGallery()}</div>
       ${faq}</div>
   </section>`;
 }
@@ -339,6 +358,60 @@ document.addEventListener('click', e => {
   document.fonts?.addEventListener?.('loadingdone', fit);
 })();
 
+// 18.11.2026: smooth accordion. In V2 a <details> opens and closes with an animated height (and a soft fade of its text) instead of
+// snapping. The click on <summary> is taken over (preventDefault) and the open attribute is managed by hand: opening sets it first and
+// animates 0 -> full height; closing animates back and removes it at the end. Inside an .accordion-group only one item stays open, and the
+// others close with the same animation (the generic instant "close the others" handler in app.js is skipped for V2 while animating).
+// Reduced motion keeps the native behaviour.
+(function smoothAccordion() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const EASE = 'cubic-bezier(.16,1,.3,1)';
+  const bodyOf = d => d.querySelector(':scope > .detail-body');
+  const run = (d, from, to, ms, done) => {
+    const body = bodyOf(d);
+    if (!body) { done && done(); return; }
+    if (d._anim) d._anim.cancel();
+    body.style.overflow = 'hidden';
+    const a = body.animate(
+      [{ height: from.h + 'px', paddingBottom: from.p + 'px', opacity: from.o }, { height: to.h + 'px', paddingBottom: to.p + 'px', opacity: to.o }],
+      { duration: ms, easing: EASE }
+    );
+    d._anim = a;
+    const end = () => { if (d._anim === a) { d._anim = null; body.style.overflow = ''; done && done(); } };
+    a.onfinish = end;
+    a.oncancel = () => { if (d._anim === a) { d._anim = null; body.style.overflow = ''; } };
+  };
+  const openIt = d => {
+    d.classList.remove('is-closing');
+    const body = bodyOf(d);
+    const from = { h: d._anim && body ? body.getBoundingClientRect().height : 0, p: 0, o: d._anim ? +getComputedStyle(body).opacity : 0 };
+    d.open = true;
+    if (!body) return;
+    const full = body.scrollHeight, pad = parseFloat(getComputedStyle(body).paddingBottom) || 0;
+    run(d, from, { h: full, p: pad, o: 1 }, 420);
+    const group = d.closest('.accordion-group');
+    if (group) group.querySelectorAll(':scope > details').forEach(o => { if (o !== d && o.open && !o.classList.contains('is-closing')) closeIt(o); });
+  };
+  const closeIt = d => {
+    const body = bodyOf(d);
+    if (!body) { d.open = false; return; }
+    d.classList.add('is-closing');
+    const h = body.getBoundingClientRect().height, pad = parseFloat(getComputedStyle(body).paddingBottom) || 0;
+    run(d, { h, p: Math.min(pad, h), o: +getComputedStyle(body).opacity }, { h: 0, p: 0, o: 0 }, 320, () => { d.open = false; d.classList.remove('is-closing'); });
+  };
+  document.addEventListener('click', e => {
+    const sum = e.target.closest('.version-two details > summary');
+    if (!sum || reduce.matches) return;
+    const d = sum.parentElement;
+    e.preventDefault();
+    (d.open && !d.classList.contains('is-closing')) ? closeIt(d) : openIt(d);
+  }, true);
+  // v2.js loads before app.js, so this listener runs first on the same target and phase.
+  document.addEventListener('toggle', e => {
+    if (!reduce.matches && e.target.matches && e.target.matches('.version-two details')) e.stopImmediatePropagation();
+  }, true);
+})();
+
 (function heroParallax() {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const wide = matchMedia('(min-width: 601px)');
@@ -385,6 +458,9 @@ document.addEventListener('click', e => {
   };
   document.addEventListener('animationend', e => {
     if (e.animationName !== 'v2-gallery-progress') return;
+    // A late event from a pill that is no longer the active one (the visitor already picked another photo) must not advance again.
+    const pill = e.target.closest('.v2-gallery-pill');
+    if (pill && !pill.classList.contains('is-active')) return;
     const g = e.target.closest('[data-gallery]');
     if (g) show(g, +g.dataset.index + 1);
   });
