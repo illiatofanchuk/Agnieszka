@@ -171,10 +171,14 @@ const yogaGallery = () => galleryHtml([
 ], 'v2-session-gallery', tr('Zdjęcia z praktyk jogi', 'Фото з практик йоги'));
 
 function v2Yoga() {
+  // Client copy (18.11.2026). The Ukrainian text is a translation to be approved.
   const answers = {
-    kundalini: tr('Praktyka łącząca ruch, oddech i medytację.', 'Практика, що поєднує рух, дихання й медитацію.'),
-    flow: tr('Płynna praktyka ruchu i oddechu.', 'Плавна практика руху та дихання.'),
-    combo: tr('Połączenie dwóch stylów praktyki.', 'Поєднання двох стилів практики.')
+    kundalini: tr('Joga Kundalini łączy ruch, oddech i medytację. Podczas praktyki kierujemy uwagę na odczucia w ciele i to, co dzieje się w danej chwili. To propozycja dla osób, które chcą poznawać jogę także poprzez skupienie i świadomą pracę z oddechem.',
+      'Йога кундаліні поєднує рух, дихання й медитацію. Під час практики ми спрямовуємо увагу на відчуття в тілі та на те, що відбувається в цю мить. Це пропозиція для тих, хто хоче пізнавати йогу також через зосередження й усвідомлену роботу з диханням.'),
+    flow: tr('To płynne przechodzenie między pozycjami w rytmie oddechu. Poszczególne ruchy tworzą sekwencje, w których jest miejsce na aktywność, koncentrację i odpoczynek. Ta forma może być Ci bliska, jeśli lubisz poznawać ciało poprzez ruch.',
+      'Це плавний перехід між позами в ритмі дихання. Окремі рухи складаються в послідовності, де є місце для активності, концентрації та відпочинку. Ця форма може бути тобі близькою, якщо ти любиш пізнавати тіло через рух.'),
+    combo: tr('To możliwość korzystania z obu form jogi. Możesz doświadczać płynnych sekwencji Flow oraz praktyk oddechowych i medytacyjnych Kundalini. Wybór dla osób, które chcą poznawać różne sposoby pracy z ciałem i rozwijać regularną praktykę.',
+      'Це можливість користуватися обома формами йоги. Ти можеш відчути плавні послідовності Flow, а також дихальні й медитативні практики кундаліні. Вибір для тих, хто хоче пізнавати різні способи роботи з тілом і розвивати регулярну практику.')
   };
   return `<section id="joga" class="v2-yoga"><div class="v2-container v2-section">
     ${v2SectionLabel('03', 'Studio Jogi', 'Студія йоги')}
