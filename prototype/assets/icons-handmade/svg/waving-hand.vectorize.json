@@ -1,0 +1,14 @@
+{
+  "source": "../waving-hand.png",
+  "provider": "Vectorize",
+  "revision_id": "4aa8345decd541d59a3e659b3399bd21",
+  "palette": [
+    "#323827"
+  ],
+  "settings": {
+    "colors": 1,
+    "smoothing": 5,
+    "transparent": true,
+    "trim": false
+  }
+}
