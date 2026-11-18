@@ -63,11 +63,8 @@ html[lang=uk] .v2-hero h1{font-size:clamp(108px,20.3vw,340px)}
 .v2-services .v2-answer-more{margin-top:10px;font-size:15.5px;line-height:1.62;color:#4d5640}
 @media(max-width:600px){.v2-services .v2-answer-lead{font-size:18px}.v2-services .v2-answer-more{font-size:16px}}
 .v2-yoga{background:#303c2c;color:#faf7f2;display:flow-root;--line:#78836e;--muted:#d2d9c9}
-.v2-yoga-grid{display:grid;grid-template-columns:1fr 1fr;gap:10%;align-items:center}
-.v2-yoga-grid>figure{margin:0}.v2-yoga-grid>figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px}
-.v2-yoga-copy>p{font-size:18px;line-height:1.5;color:var(--muted);margin:28px 0 40px;max-width:36ch}
-.v2-yoga .detail-body{color:var(--muted)}.v2-yoga summary{font-size:22px;min-height:80px}
-.v2-yoga .text-link{color:var(--v2-lime)}.v2-yoga :focus-visible{outline-color:var(--v2-lime)}
+.v2-yoga .detail-body{color:var(--muted)}
+.v2-yoga :focus-visible{outline-color:var(--v2-lime)}
 .v2-event-list{border-top:1px solid var(--line)}
 .v2-event-row{display:grid;grid-template-columns:1.1fr 1.7fr .8fr 44px;gap:32px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
 .v2-event-row time{display:block;margin-top:7px;font-size:17px;line-height:1.3;font-variant-numeric:tabular-nums}
@@ -117,9 +114,9 @@ html[lang=uk] .v2-hero h1{font-size:clamp(108px,20.3vw,340px)}
 
   .v2-about-accordion{margin-top:24px}.v2-about-accordion summary.button{font-size:12px;padding:10px 16px;gap:12px}
   .v2-section-label{font-size:10px;margin-bottom:28px}
-  .v2-section h2{font-size:40px}.v2-session-grid,.v2-yoga-grid,.v2-workshop-grid,.v2-school-grid{gap:7%}
-  .v2-session-intro>p,.v2-yoga-copy>p,.v2-workshop-grid>div>p,.v2-school-grid p:not(.lead){font-size:16px}
-  .v2-services summary{font-size:22px;min-height:72px;padding:20px 0}.v2-services .detail-body{font-size:16px}.v2-yoga summary{font-size:18px}
+  .v2-section h2{font-size:40px}.v2-session-grid,.v2-workshop-grid,.v2-school-grid{gap:7%}
+  .v2-session-intro>p,.v2-workshop-grid>div>p,.v2-school-grid p:not(.lead){font-size:16px}
+  .v2-services summary{font-size:22px;min-height:72px;padding:20px 0}.v2-services .detail-body{font-size:16px}
   .v2-event-row{grid-template-columns:1fr 1.5fr 44px;gap:18px}.v2-event-row .status{grid-column:2;grid-row:2}.v2-event-row .round-link{grid-column:3;grid-row:1/3}
   .v2-event-row time{font-size:15px}.v2-event-row h3{font-size:25px}.v2-event-row{padding:24px 0;row-gap:8px}
   .v2-workshop-grid>figure{min-height:560px}.v2-workshop-grid .program-index a{font-size:13px;padding:16px 0}
@@ -154,8 +151,7 @@ html[lang=uk] .v2-hero h1{font-size:clamp(108px,20.3vw,340px)}
 
   .v2-session-grid{grid-template-columns:1fr;gap:40px}.v2-session-intro>p{font-size:17px;max-width:33ch;margin:24px 0 24px}.v2-session-intro>.v2-session-gallery{aspect-ratio:1.35}
   .v2-services summary{font-size:22px;min-height:72px;padding:20px 0}.v2-session-intro>.button{font-size:14px;margin-bottom:36px}
-  .v2-yoga-grid{grid-template-columns:1fr;gap:36px}.v2-yoga-grid>figure img{aspect-ratio:1.15;object-position:center 55%}.v2-yoga-copy>p{font-size:17px;margin:24px 0 32px}
-  .v2-yoga summary{font-size:21px;min-height:76px}.v2-yoga .detail-body{font-size:16px}
+  .v2-yoga .detail-body{font-size:16px}
   .v2-event-row{grid-template-columns:1fr 44px;gap:16px;row-gap:12px;padding:24px 0}.v2-event-row>div:first-child{grid-column:1;grid-row:1}.v2-event-row>div:nth-child(2){grid-column:1;grid-row:2}
   .v2-event-row .status{grid-column:1;grid-row:3}.v2-event-row .round-link{grid-column:2;grid-row:1/4}.v2-event-row h3{font-size:27px}.v2-event-row p{margin-top:8px}
   .v2-workshop-grid{grid-template-columns:1fr;gap:40px}.v2-workshop-grid>div>p{font-size:17px;margin:24px 0 28px}.v2-workshop-grid .program-index a{font-size:15px;padding:20px 0}
@@ -501,12 +497,12 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 
 /* 17.11.2026: Sesje 1:1 — soft rows (variant A, chosen by the client): no dividers; each row is a rounded surface that fills with
    straw on hover (a plain fade, the same in "Jak możemy pracować"; the earlier bottom-up sweep was dropped); the open row keeps a quiet --surface fill. */
-.v2-sessions .v2-services{display:grid;gap:4px;margin-inline:-20px}
-.v2-sessions .v2-services details{border-radius:16px;padding-inline:20px;transition:background-color .25s ease}
-.v2-sessions .v2-services details:hover{background-color:var(--straw)}
-.v2-sessions .v2-services details[open]{background-color:var(--surface)}
-.v2-sessions .v2-services details[open]:hover{background-color:var(--straw)}
-@media(max-width:600px){.v2-sessions .v2-services{margin-inline:-12px}.v2-sessions .v2-services details{padding-inline:12px}}
+:is(.v2-sessions,.v2-yoga) .v2-services{display:grid;gap:4px;margin-inline:-20px}
+:is(.v2-sessions,.v2-yoga) .v2-services details{border-radius:16px;padding-inline:20px;transition:background-color .25s ease}
+:is(.v2-sessions,.v2-yoga) .v2-services details:hover{background-color:var(--straw)}
+:is(.v2-sessions,.v2-yoga) .v2-services details[open]{background-color:var(--surface)}
+:is(.v2-sessions,.v2-yoga) .v2-services details[open]:hover{background-color:var(--straw)}
+@media(max-width:600px){:is(.v2-sessions,.v2-yoga) .v2-services{margin-inline:-12px}:is(.v2-sessions,.v2-yoga) .v2-services details{padding-inline:12px}}
 
 /* 17.11.2026: Sesje 1:1 composition (option C, chosen by the client). From 861px the intro column is flattened (display:contents) so the
    heading, subheading, button and photo become items of one 12-column grid: a header band (heading left; line and button right,
@@ -514,23 +510,33 @@ html[lang=uk] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
    stacked column (heading, line, button, photo, answers).
    Spatial thesis: the reading path is heading > one line > one action > answers; the photo is a quiet anchor whose height follows the answers. */
 @media(min-width:861px){
-  .v2-sessions .v2-session-intro{display:contents}
-  .v2-sessions .v2-session-grid{gap:0;align-items:start;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(40px,4vw,64px)}
-  .v2-sessions h2{grid-column:1/8;grid-row:1/3;align-self:start}
-  .v2-sessions .v2-session-intro>p{grid-column:8/13;grid-row:1;align-self:end;margin:0 0 20px}
-  .v2-sessions .v2-session-intro>.button{grid-column:8/13;grid-row:2;justify-self:start;margin:0}
+  :is(.v2-sessions,.v2-yoga) .v2-session-intro{display:contents}
+  :is(.v2-sessions,.v2-yoga) .v2-session-grid{gap:0;align-items:start;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(40px,4vw,64px)}
+  :is(.v2-sessions,.v2-yoga) h2{grid-column:1/8;grid-row:1/3;align-self:start}
+  :is(.v2-sessions,.v2-yoga) .v2-session-intro>p{grid-column:8/13;grid-row:1;align-self:end;margin:0 0 20px}
+  :is(.v2-sessions,.v2-yoga) .v2-session-intro>.button{grid-column:8/13;grid-row:2;justify-self:start;margin:0}
   /* The photo has its own fixed 4:3 proportion (18.11.2026): it no longer follows the height of the answers, so opening or closing a
      question never resizes it. The answers fit inside its height, so the section height does not jump either. */
-  .v2-sessions .v2-session-intro>.v2-session-gallery{grid-column:1/8;grid-row:3;margin-top:64px;aspect-ratio:4/3;height:auto;align-self:start}
-  .v2-sessions .v2-services{grid-column:8/13;grid-row:3;margin-top:64px}
+  :is(.v2-sessions,.v2-yoga) .v2-session-intro>.v2-session-gallery{grid-column:1/8;grid-row:3;margin-top:64px;aspect-ratio:4/3;height:auto;align-self:start}
+  :is(.v2-sessions,.v2-yoga) .v2-services{grid-column:8/13;grid-row:3;margin-top:64px}
 }
 
 /* 18.11.2026: while an accordion item animates shut, the plus and the open-row fill already return to the closed state. */
 .version-two details.is-closing>summary .plus:after{transform:rotate(90deg)}
-.v2-sessions .v2-services details.is-closing:not(:hover){background-color:transparent}
+:is(.v2-sessions,.v2-yoga) .v2-services details.is-closing:not(:hover){background-color:transparent}
 
 /* 18.11.2026: slides of the Sesje 1:1 slider (same behaviour as the About bento: crossfade 1s, slow settle 1.06 -> 1, progress pills). */
 .v2-session-gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
 .v2-session-gallery .v2-gallery-slide{opacity:0;scale:1.06;transition:opacity 1s cubic-bezier(.22,1,.36,1),scale 2.4s cubic-bezier(.22,1,.36,1);object-position:50% 50%}
 .v2-session-gallery .v2-gallery-slide.is-active{opacity:1;scale:1}
 @media(prefers-reduced-motion:reduce){.v2-session-gallery .v2-gallery-slide{transition:opacity .3s!important;scale:1}}
+
+/* 18.11.2026: Studio Jogi on the dark olive section. Same structure and rules as Sesje 1:1 (shared through :is()); only the colours differ:
+   lime button (the primary action on dark), light fills on hover / open rows, light answer text. */
+.v2-yoga .v2-session-intro>.button{background:var(--v2-lime);color:var(--ink)}
+.v2-yoga .v2-session-intro>.button:hover{background:#bedb74}
+.v2-yoga .v2-services details:hover,.v2-yoga .v2-services details[open]:hover{background-color:rgba(250,247,242,.09)}
+.v2-yoga .v2-services details[open]{background-color:rgba(250,247,242,.05)}
+.v2-yoga .v2-answer-lead{color:#faf7f2}
+.v2-yoga .v2-answer-more{color:#d2d9c9}
+.v2-yoga .v2-gallery-slide--studio{object-position:50% 30%}

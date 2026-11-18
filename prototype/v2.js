@@ -160,13 +160,26 @@ function v2Sessions() {
   </section>`;
 }
 
+// 18.11.2026: Studio Jogi uses the same UI logic as Sesje 1:1 (header band, one button, photo slider + list side by side, soft rows
+// with a plain fill hover, smooth accordion, two-level answers) on the dark olive section. The button keeps the existing wording
+// "Zapytaj o praktykę" and opens the form with "I need help choosing"; the per-row buttons are gone.
+const yogaGallery = () => galleryHtml([
+  ['/assets/joga.jpg', 1440, 1440, 'studio', tr('Praktyka jogi w jasnym studio', 'Практика йоги у світлій студії')],
+  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka в позі йоги на піщаному пляжі')],
+  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka медитує на пляжі серед дерев')],
+  ['/assets/v2/hero-meadow-2.webp', 1536, 1024, 'meadow', tr('Agnieszka medytuje na łące w ciepłym świetle', 'Agnieszka медитує на лузі в теплому світлі')]
+], 'v2-session-gallery', tr('Zdjęcia z praktyk jogi', 'Фото з практик йоги'));
+
 function v2Yoga() {
+  const answers = {
+    kundalini: tr('Praktyka łącząca ruch, oddech i medytację.', 'Практика, що поєднує рух, дихання й медитацію.'),
+    flow: tr('Płynna praktyka ruchu i oddechu.', 'Плавна практика руху та дихання.'),
+    combo: tr('Połączenie dwóch stylów praktyki.', 'Поєднання двох стилів практики.')
+  };
   return `<section id="joga" class="v2-yoga"><div class="v2-container v2-section">
     ${v2SectionLabel('03', 'Studio Jogi', 'Студія йоги')}
-    <div class="v2-yoga-grid"><figure>${img('joga.jpg', tr('Praktyka jogi w jasnym studio', 'Практика йоги у світлій студії'))}</figure>
-      <div class="v2-yoga-copy"><h2>${tr('Mniej pośpiechu.<br>Więcej oddechu.', 'Менше поспіху.<br>Більше дихання.')}</h2><p>${tr('Ruch. Oddech. Obecność. Wybierz praktykę, która jest Ci bliska.', 'Рух. Дихання. Присутність. Вибери практику, яка тобі близька.')}</p>
-        <div class="accordion-group">${['kundalini', 'flow', 'combo'].map(id => detail('yoga-' + id, label(id), `<p>${id === 'kundalini' ? tr('Praktyka łącząca ruch, oddech i medytację.', 'Практика, що поєднує рух, дихання й медитацію.') : id === 'flow' ? tr('Płynna praktyka ruchu i oddechu.', 'Плавна практика руху та дихання.') : tr('Połączenie dwóch stylów praktyki.', 'Поєднання двох стилів практики.')}</p><button class="text-link" data-book="${id}">${tr('Zapytaj o praktykę', 'Запитати про практику')}${arrow}</button>`)).join('')}</div>
-      </div></div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Mniej pośpiechu.<br>Więcej oddechu.', 'Менше поспіху.<br>Більше дихання.')}</h2><p>${tr('Ruch. Oddech. Obecność. Wybierz praktykę, która jest Ci bliska.', 'Рух. Дихання. Присутність. Вибери практику, яка тобі близька.')}</p>${bookButton(tr('Zapytaj o praktykę', 'Запитати про практику'), 'help')}${yogaGallery()}</div>
+      <div class="v2-services accordion-group">${['kundalini', 'flow', 'combo'].map((id, i) => detail('yoga-' + id, label(id), answerHtml(answers[id])).replace('<details', i ? '<details' : '<details open')).join('')}</div></div>
   </div></section>`;
 }
 
