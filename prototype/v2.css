@@ -678,3 +678,12 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
   .hero-switch,.hero-switch a,.v2-gallery-pill>span,.v2-gallery-pill>span i,.v2-gallery-pill:focus-visible,.v2-event-stats li:not(.v2-ev-date)::before,
   .nav-cta,.language,::-webkit-scrollbar-thumb{corner-shape:round}
 }
+
+/* 21.11.2026: Studio Jogi gets a slowly turning gradient: the original dark olive (#303c2c) and a a lighter olive (#4b6043), the whole
+   thing driven by one angle parameter (--jogi-angle, a registered property so the browser can animate it). It turns once in 24s and pauses while the
+   band is off screen; with reduced motion, or in browsers without @property, it stays a still gradient / the original flat colour. */
+@property --jogi-angle{syntax:"<angle>";inherits:false;initial-value:115deg}
+.v2-yoga{--jogi-angle:115deg;background:#303c2c;background:linear-gradient(var(--jogi-angle),#303c2c 0%,#4b6043 50%,#303c2c 100%);animation:v2-jogi-turn 24s linear infinite}
+.v2-yoga.is-offscreen{animation-play-state:paused}
+@keyframes v2-jogi-turn{to{--jogi-angle:475deg}}
+@media(prefers-reduced-motion:reduce){.v2-yoga{animation:none}}

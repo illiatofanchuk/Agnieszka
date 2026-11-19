@@ -843,3 +843,13 @@ void main(){
   scan();
 })();
 
+// 21.11.2026: pause the Studio Jogi gradient while the band is off screen (it repaints a large area every frame while it turns).
+(function jogiGradientPause() {
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(list => list.forEach(en => en.target.classList.toggle('is-offscreen', !en.isIntersecting)), { rootMargin: '100px 0px' });
+  const seen = new WeakSet();
+  const scan = () => document.querySelectorAll('.v2-yoga').forEach(el => { if (!seen.has(el)) { seen.add(el); io.observe(el); } });
+  new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
+  scan();
+})();
+
