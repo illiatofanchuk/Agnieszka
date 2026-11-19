@@ -668,3 +668,13 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 .vcr-in .vcr-char>span{animation:vcr-up .8s var(--vcr-ease) both}
 @keyframes vcr-up{from{transform:translateY(120%)}to{transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.vcr-char>span{transform:none}.vcr-in .vcr-char>span{animation:none}}
+
+/* 20.11.2026: superellipse ("squircle", Apple-style continuous) corners on every rounded shape. Where the browser knows `corner-shape` (Chromium 139+) the
+   corners of all boxes become superellipses (exponent ~5, like the iOS continuous corner; `squircle` is exponent 4 and is the fallback value); elsewhere the
+   ordinary circular radius stays. Pills and circles must stay true semicircles, so they are put back to `round`. */
+@supports (corner-shape:squircle){
+  *,*::before,*::after{corner-shape:squircle;corner-shape:superellipse(2.3)}
+  .button,.arrow,.site-header,.photo-caption,.round-link,.filter,.product-badge,.close,.success-symbol,.product-go,.availability-line .dot,
+  .hero-switch,.hero-switch a,.v2-gallery-pill>span,.v2-gallery-pill>span i,.v2-gallery-pill:focus-visible,.v2-event-stats li:not(.v2-ev-date)::before,
+  .nav-cta,.language,::-webkit-scrollbar-thumb{corner-shape:round}
+}
