@@ -52,12 +52,14 @@
 .v2-services details{border-bottom:0}
 .v2-services summary{padding:26px 0;min-height:80px;font-size:clamp(21px,1.9vw,28px);letter-spacing:-.03em}
 .v2-services .detail-body{max-width:56ch}
-/* Two reading levels inside an answer: the lead sentence (ink, 18px, 500) and the supporting text (15.5px, olive-tinted #4d5640,
-   ~6.3:1 on the hover fill). 10px between them; the lead keeps its measure short so it never runs wider than ~45ch. */
-.v2-services .v2-answer-lead{max-width:46ch;font-size:clamp(17px,1.35vw,19px);line-height:1.4;font-weight:500;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty}
-.v2-services .v2-answer-more{margin-top:10px;font-size:15.5px;line-height:1.62;color:#4d5640}
-@media(max-width:600px){.v2-services .v2-answer-lead{font-size:18px}.v2-services .v2-answer-more{font-size:16px}}
-.v2-yoga{background:#303c2c;color:#faf7f2;display:flow-root;--line:#78836e;--muted:#d2d9c9}
+/* 21.11.2026: three clear steps inside an open row. Question 21-28px/400 > lead sentence 19-22px/600 (ink) > supporting text 16px/400
+   (olive-tinted #4d5640, ~6.3:1 on the hover fill). Before, lead and support differed by only 2px and one weight step, so they read as
+   one block. Now the lead is semibold and tight, the support is looser (1.7) with a 14px gap and a ~54ch measure; the lead stays ~40ch. */
+.v2-services .detail-body{padding-bottom:26px}
+.v2-services .v2-answer-lead{max-width:40ch;font-size:clamp(19px,1.6vw,22px);line-height:1.32;font-weight:600;letter-spacing:-.015em;color:var(--ink);text-wrap:balance}
+.v2-services .v2-answer-more{margin-top:14px;max-width:54ch;font-size:16px;line-height:1.7;color:#4d5640;text-wrap:pretty}
+@media(max-width:600px){.v2-services .v2-answer-lead{font-size:19px}.v2-services .v2-answer-more{font-size:16px;margin-top:12px}}
+.v2-yoga{background:#303c2c;color:#faf7f2;display:flow-root;--line:#78836e;--muted:#dde3d3}
 .v2-yoga .detail-body{color:var(--muted)}
 .v2-yoga :focus-visible{outline-color:var(--v2-lime)}
 .v2-event-list{border-top:1px solid var(--line)}
@@ -521,7 +523,7 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
 .v2-yoga .v2-services details:hover,.v2-yoga .v2-services details[open]:hover{background-color:rgba(250,247,242,.09)}
 .v2-yoga .v2-services details[open]{background-color:rgba(250,247,242,.05)}
 .v2-yoga .v2-answer-lead{color:#faf7f2}
-.v2-yoga .v2-answer-more{color:#d2d9c9}
+.v2-yoga .v2-answer-more{color:#e3e8d9}
 .v2-yoga .v2-gallery-slide--studio{object-position:50% 30%}
 
 /* 19.11.2026: Warsztaty shares the Sesje 1:1 structure and rules through :is(); only the photo framing and the quiet program link are its own. */
@@ -683,7 +685,33 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
    thing driven by one angle parameter (--jogi-angle, a registered property so the browser can animate it). It turns once in 24s and pauses while the
    band is off screen; with reduced motion, or in browsers without @property, it stays a still gradient / the original flat colour. */
 @property --jogi-angle{syntax:"<angle>";inherits:false;initial-value:115deg}
-.v2-yoga{--jogi-angle:115deg;background:#303c2c;background:linear-gradient(var(--jogi-angle),#303c2c 0%,#4b6043 50%,#303c2c 100%);animation:v2-jogi-turn 24s linear infinite}
-.v2-yoga.is-offscreen{animation-play-state:paused}
+.v2-yoga{--jogi-angle:115deg;background:#283323}
+.v2-yoga.is-offscreen::after{animation-play-state:paused}
 @keyframes v2-jogi-turn{to{--jogi-angle:475deg}}
-@media(prefers-reduced-motion:reduce){.v2-yoga{animation:none}}
+@media(prefers-reduced-motion:reduce){.v2-yoga::after{animation:none}}
+
+/* 21.11.2026: a moss-plaster texture over the Studio Jogi gradient. It lies in a pseudo-element above the band's own background and blends with it
+   (--tex-blend / --tex-opacity), so the turning gradient still shows through; the band's content sits above it. */
+.v2-yoga{position:relative;isolation:isolate;--tex-blend:overlay;--tex-opacity:.42}
+.v2-yoga::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;background:url(/assets/v2/textures/moss-plaster.jpg) center/cover no-repeat;mix-blend-mode:var(--tex-blend);opacity:var(--tex-opacity)}
+
+/* 21.11.2026 (reorder): the turning gradient now lies ABOVE the texture. Layers, bottom to top: the band's flat original olive (#303c2c) -> the moss texture
+   (overlay) -> the gradient (::after). The gradient is added with `screen`, its ends black (no change) and its middle a deep olive (rgb 35,48,31), so the
+   light band that turns lifts the dark base to about the lighter olive (#4b6043) while the texture keeps showing through it. */
+.v2-yoga::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;background:conic-gradient(from var(--jogi-angle) at 50% 50%,rgb(60,84,52) 0deg,rgb(57,80,49) 12deg,rgb(49,69,42) 24deg,rgb(37,52,32) 36deg,rgb(24,34,21) 48deg,rgb(12,17,10) 60deg,rgb(3,5,3) 72deg,rgb(0,0,0) 84deg,rgb(0,0,0) 96deg,rgb(3,5,3) 108deg,rgb(12,17,10) 120deg,rgb(24,34,21) 132deg,rgb(37,52,32) 144deg,rgb(49,69,42) 156deg,rgb(57,80,49) 168deg,rgb(60,84,52) 180deg,rgb(57,80,49) 192deg,rgb(49,69,42) 204deg,rgb(37,52,32) 216deg,rgb(24,34,21) 228deg,rgb(12,17,10) 240deg,rgb(3,5,3) 252deg,rgb(0,0,0) 264deg,rgb(0,0,0) 276deg,rgb(3,5,3) 288deg,rgb(12,17,10) 300deg,rgb(24,34,21) 312deg,rgb(37,52,32) 324deg,rgb(49,69,42) 336deg,rgb(57,80,49) 348deg,rgb(60,84,52) 360deg);mix-blend-mode:screen;opacity:.6;animation:v2-jogi-turn 40s linear infinite}
+
+/* 21.11.2026 (softer): the gradient is now a conic sweep around the centre of the band: two wide, cosine-eased lobes of light (opposite each other, each ~170deg
+   across, 12deg steps so there is no visible edge) that orbit slowly (40s per turn, was a 24s linear stripe). Peak colour rgb(60,84,52), a bit brighter than
+   before. Still one angle parameter, still added with `screen` above the texture. */
+
+/* 21.11.2026: on desktop the Studio Jogi band fits one viewport height (it was 936px tall at 1440x800, so the photo and the answers
+   never showed together). Band = 2 x vertical margin + grid; the grid is the photo (content height + 84px top padding) + 102px above it (74px header row + 28px gap).
+   So the photo's content height is capped at 100svh - 2 x margin - 186px (never below 360px) and the margin shrinks with the
+   viewport height (8svh, 40-120px). The photo is object-fit:cover, so a lower photo only crops a little more. Below 861px or on
+   very short windows the section keeps its natural stacked / tall layout. */
+@media(min-width:861px) and (min-height:620px){
+  .v2-yoga>.v2-container{margin-block:clamp(40px,min(7vw,8svh),120px)}
+  .v2-yoga .v2-session-intro>.v2-session-gallery{max-height:max(360px,calc(100svh - 2*clamp(40px,min(7vw,8svh),120px) - 186px))}
+}
+/* On windows up to 800px tall the answers column, not the photo, sets the height, so its gap under the button is 32px instead of 64px. */
+@media(min-width:861px) and (min-height:620px) and (max-height:800px){.v2-yoga .v2-services{margin-top:32px}}
