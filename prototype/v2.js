@@ -186,10 +186,12 @@ function v2Yoga() {
 }
 
 function v2Upcoming() {
-  return `<section id="najblizsze" class="v2-section v2-container v2-upcoming">
+  // 19.11.2026: a full-width floral divider frames the section above and below (it sits outside the container so it runs edge to edge; the same strip, mirrored underneath so the dots face the content both times).
+  const divider = pos => `<div class="v2-divider v2-divider--${pos}" aria-hidden="true"><img src="/assets/v2/ornaments/floral-divider.svg" alt="" width="1571" height="80"></div>`;
+  return `${divider('top')}<section id="najblizsze" class="v2-section v2-container v2-upcoming">
     <div class="v2-section-top"><h2>${tr('Najbliższe wydarzenia', 'Найближчі події')}</h2><p>${tr('Najbliższe wydarzenia z kalendarza.<br>W prototypie — przykładowe dane w miejscu wtyczki.', 'Найближчі події з календаря.<br>У прототипі — демонстраційні дані на місці віджета.')}</p></div>
     <div class="v2-event-list">${v2EventRows(events.filter(e => e.status !== 'ended'))}</div>
-  </section>`;
+  </section>${divider('bottom')}`;
 }
 
 // 19.11.2026: Warsztaty uses the same UI logic as Sesje 1:1 (header band, one button, photo slider + list side by side, soft rows with a
@@ -507,3 +509,96 @@ document.addEventListener('click', e => {
   });
 })();
 
+// 19.11.2026: the floral dividers are revealed by a noise dissolve (a paper-coloured veil tears away along a noise threshold, opening
+// from the middle outward) the first time they scroll into view. Same technique as the "noise dissolve reveal" reference component, ported
+// to plain WebGL2 (this site is static, no React). Without WebGL2 the strip fades in; with reduced motion, or without IntersectionObserver,
+// it simply shows. Until the tear starts the veil covers the strip; once it has finished the canvas and its GL context are released.
+(function dividerReveal() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const VS = `#version 300 es
+in vec2 a_position; out vec2 v_uv;
+void main(){ v_uv=(a_position+1.0)*0.5; gl_Position=vec4(a_position,0.0,1.0); }`;
+  const FS = `#version 300 es
+precision highp float;
+in vec2 v_uv; out vec4 fragColor;
+uniform vec2 u_res; uniform vec3 u_color; uniform float u_progress, u_scale, u_soft, u_bias, u_seed;
+float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)+u_seed); p+=dot(p,p+45.32); return fract(p.x*p.y); }
+float noise(vec2 p){ vec2 i=floor(p), f=fract(p), u=f*f*(3.0-2.0*f);
+  return mix(mix(hash(i),hash(i+vec2(1.0,0.0)),u.x), mix(hash(i+vec2(0.0,1.0)),hash(i+vec2(1.0,1.0)),u.x), u.y); }
+float fbm(vec2 p){ float s=0.0,a=0.5,n=0.0; for(int i=0;i<5;i++){ s+=a*noise(p); n+=a; p*=2.03; a*=0.5; } return s/n; }
+void main(){
+  vec2 p = (v_uv*u_res)/u_res.y;                       // height-normalised: islands stay round on a wide, thin strip
+  float n = smoothstep(0.28,0.72,fbm(p*u_scale));      // pull the mid-range apart so the cut has defined islands
+  float d = abs(v_uv.x-0.5)*2.0;                       // 0 at the middle, 1 at the ends
+  float t = mix(-u_soft-0.02, 1.0+u_soft+0.02, u_progress);
+  float thr = t*(1.0+u_bias) - u_bias*d;
+  fragColor = vec4(u_color, smoothstep(thr-u_soft, thr+u_soft, n));
+}`;
+  const ease = t => { const p = Math.min(1, Math.max(0, t)); return p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 2.4) / 2; };
+  const paper = () => {
+    const m = (getComputedStyle(document.getElementById('app') || document.body).backgroundColor || '').match(/\d+(\.\d+)?/g);
+    return m && m.length >= 3 ? m.slice(0, 3).map(v => +v / 255) : [250 / 255, 247 / 255, 242 / 255];
+  };
+  const DELAY = 120, DURATION = 1800;
+
+  function veil(box) {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'v2-divider-veil';
+    canvas.setAttribute('aria-hidden', 'true');
+    const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: false, antialias: true });
+    if (!gl) return null;
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null; };
+    const vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS), prog = gl.createProgram();
+    if (!vs || !fs) return null;
+    gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
+    const buf = gl.createBuffer(), pos = gl.getAttribLocation(prog, 'a_position');
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+    const U = n => gl.getUniformLocation(prog, n), seed = Math.random() * 100, color = paper();
+    gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    box.appendChild(canvas);
+    const draw = progress => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2), w = Math.max(1, Math.round(canvas.clientWidth * dpr)), h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      gl.viewport(0, 0, w, h); gl.useProgram(prog);
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.enableVertexAttribArray(pos); gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+      gl.uniform2f(U('u_res'), w, h); gl.uniform3f(U('u_color'), color[0], color[1], color[2]);
+      gl.uniform1f(U('u_progress'), progress); gl.uniform1f(U('u_scale'), 1.3); gl.uniform1f(U('u_soft'), 0.03);
+      gl.uniform1f(U('u_bias'), 0.45); gl.uniform1f(U('u_seed'), seed);
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 6);
+    };
+    const release = () => { canvas.remove(); const ext = gl.getExtension('WEBGL_lose_context'); ext && ext.loseContext(); };
+    return { draw, release };
+  }
+
+  function play(box, v) {
+    if (!v) { box.classList.add('is-in'); box.dataset.reveal = 'done'; return; }
+    box.dataset.reveal = 'running';
+    const t0 = performance.now() + DELAY;
+    const frame = now => {
+      if (!box.isConnected) { v.release(); return; }
+      const t = (now - t0) / DURATION;
+      v.draw(t <= 0 ? 0 : ease(t));
+      if (t >= 1) { v.release(); box.dataset.reveal = 'done'; } else requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
+
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(list => list.forEach(en => {
+    if (!en.isIntersecting) return;
+    io.unobserve(en.target);
+    play(en.target, en.target._veil);
+  }), { threshold: 0.6 }) : null;
+
+  function prepare(box) {
+    box.dataset.reveal = 'pending';
+    if (reduce.matches || !io) { box.dataset.reveal = 'done'; return; }
+    const v = veil(box);
+    if (v) { box._veil = v; requestAnimationFrame(() => v.draw(0)); } else box.classList.add('is-fade');
+    io.observe(box);
+  }
+  const scan = () => document.querySelectorAll('.v2-divider:not([data-reveal])').forEach(prepare);
+  new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
+  scan();
+})();
