@@ -1,7 +1,7 @@
 'use strict';
 
-function v2SectionLabel(number, pl, uk) {
-  return `<div class="v2-section-label"><span>${number} / ${tr(pl, uk)}</span><span aria-hidden="true"></span></div>`;
+function v2SectionLabel(number, pl, en) {
+  return `<div class="v2-section-label"><span>${number} / ${tr(pl, en)}</span><span aria-hidden="true"></span></div>`;
 }
 
 const isHomePath = () => location.pathname === '/' || location.pathname === '/index.html';
@@ -9,25 +9,25 @@ const homeHref = id => (isHomePath() ? '' : '/') + '#' + id;
 const navCurrent = path => location.pathname.startsWith(path) ? ' aria-current="page"' : '';
 
 function headerV2() {
-  return `<a class="skip" href="#main">${tr('Przejdź do treści', 'Перейти до вмісту')}</a>
+  return `<a class="skip" href="#main">${tr('Przejdź do treści', 'Skip to content')}</a>
   <header class="site-header v2-header">
     <a class="brand" href="/">agnieszka clarity</a>
-    <nav class="nav-links" aria-label="${tr('Menu główne', 'Головне меню')}">
-      <a href="${homeHref('o-mnie')}">${tr('O mnie', 'Про мене')}</a>
-      <a href="${homeHref('sesje')}">${tr('Sesje 1:1', 'Сесії 1:1')}</a>
-      <a href="${homeHref('joga')}">${tr('Studio Jogi', 'Студія йоги')}</a>
-      <a href="/warsztaty/"${navCurrent('/warsztaty')}>${tr('Warsztaty', 'Воркшопи')}</a>
-      <a href="/sklep/"${navCurrent('/sklep')}>${tr('Sklep', 'Магазин')}</a>
+    <nav class="nav-links" aria-label="${tr('Menu główne', 'Main menu')}">
+      <a href="${homeHref('o-mnie')}">${tr('O mnie', 'About me')}</a>
+      <a href="${homeHref('sesje')}">${tr('Sesje 1:1', '1:1 sessions')}</a>
+      <a href="${homeHref('joga')}">${tr('Studio Jogi', 'Studio Jogi')}</a>
+      <a href="/warsztaty/"${navCurrent('/warsztaty')}>${tr('Warsztaty', 'Workshops')}</a>
+      <a href="/sklep/"${navCurrent('/sklep')}>${tr('Sklep', 'Shop')}</a>
     </nav>
-    <button class="language" data-language aria-label="${tr('Zmień język na ukraiński', 'Перемкнути на польську')}">${lang === 'pl' ? 'PL / UK' : 'UK / PL'}</button>
-    <button class="button light nav-cta" data-book="session">${tr('Umów sesję', 'Записатися')}</button>
-    <button class="menu-toggle" aria-label="${tr('Otwórz menu', 'Відкрити меню')}" aria-expanded="false">${menuIcon}</button>
+    <button class="language" data-language aria-label="${tr('Zmień język na angielski', 'Switch language to Polish')}">${lang === 'pl' ? 'PL / EN' : 'EN / PL'}</button>
+    <button class="button light nav-cta" data-book="session">${tr('Umów sesję', 'Book a session')}</button>
+    <button class="menu-toggle" aria-label="${tr('Otwórz menu', 'Open menu')}" aria-expanded="false">${menuIcon}</button>
   </header>
-  <nav class="mobile-nav" aria-label="${tr('Menu mobilne', 'Мобільне меню')}">
-    <a href="${homeHref('o-mnie')}">${tr('O mnie', 'Про мене')}</a><a href="${homeHref('sesje')}">${tr('Sesje 1:1', 'Сесії 1:1')}</a>
-    <a href="${homeHref('joga')}">${tr('Studio Jogi', 'Студія йоги')}</a><a href="/warsztaty/"${navCurrent('/warsztaty')}>${tr('Warsztaty', 'Воркшопи')}</a>
-    <a href="/sklep/"${navCurrent('/sklep')}>${tr('Sklep', 'Магазин')}</a><a href="${homeHref('najblizsze')}">${tr('Wydarzenia', 'Події')}</a>
-    <button class="button" data-book="session">${tr('Umów sesję', 'Записатися')}</button>
+  <nav class="mobile-nav" aria-label="${tr('Menu mobilne', 'Mobile menu')}">
+    <a href="${homeHref('o-mnie')}">${tr('O mnie', 'About me')}</a><a href="${homeHref('sesje')}">${tr('Sesje 1:1', '1:1 sessions')}</a>
+    <a href="${homeHref('joga')}">${tr('Studio Jogi', 'Studio Jogi')}</a><a href="/warsztaty/"${navCurrent('/warsztaty')}>${tr('Warsztaty', 'Workshops')}</a>
+    <a href="/sklep/"${navCurrent('/sklep')}>${tr('Sklep', 'Shop')}</a><a href="${homeHref('najblizsze')}">${tr('Wydarzenia', 'Events')}</a>
+    <button class="button" data-book="session">${tr('Umów sesję', 'Book a session')}</button>
   </nav>`;
 }
 
@@ -36,22 +36,52 @@ function v2PageHero(kind) {
   const workshops = kind === 'workshops';
   const down = '<svg class="down" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v15M5 13l7 7 7-7"/></svg>';
   return `<section class="v2-page-hero ${workshops ? 'is-photo' : 'is-dark'}" data-top="${workshops ? '#bbaf93' : '#303829'}" aria-labelledby="page-title">
-    ${workshops ? `<img class="v2-page-hero-photo" src="/assets/workshop.jpg" width="1600" height="1067" fetchpriority="high" alt="${tr('Swobodny ruch na plaży o zachodzie słońca', 'Вільний рух на пляжі під час заходу сонця')}">` : ''}
-    <h1 id="page-title">${workshops ? tr('Warsztaty', 'Воркшопи') : tr('Sklep', 'Магазин')}</h1>
+    ${workshops ? `<img class="v2-page-hero-photo" src="/assets/workshop.jpg" width="1600" height="1067" fetchpriority="high" alt="${tr('Swobodny ruch na plaży o zachodzie słońca', 'Free movement on the beach at sunset')}">` : ''}
+    <h1 id="page-title">${workshops ? tr('Warsztaty', 'Workshops') : tr('Sklep', 'Shop')}</h1>
     <div class="v2-page-hero-row">
-      <p class="v2-page-hero-lead">${workshops ? tr('Przestrzeń <br>do odkrywania.', 'Простір <br>для відкриттів.') : tr('Dobre rzeczy <br>dla siebie.', 'Добрі речі <br>для себе.')}</p>
-      <div class="v2-page-hero-side"><p>${workshops ? tr('Praktyka, refleksja i wspólne doświadczenie. Znajdź temat, który jest Ci teraz bliski.', 'Практика, роздуми та спільний досвід. Знайди тему, яка зараз тобі близька.') : tr('Warsztaty online i praktyki do wykonania w swoim tempie. Katalog pokazowy — zakupy online nie są jeszcze dostępne.', 'Онлайн-воркшопи та практики у власному темпі. Демонстраційний каталог — онлайн-покупки поки недоступні.')}</p>
-        <a class="button light" href="${workshops ? '#programy' : '#katalog'}">${workshops ? tr('Zobacz programy', 'Переглянути програми') : tr('Przejdź do katalogu', 'Перейти до каталогу')}${down}</a></div>
+      <p class="v2-page-hero-lead">${workshops ? tr('Przestrzeń <br>do odkrywania.', 'Space <br>to explore.') : tr('Dobre rzeczy <br>dla siebie.', 'Good things <br>for yourself.')}</p>
+      <div class="v2-page-hero-side"><p>${workshops ? tr('Praktyka, refleksja i wspólne doświadczenie. Znajdź temat, który jest Ci teraz bliski.', 'Practice, reflection and shared experience. Find a topic that speaks to you right now.') : tr('Warsztaty online i praktyki do wykonania w swoim tempie. Katalog pokazowy — zakupy online nie są jeszcze dostępne.', 'Online workshops and practices to explore at your own pace. Demo catalogue — online purchases are not yet available.')}</p>
+        <a class="button light" href="${workshops ? '#programy' : '#katalog'}">${workshops ? tr('Zobacz programy', 'Explore programmes') : tr('Przejdź do katalogu', 'Browse the catalogue')}${down}</a></div>
     </div>
   </section>`;
 }
 
-function v2Label(pl, uk) {
-  return `<div class="v2-section-label"><span>${tr(pl, uk)}</span><span aria-hidden="true"></span></div>`;
+function v2Label(pl, en) {
+  return `<div class="v2-section-label"><span>${tr(pl, en)}</span><span aria-hidden="true"></span></div>`;
 }
 
 function v2EventRows(list) {
-  return list.map(e => `<article class="v2-event-row"><div><span class="demo-caption">${tr('Przykładowa data', 'Приклад дати')}</span><time datetime="${e.date}">${dateText(e.date)}</time></div><div><h3>${e[lang]}</h3><p>${e.format === 'online' ? tr('Spotkanie online', 'Зустріч онлайн') : tr('Praktyka w studio', 'Практика у студії')}</p></div><span class="status">${e.status === 'soon' ? tr('Zapisy wkrótce', 'Запис незабаром') : tr('Przykład otwartego zapisu', 'Приклад відкритого запису')}</span><button class="round-link" data-book="${e.service}" data-event="${e.id}" aria-label="${esc(tr('Zapytaj o: ', 'Запитати про: ') + e[lang])}">${arrow}</button></article>`).join('');
+  return list.map(e => `<article class="v2-event-row"><div><span class="demo-caption">${tr('Przykładowa data', 'Example date')}</span><time datetime="${e.date}">${dateText(e.date)}</time></div><div><h3>${e[lang]}</h3><p>${e.format === 'online' ? tr('Spotkanie online', 'Online session') : tr('Praktyka w studio', 'Studio practice')}</p></div><span class="status">${e.status === 'soon' ? tr('Zapisy wkrótce', 'Registration opens soon') : tr('Przykład otwartego zapisu', 'Example: registration open')}</span><button class="round-link" data-book="${e.service}" data-event="${e.id}" aria-label="${esc(tr('Zapytaj o: ', 'Ask about: ') + e[lang])}">${arrow}</button></article>`).join('');
+}
+
+// 19.11.2026: the home events are three cards in a row, after the "Card" activity card by Ravi Katiyar on 21st.dev (card-25): a title, a stack of
+// three overlapping photos that spreads and tilts on hover, a short list of details. The component itself is React + Tailwind and its source is
+// behind an account, so the look and the hover were rebuilt from its live preview in plain CSS. There is no visible arrow: the whole card is
+// clickable through an invisible button stretched over it (it keeps the accessible name and opens the same enquiry form as before). Photos are
+// existing web-sized ones; the details are the example date, the format and the booking status that the old rows already showed.
+const eventPhotos = {
+  'demo-breath': ['/assets/v2/gallery/sesje-meditation.jpg', '/assets/v2/hero-meadow-2.webp', '/assets/v2/gallery/sesje-sofa.jpg'],
+  // "Odkryj siebie": three illustrations (the green path through a head, hands holding a glowing sphere, a hand with a lit match). The tall ones are
+  // cropped to the stack's landscape-ish box, so each carries the object-position that keeps its subject in view.
+  'demo-discover': [['/assets/v2/gallery/discover-path.jpg', '50% 50%'], ['/assets/v2/gallery/discover-light.jpg', '50% 88%'], ['/assets/v2/gallery/discover-flame.jpg', '50% 19%']],
+  'demo-yoga': ['/assets/joga.jpg', '/assets/v2/gallery/beach-yoga.jpg', '/assets/v2/gallery/meditation.jpg']
+};
+const eventDateParts = d => {
+  const parts = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'pl-PL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Warsaw' }).formatToParts(new Date(d + 'T12:00:00+01:00'));
+  const get = t => (parts.find(p => p.type === t) || {}).value || '';
+  return { day: get('day'), month: get('month'), year: get('year') };
+};
+// 19.11.2026: card text hierarchy = the "ticket" variant chosen by the client: a numeral for the day with the month and year beside it.
+function v2EventCards(list) {
+  return list.map(e => {
+    const photos = eventPhotos[e.id] || [`/assets/${e.img}`];
+    const online = e.format === 'online', soon = e.status === 'soon';
+    return `<article class="v2-event-card">
+      <div class="v2-event-card-head"><h3>${e[lang]}</h3><button class="v2-event-card-go" data-book="${e.service}" data-event="${e.id}" aria-label="${esc(tr('Zapytaj o: ', 'Ask about: ') + e[lang])}"></button></div>
+      <div class="v2-event-stack" aria-hidden="true">${photos.map((p, i) => { const [src, pos] = Array.isArray(p) ? p : [p, '']; return `<span class="v2-event-photo v2-event-photo--${i}"><img src="${src}" alt="" loading="lazy" decoding="async"${pos ? ` style="object-position:${pos}"` : ''}></span>`; }).join('')}</div>
+      <ul class="v2-event-stats"><li class="v2-ev-date"><time datetime="${e.date}"><span class="v2-ev-day">${eventDateParts(e.date).day}</span> <span class="v2-ev-month">${eventDateParts(e.date).month}</span> <span class="v2-ev-year">${eventDateParts(e.date).year}</span></time></li><li>${online ? tr('Spotkanie online', 'Online session') : tr('Praktyka w studio', 'Studio practice')}</li><li>${soon ? tr('Zapisy wkrótce', 'Registration opens soon') : tr('Przykład otwartego zapisu', 'Example: registration open')}</li></ul>
+    </article>`;
+  }).join('');
 }
 
 // Vanilla port of the "TextGenerateEffect" component (motion/react): the full text stays readable for screen readers,
@@ -65,55 +95,55 @@ function textGenerate(text) {
 function homeHeroV2() {
   return `<section class="v2-hero" data-top="#191a0f" aria-labelledby="hero-title">
     <div class="v2-hero-scene">
-      <img class="v2-hero-photo" src="/assets/v2/hero-meadow-empty.webp" width="1536" height="1024" fetchpriority="high" alt="${tr('Agnieszka w białym stroju podczas medytacji na słonecznej łące', 'Agnieszka в білому вбранні під час медитації на сонячній луці')}">
+      <img class="v2-hero-photo" src="/assets/v2/hero-meadow-empty.webp" width="1536" height="1024" fetchpriority="high" alt="${tr('Agnieszka w białym stroju podczas medytacji na słonecznej łące', 'Agnieszka in white, meditating in a sunlit meadow')}">
       <img class="v2-hero-layer v2-hero-rear" src="/assets/v2/meadow-transparent-layers/meadow-rear-transparent.png" width="1536" height="1024" fetchpriority="high" alt="" aria-hidden="true">
       <img class="v2-hero-layer v2-hero-front" src="/assets/v2/meadow-transparent-layers/meadow-foreground-transparent.png" width="1536" height="1024" alt="" aria-hidden="true">
-      <h1 id="hero-title">${textGenerate(tr('Bliskość', 'Близькість'))}</h1>
+      <h1 id="hero-title">${textGenerate(tr('Bliskość', 'Closeness'))}</h1>
       <img class="v2-hero-subject" src="/assets/v2/hero-subject-2.png" width="1536" height="1024" alt="" aria-hidden="true">
     </div>
     <div class="v2-hero-intro">
-      <p>${tr('Przestrzeń, <br>w której <br class="hb-br">możesz <br>być sobą', 'Простір, <br>де можна <br class="hb-br"><br>бути собою')}</p></div>
-    <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej <br class="hb-br">pracy <br>z emocjami i ciałem', 'Зустріньмося <br>в індивідуальній <br class="hb-br">роботі <br>з емоціями й тілом')}</p><button type="button" class="button light hb-cta" data-book="session"><img class="hb-cta-icon" src="/assets/v2/icons/button-mark.svg" alt="" width="20" height="20">${tr('Umów sesję', 'Записатися')}</button></div>  </section>`;
+      <p>${tr('Przestrzeń, <br>w której <br class="hb-br">możesz <br>być sobą', 'A space <br>where you <br class="hb-br">can <br>be yourself')}</p></div>
+    <div class="v2-hero-action"><p>${tr('Spotkajmy się <br>w indywidualnej <br class="hb-br">pracy <br>z emocjami i ciałem', 'Let\'s meet <br>for a 1:1 session <br class="hb-br">focused on <br>your emotions and body')}</p><button type="button" class="button light hb-cta" data-book="session"><img class="hb-cta-icon" src="/assets/v2/icons/button-mark.svg" alt="" width="20" height="20">${tr('Umów sesję', 'Book a session')}</button></div>  </section>`;
 }
 
 // Three paragraphs, the copy split only at sentence boundaries: the first is the statement, the other two support it.
-const aboutIntro = () => tr(['Pomagam Ci lepiej zrozumieć swoje emocje, usłyszeć potrzeby i zauważyć sygnały płynące z ciała.', 'Podczas naszych spotkań jest miejsce na rozmowę, ciszę i to, co trudno ubrać w słowa.', 'Wspólnie szukamy sposobu pracy, który będzie dla Ciebie odpowiedni — w Twoim tempie, z szacunkiem do Twoich granic.'], ['Допомагаю тобі краще зрозуміти свої емоції, почути потреби й помітити сигнали, що йдуть від тіла.', 'Під час наших зустрічей є місце для розмови, тиші й того, що важко передати словами.', 'Разом шукаємо спосіб роботи, який буде для тебе відповідним — у твоєму темпі, з повагою до твоїх меж.']);
-const aboutPortrait = (cls = '', loading = 'lazy') => `<img${cls ? ` class="${cls}"` : ''} src="/assets/v2/portrait.png" alt="${tr('Portret Agnieszki w ciepłym świetle', 'Портрет Agnieszka у теплому світлі')}" width="1086" height="1448" loading="${loading}">`;
-const aboutHands = (cls = '') => `<img${cls ? ` class="${cls}"` : ''} src="/assets/v2/about-hands.webp" alt="${tr('Dłonie złożone na sercu, biała lniana bluzka i mala z zielonym chwostem', 'Руки, складені на серці, біла лляна блузка й мала із зеленим пензликом')}" width="1157" height="1359" loading="lazy">`;
+const aboutIntro = () => tr(['Pomagam Ci lepiej zrozumieć swoje emocje, usłyszeć potrzeby i zauważyć sygnały płynące z ciała.', 'Podczas naszych spotkań jest miejsce na rozmowę, ciszę i to, co trudno ubrać w słowa.', 'Wspólnie szukamy sposobu pracy, który będzie dla Ciebie odpowiedni — w Twoim tempie, z szacunkiem do Twoich granic.'], ['I help you better understand your emotions, listen to your needs and notice the signals from your body.', 'In our sessions, there is space for conversation, silence and whatever is hard to put into words.', 'Together, we find a way of working that feels right for you — at your pace, with respect for your boundaries.']);
+const aboutPortrait = (cls = '', loading = 'lazy') => `<img${cls ? ` class="${cls}"` : ''} src="/assets/v2/portrait.png" alt="${tr('Portret Agnieszki w ciepłym świetle', 'A portrait of Agnieszka in warm light')}" width="1086" height="1448" loading="${loading}">`;
+const aboutHands = (cls = '') => `<img${cls ? ` class="${cls}"` : ''} src="/assets/v2/about-hands.webp" alt="${tr('Dłonie złożone na sercu, biała lniana bluzka i mala z zielonym chwostem', 'Hands resting over the heart, a white linen blouse and mala beads with a green tassel')}" width="1157" height="1359" loading="lazy">`;
 // 13.11.2026: the hands tile became a small auto-advancing gallery. Each pill's fill is a CSS animation;
 // its animationend moves to the next photo, so hover, focus or leaving the viewport simply pause the animation.
 // One markup for every auto-advancing photo slider (the About bento and the Sesje 1:1 section); the controller below is generic.
-const galleryHtml = (slides, cls, label) => `<figure class="${cls} v2-gallery" data-gallery data-index="0" aria-roledescription="${tr('galeria', 'галерея')}" aria-label="${label}">
+const galleryHtml = (slides, cls, label) => `<figure class="${cls} v2-gallery" data-gallery data-index="0" aria-roledescription="${tr('galeria', 'gallery')}" aria-label="${label}">
         ${slides.map(([src, w, h, key, alt], i) => `<img class="v2-gallery-slide v2-gallery-slide--${key}${i ? '' : ' is-active'}" src="${src}" width="${w}" height="${h}" alt="${alt}" loading="lazy"${i ? ' aria-hidden="true"' : ''}>`).join('')}
-        <div class="v2-gallery-pills">${slides.map((_, i) => `<button type="button" class="v2-gallery-pill${i ? '' : ' is-active'}" data-gallery-go="${i}" aria-label="${tr('Zdjęcie', 'Фото')} ${i + 1} ${tr('z', 'з')} ${slides.length}"${i ? '' : ' aria-current="true"'}><span><i></i></span></button>`).join('')}</div>
+        <div class="v2-gallery-pills">${slides.map((_, i) => `<button type="button" class="v2-gallery-pill${i ? '' : ' is-active'}" data-gallery-go="${i}" aria-label="${tr('Zdjęcie', 'Photo')} ${i + 1} ${tr('z', 'of')} ${slides.length}"${i ? '' : ' aria-current="true"'}><span><i></i></span></button>`).join('')}</div>
       </figure>`;
 const aboutGallery = () => {
   const slides = [
-    ['/assets/v2/about-hands.webp', 1157, 1359, 'hands', tr('Dłonie złożone na sercu, biała lniana bluzka i mala z zielonym chwostem', 'Руки, складені на серці, біла лляна блузка й мала із зеленим пензликом')],
-    ['/assets/v2/gallery/meditation.jpg', 900, 1125, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka медитує на пляжі серед дерев')],
-    ['/assets/v2/gallery/beach-yoga.jpg', 900, 1125, 'yoga', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka в позі йоги на піщаному пляжі')],
-    ['/assets/v2/gallery/session.jpg', 768, 960, 'session', tr('Rozmowa podczas sesji 1:1 w jasnym gabinecie', 'Розмова під час сесії 1:1 у світлому кабінеті')]
+    ['/assets/v2/about-hands.webp', 1157, 1359, 'hands', tr('Dłonie złożone na sercu, biała lniana bluzka i mala z zielonym chwostem', 'Hands resting over the heart, a white linen blouse and mala beads with a green tassel')],
+    ['/assets/v2/gallery/meditation.jpg', 900, 1125, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka meditating among trees on the beach')],
+    ['/assets/v2/gallery/beach-yoga.jpg', 900, 1125, 'yoga', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka in a yoga pose on a sandy beach')],
+    ['/assets/v2/gallery/session.jpg', 768, 960, 'session', tr('Rozmowa podczas sesji 1:1 w jasnym gabinecie', 'A conversation during a 1:1 session in a bright room')]
   ];
-  return galleryHtml(slides, 'v2-bento-tile v2-bento-hands', tr('Zdjęcia Agnieszki', 'Фото Agnieszka'));
+  return galleryHtml(slides, 'v2-bento-tile v2-bento-hands', tr('Zdjęcia Agnieszki', 'Photos of Agnieszka'));
 };
 
-const aboutPractices = () => `<nav class="v2-practices" aria-label="${tr('Formy pracy', 'Формати роботи')}">${[
-  ['#sesje', 'sessions-1to1', tr('Sesje 1:1', 'Сесії 1:1'), tr('Rozmowa i praca z emocjami i ciałem', 'Розмова й робота з емоціями та тілом')],
-  ['#joga', 'yoga', tr('Joga i medytacja', 'Йога й медитація'), tr('Kundalini, Flow i praktyka łączona', 'Kundalini, Flow і поєднана практика')],
-  ['/warsztaty/', 'workshops', tr('Warsztaty', 'Воркшопи'), tr('Spotkania i praca w grupie', 'Зустрічі й робота в групі')]
+const aboutPractices = () => `<nav class="v2-practices" aria-label="${tr('Formy pracy', 'Ways of working together')}">${[
+  ['#sesje', 'sessions-1to1', tr('Sesje 1:1', '1:1 sessions'), tr('Rozmowa i praca z emocjami i ciałem', 'Conversation and work with emotions and the body')],
+  ['#joga', 'yoga', tr('Joga i medytacja', 'Yoga and meditation'), tr('Kundalini, Flow i praktyka łączona', 'Kundalini, Flow and a combined option')],
+  ['/warsztaty/', 'workshops', tr('Warsztaty', 'Workshops'), tr('Spotkania i praca w grupie', 'Group sessions and shared practice')]
 ].map(([href, icon, title, text]) => `<a class="v2-practice" href="${href}"><span class="v2-practice-icon v2-practice-icon--${icon}"><img src="/assets/v2/icons/${icon}.svg" alt="" width="96" height="80" loading="lazy"></span><span class="v2-practice-title">${title}</span><span class="v2-practice-text">${text}</span>${arrow}</a>`).join('')}</nav>`;
 
 // 13.11.2026: "O mnie" as a bento grid (variant B, chosen by the client over the earlier three-column layout,
 // a type-led and a drenched-olive variant): content split into tiles of different size and colour weight.
 function v2About() {
-  return `<section id="o-mnie" class="v2-section v2-container v2-about" aria-label="${tr('O mnie', 'Про мене')}">
+  return `<section id="o-mnie" class="v2-section v2-container v2-about" aria-label="${tr('O mnie', 'About me')}">
     <div class="v2-bento">
-      <div class="v2-bento-tile v2-bento-title"><h2>${tr('Bliżej siebie.<br>Bliżej życia.', 'Ближче до себе.<br>Ближче до життя.')}</h2><p>${tr('Sesje 1:1, joga, medytacja i warsztaty. W jednym miejscu, w Twoim tempie.', 'Сесії 1:1, йога, медитація й воркшопи. В одному місці, у твоєму темпі.')}</p></div>
+      <div class="v2-bento-tile v2-bento-title"><h2>${tr('Bliżej siebie.<br>Bliżej życia.', 'Closer to yourself.<br>Closer to life.')}</h2><p>${tr('Sesje 1:1, joga, medytacja i warsztaty. W jednym miejscu, w Twoim tempie.', '1:1 sessions, yoga, meditation and workshops. In one place, at your pace.')}</p></div>
       <figure class="v2-bento-tile v2-bento-portrait">${aboutPortrait()}</figure>
-      <div class="v2-bento-tile v2-bento-intro"><div class="v2-bento-intro-head"><p class="v2-bento-lead">${tr('Jestem Agnieszka.', 'Я — Agnieszka.')}</p><img class="v2-bento-intro-mark" src="/assets/v2/icons/intro-mark.svg" alt="" width="57" height="64" loading="lazy"></div>${aboutIntro().map((t, i) => `<p${i ? '' : ' class="v2-bento-statement"'}>${t}</p>`).join('')}</div>
+      <div class="v2-bento-tile v2-bento-intro"><div class="v2-bento-intro-head"><p class="v2-bento-lead">${tr('Jestem Agnieszka.', 'I\'m Agnieszka.')}</p><img class="v2-bento-intro-mark" src="/assets/v2/icons/intro-mark.svg" alt="" width="57" height="64" loading="lazy"></div>${aboutIntro().map((t, i) => `<p${i ? '' : ' class="v2-bento-statement"'}>${t}</p>`).join('')}</div>
       ${aboutGallery()}
-      <div class="v2-bento-tile v2-bento-words"><span class="v2-bento-flower" aria-hidden="true"><img src="/assets/v2/ornaments/botanical-flower.svg" alt="" width="1059" height="1054" loading="lazy"></span><p>${tr('Ciało<i>.</i><br>Emocje<i>.</i><br>Uważność<i>.</i>', 'Тіло<i>.</i><br>Емоції<i>.</i><br>Уважність<i>.</i>')}</p></div>
-      <div class="v2-bento-tile v2-bento-practices"><h3>${tr('Jak możemy pracować', 'Як ми можемо працювати')}</h3>${aboutPractices()}</div>
+      <div class="v2-bento-tile v2-bento-words"><span class="v2-bento-flower" aria-hidden="true"><img src="/assets/v2/ornaments/botanical-flower.svg" alt="" width="1059" height="1054" loading="lazy"></span><p>${tr('Ciało<i>.</i><br>Emocje<i>.</i><br>Uważność<i>.</i>', 'Body<i>.</i><br>Emotions<i>.</i><br>Mindfulness<i>.</i>')}</p></div>
+      <div class="v2-bento-tile v2-bento-practices"><h3>${tr('Jak możemy pracować', 'How we can work together')}</h3>${aboutPractices()}</div>
     </div>
   </section>`;
 }
@@ -128,33 +158,33 @@ function answerHtml(text) {
 // 18.11.2026: the Sesje 1:1 photo is a four-slide slider like the About bento: the session scene first, then the beach meditation,
 // the beach pose and the sofa portrait (all web-sized copies in assets/v2/gallery/).
 const sessionGallery = () => galleryHtml([
-  ['/assets/brainspotting.jpg', 1440, 960, 'room', tr('Przestrzeń do indywidualnej rozmowy', 'Простір для індивідуальної розмови')],
-  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka медитує на пляжі серед дерев')],
-  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka в позі йоги на піщаному пляжі')],
-  ['/assets/v2/gallery/sesje-sofa.jpg', 1600, 1200, 'sofa', tr('Agnieszka siedzi spokojnie na skórzanej sofie', 'Agnieszka спокійно сидить на шкіряному дивані')]
-], 'v2-session-gallery', tr('Zdjęcia z sesji i praktyk', 'Фото із сесій і практик'));
+  ['/assets/brainspotting.jpg', 1440, 960, 'room', tr('Przestrzeń do indywidualnej rozmowy', 'A space for a one-to-one conversation')],
+  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka meditating among trees on the beach')],
+  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka in a yoga pose on a sandy beach')],
+  ['/assets/v2/gallery/sesje-sofa.jpg', 1600, 1200, 'sofa', tr('Agnieszka siedzi spokojnie na skórzanej sofie', 'Agnieszka sitting peacefully on a leather sofa')]
+], 'v2-session-gallery', tr('Zdjęcia z sesji i praktyk', 'Photos from sessions and practices'));
 
 function v2Sessions() {
   // 17.11.2026: four questions and answers (client copy) replace the two placeholder rows and the separate "Nie wiesz, który
   // kierunek wybrać?" note; the per-row "Zapytaj o sesję 1:1" links are gone, one general button sits with the headline (the single primary action); the four questions are a quiet reference list.
   // The Ukrainian text is a translation to be approved.
   const rows = [
-    ['session-first', tr('Jak wygląda pierwszy krok?', 'Як виглядає перший крок?'),
+    ['session-first', tr('Jak wygląda pierwszy krok?', 'How do I get started?'),
       tr('Skorzystaj z formularza i napisz krótko, z czym chcesz przyjść. Możesz opisać konkretną trudność albo po prostu zaznaczyć, że potrzebujesz rozmowy. Odezwę się do Ciebie, aby ustalić termin i odpowiedzieć na pytania przed pierwszą sesją.',
-         'Скористайся формою й коротко напиши, з чим хочеш прийти. Можеш описати конкретну складність або просто зазначити, що потребуєш розмови. Я зв’яжуся з тобою, щоб узгодити час і відповісти на запитання перед першою сесією.')],
-    ['session-expect', tr('Czego możesz się spodziewać?', 'Чого можна очікувати?'),
+         'Use the form to share a little about what brings you here. You can describe a specific difficulty or simply say that you need someone to talk to. I\'ll get in touch to arrange a time and answer your questions before your first session.')],
+    ['session-expect', tr('Czego możesz się spodziewać?', 'What can you expect?'),
       tr('Podczas spotkania przyglądamy się temu, co przeżywasz i jak wpływa to na Twoją codzienność. Rozmowa może dotyczyć emocji, relacji oraz tego, co odczuwasz w ciele. Nie musisz poruszać wszystkich tematów od razu. Jest miejsce na pytania, chwilę namysłu i przerwy, kiedy ich potrzebujesz.',
-         'Під час зустрічі ми придивляємося до того, що ти переживаєш і як це впливає на твоє повсякдення. Розмова може стосуватися емоцій, стосунків і того, що ти відчуваєш у тілі. Не обов’язково одразу торкатися всіх тем. Є місце для запитань, хвилини роздумів і пауз, коли вони тобі потрібні.')],
-    ['session-format', tr('Format i szczegóły spotkania', 'Формат і деталі зустрічі'),
+         'During a session, we explore what you are going through and how it affects your everyday life. We may talk about emotions, relationships and what you feel in your body. You don\'t have to cover everything at once. There is room for questions, time to reflect and breaks whenever you need them.')],
+    ['session-format', tr('Format i szczegóły spotkania', 'Session format and details'),
       tr('Przed potwierdzeniem sesji ustalimy jej format, czas trwania i koszt. Otrzymasz też informacje organizacyjne potrzebne do udziału w spotkaniu. Wszystko będzie jasne z wyprzedzeniem, aby spokojnie zdecydować, czy proponowane warunki Ci odpowiadają.',
-         'Перед підтвердженням сесії ми узгодимо її формат, тривалість і вартість. Ти також отримаєш організаційну інформацію, потрібну для участі у зустрічі. Усе буде зрозуміло заздалегідь, щоб спокійно вирішити, чи підходять тобі запропоновані умови.')],
-    ['session-direction', tr('Nie wiesz, który kierunek wybrać?', 'Не знаєш, який напрям обрати?'),
+         'Before confirming your session, we will agree on the format, duration and cost. You will also receive the practical information you need to take part. Everything will be clear in advance, so you can take your time deciding whether the arrangements work for you.')],
+    ['session-direction', tr('Nie wiesz, który kierunek wybrać?', 'Not sure where to start?'),
       tr('Nie musisz znać nazw metod ani od razu wybierać konkretnej usługi. Możesz zacząć od prostego: „Nie wiem, czego potrzebuję, ale chcę o tym porozmawiać”. Pomogę Ci przyjrzeć się dostępnym formom wsparcia i wybrać, od czego zacząć.',
-         'Не обов’язково знати назви методів чи одразу обирати конкретну послугу. Можеш почати з простого: «Не знаю, чого потребую, але хочу про це поговорити». Допоможу тобі придивитися до доступних форм підтримки й обрати, з чого почати.')]
+         'You don\'t need to know the names of different methods or choose a specific service straight away. You can start with something as simple as: “I\'m not sure what I need, but I\'d like to talk about it.” I\'ll help you explore the available forms of support and decide where to begin.')]
   ];
   const faq = `<div class="v2-services accordion-group">${rows.map(([id, title, text], i) => detail(id, title, answerHtml(text)).replace('<details', i ? '<details' : '<details open')).join('')}</div>`;
   return `<section id="sesje" class="v2-section v2-container v2-sessions">
-    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Sesje 1:1', 'Сесії 1:1')}</h2><p>${tr('Rozmowa, uważność i miejsce na Twoje doświadczenie. W swoim tempie.', 'Розмова, уважність і місце для твого досвіду. У власному темпі.')}</p>${bookButton(tr('Umówmy się na rozmowę', 'Умовмося про розмову'), 'session')}${sessionGallery()}</div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Sesje 1:1', '1:1 sessions')}</h2><p>${tr('Rozmowa, uważność i miejsce na Twoje doświadczenie. W swoim tempie.', 'Conversation, mindfulness and space for your experience. At your own pace.')}</p>${bookButton(tr('Umówmy się na rozmowę', 'Let\'s arrange a chat'), 'session')}${sessionGallery()}</div>
       ${faq}</div>
   </section>`;
 }
@@ -163,24 +193,24 @@ function v2Sessions() {
 // with a plain fill hover, smooth accordion, two-level answers) on the dark olive section. The button keeps the existing wording
 // "Zapytaj o praktykę" and opens the form with "I need help choosing"; the per-row buttons are gone.
 const yogaGallery = () => galleryHtml([
-  ['/assets/joga.jpg', 1440, 1440, 'studio', tr('Praktyka jogi w jasnym studio', 'Практика йоги у світлій студії')],
-  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka в позі йоги на піщаному пляжі')],
-  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka медитує на пляжі серед дерев')],
-  ['/assets/v2/hero-meadow-2.webp', 1536, 1024, 'meadow', tr('Agnieszka medytuje na łące w ciepłym świetle', 'Agnieszka медитує на лузі в теплому світлі')]
-], 'v2-session-gallery', tr('Zdjęcia z praktyk jogi', 'Фото з практик йоги'));
+  ['/assets/joga.jpg', 1440, 1440, 'studio', tr('Praktyka jogi w jasnym studio', 'Yoga practice in a bright studio')],
+  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka in a yoga pose on a sandy beach')],
+  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka meditating among trees on the beach')],
+  ['/assets/v2/hero-meadow-2.webp', 1536, 1024, 'meadow', tr('Agnieszka medytuje na łące w ciepłym świetle', 'Agnieszka meditating in a meadow in warm light')]
+], 'v2-session-gallery', tr('Zdjęcia z praktyk jogi', 'Photos from yoga practices'));
 
 function v2Yoga() {
   // Client copy (18.11.2026). The Ukrainian text is a translation to be approved.
   const answers = {
     kundalini: tr('Joga Kundalini łączy ruch, oddech i medytację. Podczas praktyki kierujemy uwagę na odczucia w ciele i to, co dzieje się w danej chwili. To propozycja dla osób, które chcą poznawać jogę także poprzez skupienie i świadomą pracę z oddechem.',
-      'Йога кундаліні поєднує рух, дихання й медитацію. Під час практики ми спрямовуємо увагу на відчуття в тілі та на те, що відбувається в цю мить. Це пропозиція для тих, хто хоче пізнавати йогу також через зосередження й усвідомлену роботу з диханням.'),
+      'Kundalini yoga brings together movement, breathing and meditation. During practice, we pay attention to sensations in the body and what is happening in the present moment. It is an option for anyone who wants to explore yoga through focus and conscious breathing as well as movement.'),
     flow: tr('To płynne przechodzenie między pozycjami w rytmie oddechu. Poszczególne ruchy tworzą sekwencje, w których jest miejsce na aktywność, koncentrację i odpoczynek. Ta forma może być Ci bliska, jeśli lubisz poznawać ciało poprzez ruch.',
-      'Це плавний перехід між позами в ритмі дихання. Окремі рухи складаються в послідовності, де є місце для активності, концентрації та відпочинку. Ця форма може бути тобі близькою, якщо ти любиш пізнавати тіло через рух.'),
+      'Flow yoga is a way of moving smoothly between poses in time with your breath. Individual movements form sequences with room for activity, focus and rest. This style may feel right for you if you enjoy getting to know your body through movement.'),
     combo: tr('To możliwość korzystania z obu form jogi. Możesz doświadczać płynnych sekwencji Flow oraz praktyk oddechowych i medytacyjnych Kundalini. Wybór dla osób, które chcą poznawać różne sposoby pracy z ciałem i rozwijać regularną praktykę.',
-      'Це можливість користуватися обома формами йоги. Ти можеш відчути плавні послідовності Flow, а також дихальні й медитативні практики кундаліні. Вибір для тих, хто хоче пізнавати різні способи роботи з тілом і розвивати регулярну практику.')
+      'This option lets you take part in both forms of yoga. You can experience the flowing sequences of Flow alongside the breathing and meditation practices of Kundalini. It is a choice for anyone who wants to explore different ways of working with the body and build a regular practice.')
   };
   return `<section id="joga" class="v2-yoga"><div class="v2-container v2-section">
-    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Studio Jogi', 'Студія йоги')}</h2><p>${tr('Ruch. Oddech. Obecność. Wybierz praktykę, która jest Ci bliska.', 'Рух. Дихання. Присутність. Вибери практику, яка тобі близька.')}</p>${bookButton(tr('Zapytaj o praktykę', 'Запитати про практику'), 'help')}${yogaGallery()}</div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Studio Jogi', 'Studio Jogi')}</h2><p>${tr('Ruch. Oddech. Obecność. Wybierz praktykę, która jest Ci bliska.', 'Movement. Breath. Presence. Choose a practice that feels right for you.')}</p>${bookButton(tr('Zapytaj o praktykę', 'Ask about classes'), 'help')}${yogaGallery()}</div>
       <div class="v2-services accordion-group">${['kundalini', 'flow', 'combo'].map((id, i) => detail('yoga-' + id, label(id), answerHtml(answers[id])).replace('<details', i ? '<details' : '<details open')).join('')}</div></div>
   </div></section>`;
 }
@@ -189,8 +219,8 @@ function v2Upcoming() {
   // 19.11.2026: a full-width floral divider frames the section above and below (it sits outside the container so it runs edge to edge; the same strip, mirrored underneath so the dots face the content both times).
   const divider = pos => `<div class="v2-divider v2-divider--${pos}" aria-hidden="true"><img src="/assets/v2/ornaments/floral-divider.svg" alt="" width="1571" height="80"></div>`;
   return `${divider('top')}<section id="najblizsze" class="v2-section v2-container v2-upcoming">
-    <div class="v2-section-top"><h2>${tr('Najbliższe wydarzenia', 'Найближчі події')}</h2><p>${tr('Najbliższe wydarzenia z kalendarza.<br>W prototypie — przykładowe dane w miejscu wtyczki.', 'Найближчі події з календаря.<br>У прототипі — демонстраційні дані на місці віджета.')}</p></div>
-    <div class="v2-event-list">${v2EventRows(events.filter(e => e.status !== 'ended'))}</div>
+    <div class="v2-section-top"><h2>${tr('Najbliższe wydarzenia', 'Upcoming events')}</h2><p>${tr('Najbliższe wydarzenia z kalendarza.<br>W prototypie — przykładowe dane w miejscu wtyczki.', 'Upcoming events from the calendar.<br>In this prototype, example data stands in for the calendar plugin.')}</p></div>
+    <div class="v2-event-cards">${v2EventCards(events.filter(e => e.status !== 'ended'))}</div>
   </section>${divider('bottom')}`;
 }
 
@@ -199,47 +229,47 @@ function v2Upcoming() {
 // link to the program on /warsztaty/ (the rows used to be plain links). The old "Odkryj siebie — cykl 12 warsztatów" caption is gone with
 // the single photo; the cycle is the first row's title. Photos are existing ones (no workshop photos yet), so some repeat other sections.
 const workshopGallery = () => galleryHtml([
-  ['/assets/workshop.jpg', 1441, 2160, 'jump', tr('Swobodny ruch na plaży o zachodzie słońca', 'Вільний рух на пляжі під час заходу сонця')],
-  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka медитує на пляжі серед дерев')],
-  ['/assets/joga.jpg', 1440, 1440, 'studio', tr('Praktyka jogi w jasnym studio', 'Практика йоги у світлій студії')],
-  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka в позі йоги на піщаному пляжі')]
-], 'v2-session-gallery', tr('Zdjęcia z warsztatów i praktyk', 'Фото з воркшопів і практик'));
+  ['/assets/workshop.jpg', 1441, 2160, 'jump', tr('Swobodny ruch na plaży o zachodzie słońca', 'Free movement on the beach at sunset')],
+  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka meditating among trees on the beach')],
+  ['/assets/joga.jpg', 1440, 1440, 'studio', tr('Praktyka jogi w jasnym studio', 'Yoga practice in a bright studio')],
+  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka in a yoga pose on a sandy beach')]
+], 'v2-session-gallery', tr('Zdjęcia z warsztatów i praktyk', 'Photos from workshops and practices'));
 
 function v2Workshops() {
-  const list = `<div class="v2-services accordion-group">${programs.map((p, i) => detail('workshop-' + p.id, label(p.id), answerHtml(p[lang]) + `<a class="text-link" href="/warsztaty/#${p.id}">${tr('Zobacz program', 'Переглянути програму')}</a>`).replace('<details', i ? '<details' : '<details open')).join('')}</div>`;
+  const list = `<div class="v2-services accordion-group">${programs.map((p, i) => detail('workshop-' + p.id, label(p.id), answerHtml(p[lang]) + `<a class="text-link" href="/warsztaty/#${p.id}">${tr('Zobacz program', 'View the programme')}</a>`).replace('<details', i ? '<details' : '<details open')).join('')}</div>`;
   return `<section id="warsztaty" class="v2-section v2-container v2-workshops">
-    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Warsztaty', 'Воркшопи')}</h2><p>${tr('Praktyka, refleksja i wspólne doświadczenie. Znajdź temat, który jest Ci teraz bliski.', 'Практика, роздуми та спільний досвід. Знайди тему, яка зараз тобі близька.')}</p><a class="button" href="/warsztaty/">${tr('Poznaj warsztaty', 'Переглянути воркшопи')}${arrow}</a>${workshopGallery()}</div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Warsztaty', 'Workshops')}</h2><p>${tr('Praktyka, refleksja i wspólne doświadczenie. Znajdź temat, który jest Ci teraz bliski.', 'Practice, reflection and shared experience. Find a topic that speaks to you right now.')}</p><a class="button" href="/warsztaty/">${tr('Poznaj warsztaty', 'Explore workshops')}${arrow}</a>${workshopGallery()}</div>
       ${list}</div>
   </section>`;
 }
 
 function v2School() {
   return `<section id="szkola" class="v2-school"><div class="v2-container v2-section">
-    ${v2SectionLabel('05', 'Szkoła Klarowności', 'Школа ясності')}
-    <div class="v2-school-grid"><div><h2>${tr('Zrób miejsce<br>na nowe.', 'Звільни місце<br>для нового.')}</h2><p class="lead">${tr('Szkoła Klarowności', 'Школа ясності')}</p><p>${tr('Miejsce na głębszą praktykę i naukę. Napisz, jeśli chcesz otrzymać informacje o programie i kolejnych spotkaniach.', 'Місце для глибшої практики й навчання. Напиши, якщо хочеш отримати інформацію про програму й наступні зустрічі.')}</p>${bookButton(tr('Zapytaj o program', 'Запитати про програму'), 'school')}</div>${img('agnieszka-beach.jpg', tr('Agnieszka podczas praktyki na plaży', 'Agnieszka під час практики на пляжі'))}</div>
+    ${v2SectionLabel('05', 'Szkoła Klarowności', 'School of Clarity')}
+    <div class="v2-school-grid"><div><h2>${tr('Zrób miejsce<br>na nowe.', 'Make space<br>for something new.')}</h2><p class="lead">${tr('Szkoła Klarowności', 'School of Clarity')}</p><p>${tr('Miejsce na głębszą praktykę i naukę. Napisz, jeśli chcesz otrzymać informacje o programie i kolejnych spotkaniach.', 'A space for deeper practice and learning. Get in touch if you\'d like information about the programme and upcoming sessions.')}</p>${bookButton(tr('Zapytaj o program', 'Ask about the programme'), 'school')}</div>${img('agnieszka-beach.jpg', tr('Agnieszka podczas praktyki na plaży', 'Agnieszka during a practice on the beach'))}</div>
   </div></section>`;
 }
 
 function v2EventsAndBlog() {
   return `<section id="wydarzenia" class="v2-section v2-container v2-all-events">
-    ${v2SectionLabel('06', 'Wydarzenia', 'Події')}
-    <div class="v2-section-top"><h2>${tr('Wspólne<br>doświadczenia.', 'Спільний<br>досвід.')}</h2><p>${tr('Online, w studio i w swoim tempie.<br>Pokazane terminy są przykładowe.', 'Онлайн, у студії та у власному темпі.<br>Показані дати — приклади.')}</p></div>
-    <div class="filter-row" aria-label="${tr('Filtruj wydarzenia', 'Фільтрувати події')}">${[['all', tr('Wszystkie', 'Усі')], ['online', 'Online'], ['studio', tr('W studio', 'У студії')], ['ended', tr('Archiwum', 'Архів')]].map(([id, text]) => `<button class="filter ${id === 'all' ? 'active' : ''}" data-event-filter="${id}" aria-pressed="${id === 'all'}">${text}</button>`).join('')}</div>
+    ${v2SectionLabel('06', 'Wydarzenia', 'Events')}
+    <div class="v2-section-top"><h2>${tr('Wspólne<br>doświadczenia.', 'Shared<br>experiences.')}</h2><p>${tr('Online, w studio i w swoim tempie.<br>Pokazane terminy są przykładowe.', 'Online, in the studio and at your own pace.<br>The dates shown are examples.')}</p></div>
+    <div class="filter-row" aria-label="${tr('Filtruj wydarzenia', 'Filter events')}">${[['all', tr('Wszystkie', 'All')], ['online', 'Online'], ['studio', tr('W studio', 'In the studio')], ['ended', tr('Archiwum', 'Archive')]].map(([id, text]) => `<button class="filter ${id === 'all' ? 'active' : ''}" data-event-filter="${id}" aria-pressed="${id === 'all'}">${text}</button>`).join('')}</div>
     <div class="events-grid event-results">${events.map(e => eventCard(e)).join('')}</div>
   </section>
   <section id="blog" class="v2-section v2-container v2-blog">
-    ${v2SectionLabel('07', 'Blog', 'Блог')}
-    <div class="v2-section-top"><h2>${tr('Chwila na refleksję.', 'Хвилина для роздумів.')}</h2><p>${tr('Teksty robocze.<br>Podgląd tematów z materiałów.', 'Робочі тексти.<br>Огляд тем із матеріалів.')}</p></div>
-    <div class="blog-grid">${[['joga.jpg', tr('Ruch, oddech i chwila dla siebie', 'Рух, дихання та хвилина для себе')], ['brainspotting.jpg', tr('Jak przygotować się do pierwszej rozmowy', 'Як підготуватися до першої розмови')], ['agnieszka-meditation.jpg', tr('Uważność w codzienności', 'Усвідомленість у щоденному житті')]].map(([photo, title], i) => `<button class="blog-card" data-info="article-${i}">${img(photo, title)}<span>${tr('Materiał w przygotowaniu', 'Матеріал готується')}</span><h3>${title}</h3><span class="blog-arrow">${arrow}</span></button>`).join('')}</div>
+    ${v2SectionLabel('07', 'Blog', 'Blog')}
+    <div class="v2-section-top"><h2>${tr('Chwila na refleksję.', 'A moment for reflection.')}</h2><p>${tr('Teksty robocze.<br>Podgląd tematów z materiałów.', 'Draft texts.<br>A preview of topics from the source materials.')}</p></div>
+    <div class="blog-grid">${[['joga.jpg', tr('Ruch, oddech i chwila dla siebie', 'Movement, breath and a moment for yourself')], ['brainspotting.jpg', tr('Jak przygotować się do pierwszej rozmowy', 'How to prepare for your first conversation')], ['agnieszka-meditation.jpg', tr('Uważność w codzienności', 'Mindfulness in everyday life')]].map(([photo, title], i) => `<button class="blog-card" data-info="article-${i}">${img(photo, title)}<span>${tr('Materiał w przygotowaniu', 'Content in preparation')}</span><h3>${title}</h3><span class="blog-arrow">${arrow}</span></button>`).join('')}</div>
   </section>`;
 }
 
 function v2Shop() {
   return `<section id="sklep" class="v2-section v2-container v2-shop">
-    ${v2SectionLabel('05', 'Sklep', 'Магазин')}
-    <div class="v2-section-top"><h2>${tr('Dobre rzeczy<br>dla siebie.', 'Добрі речі<br>для себе.')}</h2><p>${tr('Materiały do praktyki i własnej refleksji.<br>Katalog pokazowy, bez zakupów online.', 'Матеріали для практики та власних роздумів.<br>Демонстраційний каталог, без онлайн-покупок.')}</p></div>
+    ${v2SectionLabel('05', 'Sklep', 'Shop')}
+    <div class="v2-section-top"><h2>${tr('Dobre rzeczy<br>dla siebie.', 'Good things<br>for yourself.')}</h2><p>${tr('Materiały do praktyki i własnej refleksji.<br>Katalog pokazowy, bez zakupów online.', 'Materials for practice and personal reflection.<br>Demo catalogue, no online purchases.')}</p></div>
     <div class="shop-grid">${shopProducts('all', 3, 'h3')}</div>
-    <a class="button v2-shop-cta" href="/sklep/">${tr('Zobacz sklep', 'Переглянути магазин')}${arrow}</a>
+    <a class="button v2-shop-cta" href="/sklep/">${tr('Zobacz sklep', 'Visit the shop')}${arrow}</a>
   </section>`;
 }
 
@@ -250,10 +280,12 @@ function homeSectionsV2() {
 }
 
 function contactV2() {
+  // 20.11.2026: the headline "Porozmawiajmy." and the short note are replaced by one longer text (client copy) that carries the section as its
+  // heading; the button stays. (The small line "Pierwszy krok może być prosty." above it was removed on 20.11.2026.) The English text is my translation, to be approved.
   return `<section id="kontakt" class="v2-contact"><div class="v2-container">
-    <p>${tr('Pierwszy krok może być prosty.', 'Перший крок може бути простим.')}</p>
-    <h2>${tr('Porozmawiajmy.', 'Поговорімо.')}</h2>
-    <div><p>${tr('Nie musisz od razu wybierać metody.<br>Napisz — wspólnie ustalimy pierwszy krok.', 'Не обов’язково одразу вибирати метод.<br>Напиши — разом визначимо перший крок.')}</p>${bookButton(tr('Napisz do mnie', 'Написати мені'))}</div>
+    <h2 data-magic>${tr('To miejsce dla Ciebie, jeśli chcesz lepiej zrozumieć siebie, porozmawiać o tym, co przeżywasz, albo znaleźć chwilę na oddech w codziennym pośpiechu. Pomogę Ci poznać dostępne możliwości i wyjaśnię, jak może wyglądać nasze spotkanie. Ważne są Twoje potrzeby, granice i tempo. Pierwszym krokiem może być zwykła rozmowa.',
+      'This is a place for you if you want to understand yourself better, talk about what you are going through, or find a moment to breathe in the rush of everyday life. I will help you explore what is available and explain what our meeting might look like. What matters are your needs, your boundaries and your pace. The first step can simply be a conversation.')}</h2>
+    ${bookButton(tr('Napisz do mnie', 'Get in touch'))}
   </div></section>`;
 }
 
@@ -271,7 +303,7 @@ if (!['a', 'b'].includes(heroVariant)) heroVariant = 'b';
 document.documentElement.classList.toggle('hero-b', heroVariant === 'b');
 function heroSwitcher() {
   if (!heroSwitchShown) return '';
-  return `<nav class="hero-switch" aria-label="${tr('Wariant nagłówka na telefonie', 'Варіант героя на телефоні')}"><span>Hero</span>${['a', 'b'].map(v => `<a href="?v=2&lang=${lang}&hero=${v}" data-hero-variant="${v}"${heroVariant === v ? ' aria-current="true"' : ''} aria-label="${tr('Wariant ', 'Варіант ')}${v.toUpperCase()}">${v.toUpperCase()}</a>`).join('')}</nav>`;
+  return `<nav class="hero-switch" aria-label="${tr('Wariant nagłówka na telefonie', 'Mobile hero headline variant')}"><span>Hero</span>${['a', 'b'].map(v => `<a href="?v=2&lang=${lang}&hero=${v}" data-hero-variant="${v}"${heroVariant === v ? ' aria-current="true"' : ''} aria-label="${tr('Wariant ', 'Variant ')}${v.toUpperCase()}">${v.toUpperCase()}</a>`).join('')}</nav>`;
 }
 document.addEventListener('click', e => {
   const link = e.target.closest('[data-hero-variant]');
@@ -593,7 +625,8 @@ void main(){
 
   function prepare(box) {
     box.dataset.reveal = 'pending';
-    if (reduce.matches || !io) { box.dataset.reveal = 'done'; return; }
+    // Hidden by CSS (the strips are switched off for now): no veil, no GL context, no observer.
+    if (reduce.matches || !io || getComputedStyle(box).display === 'none') { box.dataset.reveal = 'done'; return; }
     const v = veil(box);
     if (v) { box._veil = v; requestAnimationFrame(() => v.draw(0)); } else box.classList.add('is-fade');
     io.observe(box);
@@ -602,3 +635,211 @@ void main(){
   new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
   scan();
 })();
+
+// 20.11.2026: "Magic Text" (Preet Suthar, HextaUI, MIT; on 21st.dev) for the contact text, in plain JS: every word has a faint base layer (20%) and a
+// fill layer whose opacity follows the scroll, word after word (softened: a word fades over several words' worth of scroll, with easing and a smoothed progress), so the text "reads itself in" as the block rises through the screen. The original
+// is React + motion (useScroll, offset "start 0.9" to "start 0.25"); here the progress is the same: 0 when the block's top is at 90% of the viewport
+// height, 1 when it reaches 25%. If the page cannot scroll that far (the block sits above a tall footer) the end point is the lowest the block can get,
+// so the text always finishes. Screen readers get the plain sentence once (the word layers are aria-hidden); no JS or reduced motion shows the plain text.
+(function magicText() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const items = new Set();
+  let ticking = false;
+  const clamp = v => Math.min(1, Math.max(0, v));
+  // Softer reveal (20.11.2026): a word fades over a window of SOFT words instead of one, so the edge of the text is a soft gradient of several words
+  // rather than a hard line; the opacity is eased (smoothstep) and the progress itself is smoothed (it chases the scroll position a little late),
+  // so quick scrolling never makes words pop.
+  const SOFT = 7, TAU = 130;   // TAU: ms for the progress to cover about 63% of the gap to the scroll position (frame-rate independent)
+  let lastT = null;
+  function update(now) {
+    ticking = false;
+    const dt = lastT === null ? 16 : Math.min(400, now - lastT);
+    const chase = 1 - Math.exp(-dt / TAU);
+    lastT = now;
+    const vh = innerHeight;
+    let moving = false;
+    items.forEach(it => {
+      if (!it.el.isConnected) { items.delete(it); return; }
+      const top = it.el.getBoundingClientRect().top;
+      const docTop = top + scrollY;
+      const maxScroll = Math.max(0, document.documentElement.scrollHeight - vh);
+      const start = vh * 0.9;
+      const end = Math.max(vh * 0.25, docTop - maxScroll + 24);   // lowest reachable position, if the page ends first
+      const target = clamp((start - top) / Math.max(1, start - Math.min(end, start - 1)));
+      if (it.cur === undefined) it.cur = target;
+      const diff = target - it.cur;
+      it.cur = Math.abs(diff) < 0.0008 ? target : it.cur + diff * chase;
+      if (it.cur !== target) moving = true;
+      const n = it.words.length, head = it.cur * (n + SOFT);
+      it.words.forEach((w, i) => { const o = clamp((head - i) / SOFT); w.style.setProperty('--o', (o * o * (3 - 2 * o)).toFixed(3)); });
+    });
+    if (moving) request(); else lastT = null;
+  }
+  const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  function prepare(el) {
+    el.dataset.magic = 'ready';
+    if (reduce.matches) return;
+    const text = el.textContent.trim().replace(/\s+/g, ' ');
+    const plain = document.createElement('span');
+    plain.className = 'visually-hidden';
+    plain.textContent = text;
+    const frag = document.createDocumentFragment();
+    frag.appendChild(plain);
+    const words = [];
+    text.split(' ').forEach((word, i, all) => {
+      const w = document.createElement('span');
+      w.className = 'v2-magic-word';
+      w.setAttribute('aria-hidden', 'true');
+      w.style.setProperty('--o', '0');
+      w.innerHTML = '<span class="v2-magic-base"></span><span class="v2-magic-fill"></span>';
+      w.firstChild.textContent = word; w.lastChild.textContent = word;
+      frag.appendChild(w);
+      if (i < all.length - 1) frag.appendChild(document.createTextNode(' '));
+      words.push(w);
+    });
+    el.textContent = '';
+    el.appendChild(frag);
+    items.add({ el, words });
+    request();
+  }
+  const scan = () => document.querySelectorAll('[data-magic]:not([data-magic="ready"])').forEach(prepare);
+  addEventListener('scroll', request, { passive: true });
+  addEventListener('resize', request);
+  new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
+  scan();
+})();
+
+// 20.11.2026: the turning flower in the top-right corner of the footer (the one from the "O mnie" tile) fades in when the footer comes into view.
+// The hidden starting state is only applied by this script, so without JS or with reduced motion the flower just shows.
+(function footerFlower() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(list => list.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+  }), { threshold: 0.2 }) : null;
+  const scan = () => document.querySelectorAll('.footer-flower:not([data-fade])').forEach(el => {
+    el.dataset.fade = '1';
+    if (reduce.matches || !io) return;
+    el.classList.add('is-armed');
+    io.observe(el);
+  });
+  new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
+  scan();
+})();
+
+// 20.11.2026: a minimal appearing animation for the home-page blocks while scrolling: each block fades in and rises 18px (0.9s, soft ease-out) the
+// first time it comes into view. Blocks that enter together (a row of cards, a list) follow each other 70ms apart. Only blocks that are still below
+// the visible area when the page is built are touched, so nothing flashes on load or on a language switch; the hidden starting state is applied by
+// this script only, so without JS or with reduced motion everything is simply visible. The animation is a keyframe animation (fill "backwards"), so
+// it leaves no transform behind and hover effects (card lift, soft rows) keep working.
+(function revealOnScroll() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const SELECTOR = [
+    '.v2-bento > .v2-bento-tile',
+    '.v2-sessions .v2-session-intro > h2', '.v2-sessions .v2-session-intro > p', '.v2-sessions .v2-session-intro > .button', '.v2-sessions .v2-session-gallery', '.v2-sessions .v2-services > details',
+    '.v2-yoga .v2-session-intro > h2', '.v2-yoga .v2-session-intro > p', '.v2-yoga .v2-session-intro > .button', '.v2-yoga .v2-session-gallery', '.v2-yoga .v2-services > details',
+    '.v2-workshops .v2-session-intro > h2', '.v2-workshops .v2-session-intro > p', '.v2-workshops .v2-session-intro > .button', '.v2-workshops .v2-session-gallery', '.v2-workshops .v2-services > details',
+    '.v2-upcoming .v2-section-top', '.v2-upcoming .v2-event-card',
+    '.v2-contact .button'
+  ].join(',');
+  if (reduce.matches || !('IntersectionObserver' in window)) return;
+  // Fix 20.11.2026 (events block): blocks start as soon as their top edge enters the screen (threshold 0, not 12% of a tall card), and the event
+  // cards wait (at most 700ms) until their photos are decoded, so the photos never pop in after the card. The photos are lazy images, so a second
+  // observer switches them to eager loading when the cards are still ~1.6 screens away.
+  const decoded = el => {
+    const imgs = [...el.querySelectorAll('img')];
+    if (!imgs.length) return Promise.resolve();
+    return Promise.race([Promise.all(imgs.map(i => (i.decode ? i.decode() : Promise.resolve()).catch(() => {}))), new Promise(r => setTimeout(r, 700))]);
+  };
+  const io = new IntersectionObserver(list => {
+    // Blocks the visitor has already scrolled past without them ever being seen (an anchor jump, a fast flick) are shown at once, so scrolling back up
+    // never meets an empty gap.
+    list.filter(en => !en.isIntersecting && en.boundingClientRect.bottom < 0).forEach(en => { en.target.classList.remove('rv-armed'); io.unobserve(en.target); });
+    const entering = list.filter(en => en.isIntersecting).sort((a, b) => (a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
+    entering.forEach((en, i) => {
+      const el = en.target;
+      io.unobserve(el);
+      el.style.setProperty('--rv-d', Math.min(i, 6) * 0.1 + 's');
+      const go = () => {
+        el.classList.add('rv-in');
+        const done = e => { if (e.target !== el) return; el.removeEventListener('animationend', done); el.classList.remove('rv-armed', 'rv-in'); el.style.removeProperty('--rv-d'); };
+        el.addEventListener('animationend', done);
+      };
+      el.matches('.v2-event-card') ? decoded(el).then(go) : go();
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -3% 0px' });
+  const preload = 'IntersectionObserver' in window ? new IntersectionObserver(list => list.forEach(en => {
+    if (!en.isIntersecting) return;
+    en.target.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; });
+    preload.unobserve(en.target);
+  }), { rootMargin: '0px 0px 160% 0px' }) : null;
+  const scan = () => {
+    const vh = innerHeight;
+    document.querySelectorAll(SELECTOR).forEach(el => {
+      if (el.dataset.rv) return;
+      el.dataset.rv = '1';
+      if (el.getBoundingClientRect().top < vh * 0.94) return;   // already in view (or above): leave it alone
+      el.classList.add('rv-armed');
+      io.observe(el);
+    });
+    document.querySelectorAll('.v2-event-cards:not([data-preload])').forEach(el => { el.dataset.preload = '1'; preload && preload.observe(el); });
+  };
+  // IntersectionObserver is silent for a block that goes from below the screen to above it between two frames, so a light scroll sweep shows such
+  // blocks (never seen, now above the viewport) without animation.
+  let sweeping = false;
+  addEventListener('scroll', () => {
+    if (sweeping) return;
+    sweeping = true;
+    requestAnimationFrame(() => {
+      sweeping = false;
+      document.querySelectorAll('.rv-armed:not(.rv-in)').forEach(el => { if (el.getBoundingClientRect().bottom < 0) { el.classList.remove('rv-armed'); io.unobserve(el); } });
+    });
+  }, { passive: true });
+  new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
+  scan();
+})();
+
+// 20.11.2026: "Vertical Cut Reveal" (Daniel Petho, 21st.dev) on the footer statement, in plain JS. The text is split by characters, but the characters of
+// a word stay in one non-breaking word container (so a wrapping line never breaks a word). Every character sits in an overflow:hidden mask and its inner
+// span slides up from below (translateY 115% -> 0) with a spring ease (the demo's stiffness 200 / damping 21, sampled into a CSS linear() curve), each
+// character 25ms after the previous one (staggerFrom "first"); the second line starts 0.45s after the first. It plays once, when the footer text
+// comes into view. Without JS or with reduced motion the plain text shows; the masks are padded so diacritics and descenders are never clipped.
+(function verticalCutReveal() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const STAGGER = 0.025, LINE_DELAY = 0.45;
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(list => list.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('vcr-in'); io.unobserve(en.target); }
+  }), { threshold: 0.35 }) : null;
+  function prepare(el) {
+    el.dataset.vcr = 'ready';
+    if (reduce.matches || !io) return;
+    const lines = el.innerHTML.split(/<br\s*\/?>/i).map(s => s.replace(/<[^>]*>/g, '').trim()).filter(Boolean);
+    el.textContent = '';
+    lines.forEach((line, li) => {
+      const row = document.createElement('span');
+      row.className = 'vcr-line';
+      let n = 0;
+      line.split(' ').forEach((word, wi, all) => {
+        const w = document.createElement('span');
+        w.className = 'vcr-word';
+        Array.from(word).forEach(ch => {
+          const outer = document.createElement('span'), inner = document.createElement('span');
+          outer.className = 'vcr-char';
+          inner.textContent = ch;
+          inner.style.animationDelay = (li * LINE_DELAY + n * STAGGER).toFixed(3) + 's';
+          n++;
+          outer.appendChild(inner);
+          w.appendChild(outer);
+        });
+        row.appendChild(w);
+        if (wi < all.length - 1) row.appendChild(document.createTextNode(' '));
+      });
+      el.appendChild(row);
+    });
+    el.classList.add('vcr-armed');
+    io.observe(el);
+  }
+  const scan = () => document.querySelectorAll('.footer-statement:not([data-vcr])').forEach(prepare);
+  new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
+  scan();
+})();
+
