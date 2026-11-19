@@ -154,8 +154,7 @@ function v2Sessions() {
   ];
   const faq = `<div class="v2-services accordion-group">${rows.map(([id, title, text], i) => detail(id, title, answerHtml(text)).replace('<details', i ? '<details' : '<details open')).join('')}</div>`;
   return `<section id="sesje" class="v2-section v2-container v2-sessions">
-    ${v2SectionLabel('02', 'Sesje 1:1', 'Сесії 1:1')}
-    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Czas tylko<br>dla Ciebie.', 'Час лише<br>для тебе.')}</h2><p>${tr('Rozmowa, uważność i miejsce na Twoje doświadczenie. W swoim tempie.', 'Розмова, уважність і місце для твого досвіду. У власному темпі.')}</p>${bookButton(tr('Umówmy się na rozmowę', 'Умовмося про розмову'), 'session')}${sessionGallery()}</div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Sesje 1:1', 'Сесії 1:1')}</h2><p>${tr('Rozmowa, uważność i miejsce na Twoje doświadczenie. W swoim tempie.', 'Розмова, уважність і місце для твого досвіду. У власному темпі.')}</p>${bookButton(tr('Umówmy się na rozmowę', 'Умовмося про розмову'), 'session')}${sessionGallery()}</div>
       ${faq}</div>
   </section>`;
 }
@@ -181,24 +180,34 @@ function v2Yoga() {
       'Це можливість користуватися обома формами йоги. Ти можеш відчути плавні послідовності Flow, а також дихальні й медитативні практики кундаліні. Вибір для тих, хто хоче пізнавати різні способи роботи з тілом і розвивати регулярну практику.')
   };
   return `<section id="joga" class="v2-yoga"><div class="v2-container v2-section">
-    ${v2SectionLabel('03', 'Studio Jogi', 'Студія йоги')}
-    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Mniej pośpiechu.<br>Więcej oddechu.', 'Менше поспіху.<br>Більше дихання.')}</h2><p>${tr('Ruch. Oddech. Obecność. Wybierz praktykę, która jest Ci bliska.', 'Рух. Дихання. Присутність. Вибери практику, яка тобі близька.')}</p>${bookButton(tr('Zapytaj o praktykę', 'Запитати про практику'), 'help')}${yogaGallery()}</div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Studio Jogi', 'Студія йоги')}</h2><p>${tr('Ruch. Oddech. Obecność. Wybierz praktykę, która jest Ci bliska.', 'Рух. Дихання. Присутність. Вибери практику, яка тобі близька.')}</p>${bookButton(tr('Zapytaj o praktykę', 'Запитати про практику'), 'help')}${yogaGallery()}</div>
       <div class="v2-services accordion-group">${['kundalini', 'flow', 'combo'].map((id, i) => detail('yoga-' + id, label(id), answerHtml(answers[id])).replace('<details', i ? '<details' : '<details open')).join('')}</div></div>
   </div></section>`;
 }
 
 function v2Upcoming() {
   return `<section id="najblizsze" class="v2-section v2-container v2-upcoming">
-    ${v2SectionLabel('06', 'Najbliższe wydarzenia', 'Найближчі події')}
-    <div class="v2-section-top"><h2>${tr('Spotkajmy się.', 'Зустріньмося.')}</h2><p>${tr('Najbliższe wydarzenia z kalendarza.<br>W prototypie — przykładowe dane w miejscu wtyczki.', 'Найближчі події з календаря.<br>У прототипі — демонстраційні дані на місці віджета.')}</p></div>
+    <div class="v2-section-top"><h2>${tr('Najbliższe wydarzenia', 'Найближчі події')}</h2><p>${tr('Najbliższe wydarzenia z kalendarza.<br>W prototypie — przykładowe dane w miejscu wtyczki.', 'Найближчі події з календаря.<br>У прототипі — демонстраційні дані на місці віджета.')}</p></div>
     <div class="v2-event-list">${v2EventRows(events.filter(e => e.status !== 'ended'))}</div>
   </section>`;
 }
 
+// 19.11.2026: Warsztaty uses the same UI logic as Sesje 1:1 (header band, one button, photo slider + list side by side, soft rows with a
+// plain fill hover, smooth accordion, two-level answers). The five programs are the rows; each opens its short description and a quiet
+// link to the program on /warsztaty/ (the rows used to be plain links). The old "Odkryj siebie — cykl 12 warsztatów" caption is gone with
+// the single photo; the cycle is the first row's title. Photos are existing ones (no workshop photos yet), so some repeat other sections.
+const workshopGallery = () => galleryHtml([
+  ['/assets/workshop.jpg', 1441, 2160, 'jump', tr('Swobodny ruch na plaży o zachodzie słońca', 'Вільний рух на пляжі під час заходу сонця')],
+  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka медитує на пляжі серед дерев')],
+  ['/assets/joga.jpg', 1440, 1440, 'studio', tr('Praktyka jogi w jasnym studio', 'Практика йоги у світлій студії')],
+  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka в позі йоги на піщаному пляжі')]
+], 'v2-session-gallery', tr('Zdjęcia z warsztatów i praktyk', 'Фото з воркшопів і практик'));
+
 function v2Workshops() {
+  const list = `<div class="v2-services accordion-group">${programs.map((p, i) => detail('workshop-' + p.id, label(p.id), answerHtml(p[lang]) + `<a class="text-link" href="/warsztaty/#${p.id}">${tr('Zobacz program', 'Переглянути програму')}</a>`).replace('<details', i ? '<details' : '<details open')).join('')}</div>`;
   return `<section id="warsztaty" class="v2-section v2-container v2-workshops">
-    ${v2SectionLabel('04', 'Warsztaty', 'Воркшопи')}
-    <div class="v2-workshop-grid"><div><h2>${tr('Odkrywaj siebie.<br>W dobrym<br>towarzystwie.', 'Відкривай себе.<br>У доброму<br>товаристві.')}</h2><p>${tr('Praktyka, refleksja i wspólne doświadczenie. Znajdź temat, który jest Ci teraz bliski.', 'Практика, роздуми та спільний досвід. Знайди тему, яка зараз тобі близька.')}</p><ul class="program-index">${programs.map(p => `<li><a href="/warsztaty/#${p.id}">${label(p.id)}${arrow}</a></li>`).join('')}</ul><a class="button" href="/warsztaty/">${tr('Poznaj warsztaty', 'Переглянути воркшопи')}${arrow}</a></div><figure>${img('workshop.jpg', tr('Swobodny ruch na plaży o zachodzie słońca', 'Вільний рух на пляжі під час заходу сонця'))}<figcaption>${tr('Odkryj siebie — cykl 12 warsztatów', 'Відкрий себе — цикл із 12 воркшопів')}</figcaption></figure></div>
+    <div class="v2-session-grid"><div class="v2-session-intro"><h2>${tr('Warsztaty', 'Воркшопи')}</h2><p>${tr('Praktyka, refleksja i wspólne doświadczenie. Znajdź temat, który jest Ci teraz bliski.', 'Практика, роздуми та спільний досвід. Знайди тему, яка зараз тобі близька.')}</p><a class="button" href="/warsztaty/">${tr('Poznaj warsztaty', 'Переглянути воркшопи')}${arrow}</a>${workshopGallery()}</div>
+      ${list}</div>
   </section>`;
 }
 
@@ -234,7 +243,8 @@ function v2Shop() {
 
 // Client edit 12.11.2026: Szkoła Klarowności, Wydarzenia and Blog are hidden; v2School() and v2EventsAndBlog() stay for a possible return.
 function homeSectionsV2() {
-  return v2About() + v2Sessions() + v2Yoga() + v2Workshops() + v2Shop() + v2Upcoming();
+  // 19.11.2026: the Sklep block is off the home page (the shop stays in the header menu and at /sklep/). v2Shop() is kept so the block can return.
+  return v2About() + v2Sessions() + v2Yoga() + v2Workshops() + v2Upcoming();
 }
 
 function contactV2() {
