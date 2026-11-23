@@ -155,14 +155,14 @@ function answerHtml(text) {
   return m ? `<p class="v2-answer-lead">${m[1]}</p><p class="v2-answer-more">${m[2]}</p>` : `<p class="v2-answer-lead">${text}</p>`;
 }
 
-// 18.11.2026: the Sesje 1:1 photo is a four-slide slider like the About bento: the session scene first, then the beach meditation,
-// the beach pose and the sofa portrait (all web-sized copies in assets/v2/gallery/).
+// 18.11.2026: the Sesje 1:1 photo is a four-slide slider like the About bento (web-sized copies in assets/v2/gallery/).
+// 23.11.2026: the slides are now the client's real session shoot (conversation, hands-on work, a koshi chime, singing bowl), JPEG q78-80 (~400-500 KB each, from ~6 MB originals).
 const sessionGallery = () => galleryHtml([
-  ['/assets/brainspotting.jpg', 1440, 960, 'room', tr('Przestrzeń do indywidualnej rozmowy', 'A space for a one-to-one conversation')],
-  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka meditating among trees on the beach')],
-  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka in a yoga pose on a sandy beach')],
-  ['/assets/v2/gallery/sesje-sofa.jpg', 1600, 1200, 'sofa', tr('Agnieszka siedzi spokojnie na skórzanej sofie', 'Agnieszka sitting peacefully on a leather sofa')]
-], 'v2-session-gallery', tr('Zdjęcia z sesji i praktyk', 'Photos from sessions and practices'));
+  ['/assets/v2/gallery/sesje-talk.jpg', 1800, 1200, 'talk', tr('Rozmowa podczas sesji w jasnym gabinecie', 'A conversation during a session in a bright room')],
+  ['/assets/v2/gallery/sesje-healing-wide.jpg', 1800, 1200, 'healing-wide', tr('Praca z dłońmi przy głowie klienta, w tle misy dźwiękowe i kwiaty', 'Hands-on work at the client\'s head, with singing bowls and flowers nearby')],
+  ['/assets/v2/gallery/sesje-bowl.jpg', 1800, 1200, 'bowl', tr('Misa dźwiękowa w dłoniach podczas sesji', 'A singing bowl in hands during a session')],
+  ['/assets/v2/gallery/sesje-chime.jpg', 1300, 1949, 'chime', tr('Dłoń trzymająca dzwonek koshi obok wazonu z kwiatami', 'A hand holding a koshi chime beside a vase of flowers')]
+], 'v2-session-gallery', tr('Zdjęcia z sesji', 'Photos from sessions'));
 
 function v2Sessions() {
   // 17.11.2026: four questions and answers (client copy) replace the two placeholder rows and the separate "Nie wiesz, który
@@ -192,11 +192,13 @@ function v2Sessions() {
 // 18.11.2026: Studio Jogi uses the same UI logic as Sesje 1:1 (header band, one button, photo slider + list side by side, soft rows
 // with a plain fill hover, smooth accordion, two-level answers) on the dark olive section. The button keeps the existing wording
 // "Zapytaj o praktykę" and opens the form with "I need help choosing"; the per-row buttons are gone.
+// 23.11.2026: the Studio Jogi slider is the client's yoga shoot (DSC09385, 09351, 09319, 09397). Each photo is cropped on the model (body centred
+// in a 1.2:1 frame) and saved at 1500 px wide, JPEG q80 (~380-500 KB each, from 5-42 MB originals), so object-position stays at the centre.
 const yogaGallery = () => galleryHtml([
-  ['/assets/joga.jpg', 1440, 1440, 'studio', tr('Praktyka jogi w jasnym studio', 'Yoga practice in a bright studio')],
-  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka in a yoga pose on a sandy beach')],
-  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka meditating among trees on the beach')],
-  ['/assets/v2/hero-meadow-2.webp', 1536, 1024, 'meadow', tr('Agnieszka medytuje na łące w ciepłym świetle', 'Agnieszka meditating in a meadow in warm light')]
+  ['/assets/v2/gallery/joga-gomukhasana.jpg', 1500, 1250, 'gomukhasana', tr('Agnieszka w pozycji jogi, dłonie złożone przed twarzą, na fioletowej macie', 'Agnieszka in a seated yoga pose with hands joined in front of her face, on a purple mat')],
+  ['/assets/v2/gallery/joga-half-moon.jpg', 1500, 1250, 'half-moon', tr('Agnieszka w pozycji półksiężyca w jasnym studio', 'Agnieszka in a half-moon pose in a bright studio')],
+  ['/assets/v2/gallery/joga-side-plank.jpg', 1500, 1250, 'side-plank', tr('Agnieszka w pozycji bocznej deski, portret w żółtym stroju', 'Agnieszka in a side plank, a close portrait in yellow activewear')],
+  ['/assets/v2/gallery/joga-boat.jpg', 1500, 1250, 'boat', tr('Agnieszka w pozycji łodzi na macie, w ciepłym świetle', 'Agnieszka in boat pose on a mat in warm light')]
 ], 'v2-session-gallery', tr('Zdjęcia z praktyk jogi', 'Photos from yoga practices'));
 
 function v2Yoga() {
