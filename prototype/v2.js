@@ -230,11 +230,13 @@ function v2Upcoming() {
 // plain fill hover, smooth accordion, two-level answers). The five programs are the rows; each opens its short description and a quiet
 // link to the program on /warsztaty/ (the rows used to be plain links). The old "Odkryj siebie — cykl 12 warsztatów" caption is gone with
 // the single photo; the cycle is the first row's title. Photos are existing ones (no workshop photos yet), so some repeat other sections.
+// 23.11.2026: the Warsztaty slider is the client's Goa shoot (SLK59081, SLK59346, SLK59383, "sample edit-2"), each cropped on the model to ~1.2:1
+// and saved at 1500 px wide, JPEG q80 (~210-510 KB, from 1-17 MB originals).
 const workshopGallery = () => galleryHtml([
-  ['/assets/workshop.jpg', 1441, 2160, 'jump', tr('Swobodny ruch na plaży o zachodzie słońca', 'Free movement on the beach at sunset')],
-  ['/assets/v2/gallery/sesje-meditation.jpg', 1600, 1067, 'meditation', tr('Agnieszka medytuje na plaży wśród drzew', 'Agnieszka meditating among trees on the beach')],
-  ['/assets/joga.jpg', 1440, 1440, 'studio', tr('Praktyka jogi w jasnym studio', 'Yoga practice in a bright studio')],
-  ['/assets/v2/gallery/sesje-beach.jpg', 1600, 1067, 'beach', tr('Agnieszka w pozycji jogi na piaszczystej plaży', 'Agnieszka in a yoga pose on a sandy beach')]
+  ['/assets/v2/gallery/warsztaty-goa-session.jpg', 1500, 1187, 'goa-session', tr('Rozmowa przy drewnianym stole w tropikalnym ogrodzie', 'A conversation at a wooden table in a tropical garden')],
+  ['/assets/v2/gallery/warsztaty-goa-meditation.jpg', 1500, 1250, 'goa-meditation', tr('Agnieszka medytuje na macie wśród drzew nad morzem', 'Agnieszka meditating on a mat among trees by the sea')],
+  ['/assets/v2/gallery/warsztaty-goa-twirl.jpg', 1500, 1250, 'goa-twirl', tr('Agnieszka w białej sukience tańczy na plaży', 'Agnieszka in a white dress twirling on the beach')],
+  ['/assets/v2/gallery/warsztaty-goa-warrior.jpg', 1500, 1251, 'goa-warrior', tr('Agnieszka w głębokim przysiadzie na plaży o zachodzie słońca', 'Agnieszka in a deep squat on the beach at sunset')]
 ], 'v2-session-gallery', tr('Zdjęcia z warsztatów i praktyk', 'Photos from workshops and practices'));
 
 function v2Workshops() {
@@ -850,7 +852,7 @@ void main(){
   if (!('IntersectionObserver' in window)) return;
   const io = new IntersectionObserver(list => list.forEach(en => en.target.classList.toggle('is-offscreen', !en.isIntersecting)), { rootMargin: '100px 0px' });
   const seen = new WeakSet();
-  const scan = () => document.querySelectorAll('.v2-yoga').forEach(el => { if (!seen.has(el)) { seen.add(el); io.observe(el); } });
+  const scan = () => document.querySelectorAll('.v2-yoga, .version-two .program-section').forEach(el => { if (!seen.has(el)) { seen.add(el); io.observe(el); } });
   new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
   scan();
 })();
