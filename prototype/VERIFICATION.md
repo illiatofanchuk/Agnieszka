@@ -769,3 +769,7 @@ Karma: `src` `karma-mandala-sand-fade.jpg` (`naturalWidth` 1400), скріншо
 ## V2 — прибрано «Termin i szczegóły do ustalenia», 24.11.2026
 
 `/warsztaty/`: у тексті сторінки немає «Termin i szczegóły», `.availability` 0 елементів, 5 смуг по 547 px (було 581). Скріншот смуг Odkryj siebie й Aktywacja mózgu: під вступом одразу рядки «Program warsztatu» / «Dla kogo?», без підпису й лінії. Англійську версію окремо не відкривав (та сама розмітка).
+
+## V2 — телефон, Warsztaty: відступ 4 px навколо тексту, 24.11.2026
+
+393×697, смуга Karma: `.section-copy` padding 4px; фото 20-373, рядки 20-373, заголовок 24-329, вступ 24-369, кнопка 24-238, текст рядка 40; `scrollWidth` 393. Скріншот: заголовок, вступ і кнопка трохи правіше краю фото, рядки рівно по фото. Справжній iPhone не перевіряв.

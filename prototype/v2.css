@@ -798,3 +798,11 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
   .v2-bento-practices .v2-practices{margin-inline:0}
   .v2-bento-practices .v2-practice,.v2-bento-practices .v2-practice:hover{padding-inline:18px}
 }
+
+/* 24.11.2026: phones, /warsztaty/. The text under each photo (headline, lead, button) sits in its own container with 4px of padding, an optical
+   compensation next to the photo's and band's large rounded corners (a flush edge beside a big radius looks pushed out). The accordion rows
+   keep their box aligned with the photo, so the group is widened by the same 4px on each side. */
+@media(max-width:600px){
+  .version-two .program-section .section-copy{padding:4px}
+  .version-two .program-section .accordion-group{width:calc(100% + 8px);margin-inline:-4px}
+}
