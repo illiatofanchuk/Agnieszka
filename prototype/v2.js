@@ -331,6 +331,10 @@ document.addEventListener('click', e => {
   const PAPER = { v2: '#faf7f2', v1: '#fefffa' };
   let meta = document.querySelector('meta[name="theme-color"]');
   if (!meta) { meta = Object.assign(document.createElement('meta'), { name: 'theme-color' }); document.head.appendChild(meta); }
+  // The strip that owns the top edge (see .chrome-tint in v2.css); it carries the same colour as the page background and the meta tag.
+  const strip = Object.assign(document.createElement('div'), { className: 'chrome-tint' });
+  strip.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(strip);
   let current = null, queued = false;
   const sync = () => {
     queued = false;
@@ -341,6 +345,7 @@ document.addEventListener('click', e => {
     if (colour === current) return;
     current = colour;
     meta.content = colour;
+    strip.style.backgroundColor = colour;
     // Inline so it wins over the stylesheet; cleared when the page paper is already the right colour. <body> is the one
     // WebKit reads (an opaque body background hides the root's), the root covers the other engines. #app paints the paper.
     document.documentElement.style.backgroundColor = top;

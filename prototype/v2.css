@@ -887,3 +887,13 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
   .version-two:not(.product-view) .v2-header.is-stuck{padding-inline:8px}
   .version-two:not(.product-view) .v2-header.is-stuck::before{inset:-8px -12px}
 }
+
+/* 24.11.2026: status bar colour on phones with the scrolling header. iOS Safari tints the status bar area from a fixed element that touches the top
+   edge; with the fixed header that element became the header (a cream bar, or nothing for a transparent header, in which case the colour went stale),
+   so the status bar stopped matching the hero. A thin fixed strip now owns the top edge: it is always the colour the status bar must have (the hero's
+   top-edge colour while the hero is on top, the page paper after it, set by chromeTint() in v2.js) and sits above the header, so the header can slide in
+   and out underneath without ever becoming the tint source. The strip lies inside the area the system paints flat anyway; it is phones only. */
+.chrome-tint{display:none}
+@media(max-width:600px){
+  .chrome-tint{display:block;position:fixed;top:0;left:0;right:0;height:12px;z-index:30;pointer-events:none;transition:background-color .35s ease}
+}
