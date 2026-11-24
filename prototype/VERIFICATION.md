@@ -733,3 +733,23 @@ DOM: у `#programy` немає `.v2-section-label`, 5 посилань; computed
 ## V2 — друге фото Karma, 23.11.2026
 
 `/warsztaty/#karma`: `src` `/assets/v2/gallery/karma-mandala-sand.jpg`, `naturalWidth` 1254. Скріншот: молитовна поза, мандала кольору капучино, фото без розтягнення в персиковій смузі, нічого не обрізано по обличчю. Телефон не перевіряв.
+
+## V2 — нове фото Energia pieniądza, 24.11.2026
+
+`/warsztaty/#money`: `src` `/assets/v2/gallery/money-mandala-olive.jpg`, `naturalWidth` 1400. Скріншот: руки біля обличчя та мандала по центру рамки, фото без розтягнення в масляній смузі. Телефон не перевіряв.
+
+## V2 — три фото-мандали у смугах Warsztaty, 24.11.2026
+
+`/warsztaty/`: `karma` → `karma-mandala-sand-fade.jpg`, `life` → `life-mandala-sky.jpg`, `money` → `money-mandala-olive-fade.jpg` (усі `naturalWidth` 1400). Скріншот Karma і Życiowe lekcje: кольори фото й смуг збігаються, без розтягнення, портрети по центру. Смугу money окремо не знімав (бачив попередній варіант того самого фото). Телефон не перевіряв.
+
+## V2 — Karma: повернуто фото без розчинення, 24.11.2026
+
+`/warsztaty/#karma`: `src` `/assets/v2/gallery/karma-mandala-sand.jpg`, `naturalWidth` 1254; файл побайтово збігається з уже запушеною версією (git не показує змін). Скріншот: молитовна поза на мандалі кольору капучино в персиковій смузі, без розтягнення. Телефон не перевіряв.
+
+## V2 — Karma знову зі згасанням; фото в Aktywacja mózgu, 24.11.2026
+
+Karma: `src` `karma-mandala-sand-fade.jpg` (`naturalWidth` 1400), скріншот: молитовна поза з м’яким згасанням внизу. Aktywacja mózgu: `src` `mind-mandala-lavender.jpg`, `naturalWidth` 1400; скріншот: співоча чаша на бузковому тлі, фото в кольорі лавандової смуги без розтягнення. Телефон не перевіряв.
+
+## V2 — фото в Odkryj siebie, 24.11.2026
+
+`/warsztaty/`: усі п’ять смуг мають нові фото (`discover-mandala-green.jpg`, `mind-mandala-lavender.jpg`, `karma-mandala-sand-fade.jpg`, `life-mandala-sky.jpg`, `money-mandala-olive-fade.jpg`, усі `naturalWidth` 1400). Скріншот зеленої й лавандової смуг: тло фото збігається з кольором смуги, портрет із паличкою в кадрі, нічого не обрізано. Телефон не перевіряв.

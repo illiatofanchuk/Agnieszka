@@ -30,11 +30,11 @@ const services=[
 ];
 const label=id=>{const s=services.find(x=>x.id===id);return s?s[lang]:id;};
 const programs=[
- {id:'discover',img:'workshop.jpg',tone:'straw',pl:'Zatrzymaj się przy tym, co dla Ciebie ważne. Cykl spotkań, praktyki i refleksji nad różnymi obszarami życia.',en:'Take a moment for what matters to you. A series of sessions, practices and reflections on different areas of life.'},
- {id:'mind',img:'agnieszka-meditation.jpg',tone:'mint',pl:'Przestrzeń na uważność, koncentrację i spokojniejsze spotkanie z własnymi myślami.',en:'Space for mindfulness, focus and a calmer relationship with your thoughts.'},
- {id:'karma',img:'v2/gallery/karma-mandala-sand.jpg',tone:'lavender',pl:'Spotkanie poświęcone wyborom, powtarzającym się schematom i osobistej perspektywie.',en:'A session exploring choices, recurring patterns and your personal perspective.'},
- {id:'life',img:'brainspotting.jpg',tone:'straw',pl:'Zobacz własne doświadczenia z nowej perspektywy. Czas na pytania, rozmowę i refleksję.',en:'See your experiences from a new perspective. Time for questions, conversation and reflection.'},
- {id:'money',img:'joga.jpg',tone:'mint',pl:'Warsztat refleksji nad przekonaniami i osobistą relacją z pieniędzmi.',en:'A workshop to reflect on beliefs and your personal relationship with money.'}
+ {id:'discover',img:'v2/gallery/discover-mandala-green.jpg',tone:'straw',pl:'Zatrzymaj się przy tym, co dla Ciebie ważne. Cykl spotkań, praktyki i refleksji nad różnymi obszarami życia.',en:'Take a moment for what matters to you. A series of sessions, practices and reflections on different areas of life.'},
+ {id:'mind',img:'v2/gallery/mind-mandala-lavender.jpg',tone:'mint',pl:'Przestrzeń na uważność, koncentrację i spokojniejsze spotkanie z własnymi myślami.',en:'Space for mindfulness, focus and a calmer relationship with your thoughts.'},
+ {id:'karma',img:'v2/gallery/karma-mandala-sand-fade.jpg',tone:'lavender',pl:'Spotkanie poświęcone wyborom, powtarzającym się schematom i osobistej perspektywie.',en:'A session exploring choices, recurring patterns and your personal perspective.'},
+ {id:'life',img:'v2/gallery/life-mandala-sky.jpg',tone:'straw',pl:'Zobacz własne doświadczenia z nowej perspektywy. Czas na pytania, rozmowę i refleksję.',en:'See your experiences from a new perspective. Time for questions, conversation and reflection.'},
+ {id:'money',img:'v2/gallery/money-mandala-olive-fade.jpg',tone:'mint',pl:'Warsztat refleksji nad przekonaniami i osobistą relacją z pieniędzmi.',en:'A workshop to reflect on beliefs and your personal relationship with money.'}
 ];
 // Example dates belong only to this local prototype, not to a confirmed calendar.
 const events=[
