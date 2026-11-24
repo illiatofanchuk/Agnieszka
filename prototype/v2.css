@@ -806,3 +806,18 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
   .version-two .program-section .section-copy{padding:4px}
   .version-two .program-section .accordion-group{width:calc(100% + 8px);margin-inline:-4px}
 }
+
+/* 24.11.2026: phones. The slider indicator (progress pills) sits 4px further from the photo's edges (12px -> 16px at the sides, 10px -> 14px at the
+   bottom), so its ends no longer crowd the large rounded bottom corners (32px) of the gallery containers. */
+@media(max-width:600px){
+  .v2-gallery-pills{left:16px;right:16px;bottom:14px}
+}
+
+/* 24.11.2026: phones. The call-to-action buttons in the page body are as wide as their container (label left, arrow at the right end, like the
+   accordion rows): "Umówmy się na rozmowę" (Sesje 1:1), "Zapytaj o praktykę" (Studio Jogi), "Poznaj warsztaty" (Warsztaty), "Napisz do mnie"
+   (contact) and "Zapytaj o udział" in each programme band on /warsztaty/ (there as wide as the photo and the rows). The header button, the
+   hero buttons and the dialogs keep their size. */
+@media(max-width:600px){
+  .version-two :is(.v2-sessions,.v2-yoga,.v2-workshops,.v2-contact) .button{display:flex;width:100%;justify-content:space-between}
+  .version-two .program-section .section-copy>.button{display:flex;width:calc(100% + 8px);max-width:none;margin-inline:-4px;justify-content:space-between}
+}

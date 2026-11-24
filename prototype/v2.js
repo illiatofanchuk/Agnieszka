@@ -776,7 +776,9 @@ void main(){
     '.v2-yoga .v2-session-intro > h2', '.v2-yoga .v2-session-intro > p', '.v2-yoga .v2-session-intro > .button', '.v2-yoga .v2-session-gallery', '.v2-yoga .v2-services > details',
     '.v2-workshops .v2-session-intro > h2', '.v2-workshops .v2-session-intro > p', '.v2-workshops .v2-session-intro > .button', '.v2-workshops .v2-session-gallery', '.v2-workshops .v2-services > details',
     '.v2-upcoming .v2-section-top', '.v2-upcoming .v2-event-card',
-    '.v2-contact .button'
+    '.v2-contact .button',
+    // 24.11.2026: /warsztaty/ — the programme list rows (staggered) and each programme band come in like the home blocks do
+    '.version-two .program-jumps a', '.version-two .program-section'
   ].join(',');
   if (reduce.matches || !('IntersectionObserver' in window)) return;
   // Fix 20.11.2026 (events block): blocks start as soon as their top edge enters the screen (threshold 0, not 12% of a tall card), and the event
@@ -801,7 +803,7 @@ void main(){
         const done = e => { if (e.target !== el) return; el.removeEventListener('animationend', done); el.classList.remove('rv-armed', 'rv-in'); el.style.removeProperty('--rv-d'); };
         el.addEventListener('animationend', done);
       };
-      el.matches('.v2-event-card') ? decoded(el).then(go) : go();
+      el.matches('.v2-event-card, .program-section') ? decoded(el).then(go) : go();
     });
   }, { threshold: 0, rootMargin: '0px 0px -3% 0px' });
   const preload = 'IntersectionObserver' in window ? new IntersectionObserver(list => list.forEach(en => {
@@ -818,7 +820,7 @@ void main(){
       el.classList.add('rv-armed');
       io.observe(el);
     });
-    document.querySelectorAll('.v2-event-cards:not([data-preload])').forEach(el => { el.dataset.preload = '1'; preload && preload.observe(el); });
+    document.querySelectorAll('.v2-event-cards:not([data-preload]), .programs:not([data-preload])').forEach(el => { el.dataset.preload = '1'; preload && preload.observe(el); });
   };
   // IntersectionObserver is silent for a block that goes from below the screen to above it between two frames, so a light scroll sweep shows such
   // blocks (never seen, now above the viewport) without animation.
