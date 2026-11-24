@@ -871,3 +871,10 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
   .version-two .v2-header .language{display:flex;align-items:center;min-height:40px;padding:0 4px 0 6px;font-size:12px;line-height:1;letter-spacing:.02em}
   .version-two:not(.product-view) .v2-header::before{inset:-8px -12px}
 }
+
+/* 24.11.2026: no grey flash on tap. The base stylesheet only cleared the browser's tap highlight for button, a and form fields; a <summary>
+   (every expandable row) kept the default translucent grey that iOS Safari and Chrome on Android paint over the pressed element, so the container
+   blinked grey on every tap. The highlight is cleared for the whole page (the property is not inherited, hence the universal selector), and
+   a mouse or touch press no longer draws a focus ring on a summary (keyboard focus keeps its ring through :focus-visible). */
+.version-two,.version-two *{-webkit-tap-highlight-color:rgba(0,0,0,0)}
+.version-two summary:focus:not(:focus-visible){outline:none}
