@@ -878,3 +878,12 @@ html[lang=en] .version-two .v2-hero{--hero-word:calc((100cqw - 9.4vw - 1px) * .2
    a mouse or touch press no longer draws a focus ring on a summary (keyboard focus keeps its ring through :focus-visible). */
 .version-two,.version-two *{-webkit-tap-highlight-color:rgba(0,0,0,0)}
 .version-two summary:focus:not(:focus-visible){outline:none}
+
+/* 24.11.2026: phones. Once the frosted bar is behind the header (is-stuck) its contents get 8px more padding on both sides: the logo and the menu
+   icon moved from 12px to 20px inside the bar's rounded ends. The bar itself keeps its edges (8px from the screen), so only the content moves in.
+   Over the hero (no bar) the logo and icon stay on the page's 20px margin, in line with the headline below. */
+@media(max-width:600px){
+  .version-two:not(.product-view) .v2-header{transition:padding .3s ease,color .3s ease,text-shadow .3s ease}
+  .version-two:not(.product-view) .v2-header.is-stuck{padding-inline:8px}
+  .version-two:not(.product-view) .v2-header.is-stuck::before{inset:-8px -12px}
+}
