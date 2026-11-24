@@ -753,3 +753,7 @@ Karma: `src` `karma-mandala-sand-fade.jpg` (`naturalWidth` 1400), скріншо
 ## V2 — фото в Odkryj siebie, 24.11.2026
 
 `/warsztaty/`: усі п’ять смуг мають нові фото (`discover-mandala-green.jpg`, `mind-mandala-lavender.jpg`, `karma-mandala-sand-fade.jpg`, `life-mandala-sky.jpg`, `money-mandala-olive-fade.jpg`, усі `naturalWidth` 1400). Скріншот зеленої й лавандової смуг: тло фото збігається з кольором смуги, портрет із паличкою в кадрі, нічого не обрізано. Телефон не перевіряв.
+
+## V2 — Warsztaty: «Praktyka w dobrym towarzystwie» як картки подій, 24.11.2026
+
+`/warsztaty/#najblizsze`: 3 картки `.v2-event-card` по 354 px, радіус 32px, `h2` 60.5px, висота блоку 491px. Скріншот: заголовок зліва, пояснення праворуч, три картки з фото-віялом, датою і тезами, як на головній. Телефон не перевіряв; hover (розкриття фото) і клік по картці окремо не перевіряв, вони використовують ті самі правила, що на головній.
