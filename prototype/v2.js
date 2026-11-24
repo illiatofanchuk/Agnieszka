@@ -432,15 +432,20 @@ document.addEventListener('click', e => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const EASE = 'cubic-bezier(.16,1,.3,1)';
   const bodyOf = d => d.querySelector(':scope > .detail-body');
-  const run = (d, from, to, ms, done) => {
+  // 24.11.2026: on phones (narrow or touch-only screens) the accordion is slower and softer, and opening and closing share ONE duration and ONE
+  // easing. With different timings (420 ms open / 320 ms close) the row being tapped first rose and then sank again whenever it opened while another
+  // row closed above it, which read as a jump under the finger. The text also holds back (opening: stays invisible for the first 30%) or fades out
+  // early (closing: gone by 55%), so it never shows squashed inside a half-open box.
+  const gentle = matchMedia('(max-width: 600px), (hover: none)');
+  const timing = closing => gentle.matches ? { ms: 520, ease: 'cubic-bezier(.32,.72,0,1)', soft: true } : { ms: closing ? 320 : 420, ease: EASE, soft: false };
+  const run = (d, from, to, t, done) => {
     const body = bodyOf(d);
     if (!body) { done && done(); return; }
     if (d._anim) d._anim.cancel();
     body.style.overflow = 'hidden';
-    const a = body.animate(
-      [{ height: from.h + 'px', paddingBottom: from.p + 'px', opacity: from.o }, { height: to.h + 'px', paddingBottom: to.p + 'px', opacity: to.o }],
-      { duration: ms, easing: EASE }
-    );
+    const frames = [{ height: from.h + 'px', paddingBottom: from.p + 'px', opacity: from.o }, { height: to.h + 'px', paddingBottom: to.p + 'px', opacity: to.o }];
+    if (t.soft) frames.splice(1, 0, to.o > from.o ? { opacity: from.o, offset: 0.3 } : { opacity: to.o, offset: 0.55 });
+    const a = body.animate(frames, { duration: t.ms, easing: t.ease });
     d._anim = a;
     const end = () => { if (d._anim === a) { d._anim = null; body.style.overflow = ''; done && done(); } };
     a.onfinish = end;
@@ -453,7 +458,7 @@ document.addEventListener('click', e => {
     d.open = true;
     if (!body) return;
     const full = body.scrollHeight, pad = parseFloat(getComputedStyle(body).paddingBottom) || 0;
-    run(d, from, { h: full, p: pad, o: 1 }, 420);
+    run(d, from, { h: full, p: pad, o: 1 }, timing(false));
     const group = d.closest('.accordion-group');
     if (group) group.querySelectorAll(':scope > details').forEach(o => { if (o !== d && o.open && !o.classList.contains('is-closing')) closeIt(o); });
   };
@@ -462,7 +467,7 @@ document.addEventListener('click', e => {
     if (!body) { d.open = false; return; }
     d.classList.add('is-closing');
     const h = body.getBoundingClientRect().height, pad = parseFloat(getComputedStyle(body).paddingBottom) || 0;
-    run(d, { h, p: Math.min(pad, h), o: +getComputedStyle(body).opacity }, { h: 0, p: 0, o: 0 }, 320, () => { d.open = false; d.classList.remove('is-closing'); });
+    run(d, { h, p: Math.min(pad, h), o: +getComputedStyle(body).opacity }, { h: 0, p: 0, o: 0 }, timing(true), () => { d.open = false; d.classList.remove('is-closing'); });
   };
   document.addEventListener('click', e => {
     const sum = e.target.closest('.version-two details > summary');
@@ -475,6 +480,46 @@ document.addEventListener('click', e => {
   document.addEventListener('toggle', e => {
     if (!reduce.matches && e.target.matches && e.target.matches('.version-two details')) e.stopImmediatePropagation();
   }, true);
+})();
+
+// 24.11.2026: the header follows the scroll one to one (desktop and phones). It is fixed; scrolling DOWN pushes it up by exactly the distance scrolled
+// until it is fully out, scrolling UP pulls it back down by exactly the distance scrolled, so it leaves and returns at the speed of the finger or the
+// wheel (no timer, no snap). Back at the very top it is whole again. While the phone menu is open it stays put. Once the page has moved away from the
+// top the header gets a frosted light bar behind it (class is-stuck) so the white logo and links stay readable over light sections; over the hero
+// it stays transparent as before. The shop's product page keeps its plain static header.
+(function headerOnScroll() {
+  let offset = 0, lastY = null, queued = false, hideBy = 0;
+  const measure = h => {
+    const was = h.style.translate;
+    h.style.translate = '';
+    hideBy = Math.ceil(h.getBoundingClientRect().bottom) + 14;   // the header's bottom edge plus room for the bar around it
+    if (was) h.style.translate = was;
+  };
+  const update = () => {
+    queued = false;
+    const h = document.querySelector('.version-two:not(.product-view) .v2-header');
+    if (!h) { lastY = null; return; }
+    const max = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    const y = Math.min(Math.max(scrollY, 0), max);          // ignore rubber-band overscroll at both ends
+    if (lastY === null) lastY = y;
+    const open = !!document.querySelector('.mobile-nav.open');
+    if (!hideBy) measure(h);
+    offset = open || y <= 0 ? 0 : Math.min(hideBy, Math.max(0, offset + (y - lastY)));
+    lastY = y;
+    h.style.translate = offset ? `0 ${(-offset).toFixed(1)}px` : '';
+    h.classList.toggle('is-stuck', y > 24);
+  };
+  let settle = 0;
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  // a last pass shortly after the scrolling stops, so the header can never be left half-hidden at the very top by a missed frame
+  addEventListener('scroll', () => { queue(); clearTimeout(settle); settle = setTimeout(update, 140); }, { passive: true });
+  addEventListener('resize', () => { hideBy = 0; queue(); });
+  addEventListener('click', e => { if (e.target.closest && e.target.closest('.menu-toggle')) queue(); });
+  new MutationObserver(queue).observe(document.documentElement, { childList: true, subtree: false });
+  const app = document.getElementById('app');
+  if (app) new MutationObserver(() => { hideBy = 0; queue(); }).observe(app, { childList: true });
+  addEventListener('DOMContentLoaded', queue);
+  queue();
 })();
 
 (function heroParallax() {
