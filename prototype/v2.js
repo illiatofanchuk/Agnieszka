@@ -513,6 +513,39 @@ document.addEventListener('click', e => {
   wide.addEventListener?.('change', queue);
 })();
 
+// 24.11.2026: parallax in the Warsztaty hero, the same depth logic as the home hero. The photo drifts slower than the page (it moves down by
+// 20% of the scroll on desktop, 12% on phones), the huge "Warsztaty" word drifts up faster (-12% / -6%) and the lead row a little (-6% / -4%),
+// so the word slides over the photo. The photo only moves down, so the strip it uncovers at the top lies above the viewport and needs no extra height. The texts use the `translate`
+// property and the photo `transform`. Reduced motion keeps everything still.
+(function pageHeroParallax() {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const wide = matchMedia('(min-width: 601px)');
+  const layers = [
+    ['.v2-page-hero-photo', 0.2, 'transform', 0.12],
+    ['h1', -0.12, 'translate', -0.06],
+    ['.v2-page-hero-row', -0.06, 'translate', -0.04]
+  ];
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const hero = document.querySelector('.version-two .v2-page-hero.is-photo');
+    if (!hero) return;
+    const y = Math.max(0, -hero.getBoundingClientRect().top);
+    if (y > hero.offsetHeight) return;
+    for (const [sel, k, prop, kPhone] of layers) {
+      const el = hero.querySelector(sel);
+      if (!el) continue;
+      const off = reduce.matches ? 0 : y * (wide.matches ? k : kPhone);
+      el.style[prop] = !off ? '' : prop === 'transform' ? `translate3d(0, ${off.toFixed(1)}px, 0)` : `0 ${off.toFixed(1)}px`;
+    }
+  };
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  reduce.addEventListener?.('change', queue);
+  wide.addEventListener?.('change', queue);
+})();
+
 (function aboutGalleryControl() {
   const show = (g, n) => {
     const slides = g.querySelectorAll('.v2-gallery-slide'), pills = g.querySelectorAll('.v2-gallery-pill');
